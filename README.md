@@ -16,3 +16,5 @@ You can get the user access token by following these steps:
 3. click "Settings"
 4. click "Access Tokens"
 5. generate an access token
+
+To easily view examples from Winoground, follow [this](https://huggingface.co/spaces/CVPR/winoground-explorer) link.
