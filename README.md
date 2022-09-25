@@ -9,7 +9,7 @@ from datasets import load_dataset
 examples = load_dataset('facebook/winoground', use_auth_token=<YOUR USER ACCESS TOKEN>)
 ```
 
-You can get <YOUR USER ACCESS TOKEN> by following these steps:
+You can get the user access token by following these steps:
 
 1. log into your Hugging Face account
 2. click on your profile picture
