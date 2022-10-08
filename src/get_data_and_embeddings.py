@@ -17,6 +17,7 @@ from transformers import (
     OpenAIGPTLMHeadModel,
 )
 import torch
+import pdb
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -42,6 +43,38 @@ def model_init(model_string: str, fast=False):
 
     return model, processor
 
+def get_one_vec(phrase, model, tokenizer, emb_type: str = "CLS", model_type: str = "encoder", layer: int = 12):
+    if model_type == "gpt":
+        phrase = phrase + " " + tokenizer.eos_token
+
+    encoded_phrase = tokenizer.encode(phrase, return_tensors="pt")
+    if DEVICE == "cuda":
+        encoded_phrase = encoded_phrase.to("cuda")
+
+    outputs = model(encoded_phrase)
+    if emb_type == "CLS":
+        if layer == 12:
+            if model_type == "encoder":
+                emb_phrase = outputs[0][:, 0, :]
+            else:
+                emb_phrase = outputs[0][:, -1, :]
+        else:
+            hidden = outputs["hidden_states"][layer]
+            if model_type == "encoder":
+                emb_phrase = hidden[:, 0, :]
+            else:
+                emb_phrase = hidden[:, -1, :]
+
+    elif emb_type == "avg":
+        if layer == 12:
+            token_embeddings = outputs["last_hidden_state"]
+            emb_phrase = token_embeddings.squeeze(0).mean(dim=0)
+        else:
+            token_embeddings = outputs["hidden_states"][layer]
+            emb_phrase = token_embeddings.squeeze(0).mean(dim=0)
+
+
+    return emb_phrase
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -58,7 +91,7 @@ if __name__ == "__main__":
         "-l",
         "--layer",
         help="layer to extract embs from (doesn't apply to all models)",
-        default=-1,
+        default=12,
     )
     parser.add_argument(
         "-o",
@@ -97,49 +130,60 @@ if __name__ == "__main__":
         all_image_embs = []
         all_text_embs = []
         for i, sample in enumerate(tqdm(winoground_hf)):
-            input_c0_i0 = processor(
-                text=[sample["caption_0"]],
-                images=[sample["image_0"].convert("RGB")],
-                return_tensors="pt",
-            )
-            input_i0 = processor(
-                text=None,
-                images=[sample["image_0"].convert("RGB")],
-                return_tensors="pt",
-            )["pixel_values"].to(DEVICE)
-            input_i1 = processor(
-                text=None,
-                images=[sample["image_1"].convert("RGB")],
-                return_tensors="pt",
-            )["pixel_values"].to(DEVICE)
-            input_c0 = processor(
-                text=[sample["caption_0"]], images=None, return_tensors="pt"
-            ).to(DEVICE)
-            input_c1 = processor(
-                text=[sample["caption_1"]], images=None, return_tensors="pt"
-            ).to(DEVICE)
-            if DEVICE == "cuda":
-                for key in input_c0_i0:
-                    input_c0_i0[key] = input_c0_i0[key].cuda()
-            output_i0 = model.get_image_features(input_i0)
-            output_i1 = model.get_image_features(input_i1)
-            output_c0 = model.get_text_features(**input_c0)
-            output_c1 = model.get_text_features(**input_c1)
-            if args.normalize:
-                output_i0 /= output_i0.norm(dim=-1, keepdim=True)
-                output_i1 /= output_i1.norm(dim=-1, keepdim=True)
-                output_c0 /= output_c0.norm(dim=-1, keepdim=True)
-                output_c1 /= output_c1.norm(dim=-1, keepdim=True)
+            if args.model == "clip":
+                input_c0_i0 = processor(
+                    text=[sample["caption_0"]],
+                    images=[sample["image_0"].convert("RGB")],
+                    return_tensors="pt",
+                )
+                input_i0 = processor(
+                    text=None,
+                    images=[sample["image_0"].convert("RGB")],
+                    return_tensors="pt",
+                )["pixel_values"].to(DEVICE)
+                input_i1 = processor(
+                    text=None,
+                    images=[sample["image_1"].convert("RGB")],
+                    return_tensors="pt",
+                )["pixel_values"].to(DEVICE)
+                input_c0 = processor(
+                    text=[sample["caption_0"]], images=None, return_tensors="pt"
+                ).to(DEVICE)
+                input_c1 = processor(
+                    text=[sample["caption_1"]], images=None, return_tensors="pt"
+                ).to(DEVICE)
+                if DEVICE == "cuda":
+                    for key in input_c0_i0:
+                        input_c0_i0[key] = input_c0_i0[key].cuda()
+                output_i0 = model.get_image_features(input_i0)
+                output_i1 = model.get_image_features(input_i1)
+                output_c0 = model.get_text_features(**input_c0)
+                output_c1 = model.get_text_features(**input_c1)
+                if args.normalize:
+                    output_i0 /= output_i0.norm(dim=-1, keepdim=True)
+                    output_i1 /= output_i1.norm(dim=-1, keepdim=True)
+                    output_c0 /= output_c0.norm(dim=-1, keepdim=True)
+                    output_c1 /= output_c1.norm(dim=-1, keepdim=True)
 
-            all_image_embs.append(torch.stack([output_i0, output_i1]).transpose(0, 1).cpu().detach().numpy())
-            all_text_embs.append(torch.stack([output_c0, output_c1]).transpose(0, 1).cpu().detach().numpy())
+                all_image_embs.append(torch.stack([output_i0, output_i1]).transpose(0, 1).cpu().detach().numpy())
+                all_text_embs.append(torch.stack([output_c0, output_c1]).transpose(0, 1).cpu().detach().numpy())
+
+            elif args.model == "roberta":
+                input_c0 = sample["caption_0"]
+                input_c1 = sample["caption_1"]
+                c0_emb = get_one_vec(input_c0, model, processor, layer=args.layer)
+                c1_emb = get_one_vec(input_c1, model, processor, layer=args.layer)
+                all_text_embs.append(torch.stack([c0_emb, c1_emb]).transpose(0, 1).cpu().detach().numpy())
 
         all_text_embs = np.concatenate(all_text_embs, axis=0)
-        all_image_embs = np.concatenate(all_image_embs, axis=0)
+
+        if args.model == "clip":
+            all_image_embs = np.concatenate(all_image_embs, axis=0)
 
         # Will be saved as (N x 2 x 512) tensor
         with open(f"{emb_output_dir}/text.npy", "wb") as f:
             np.save(f, all_text_embs)
-        with open(f"{emb_output_dir}/image.npy", "wb") as f:
-            np.save(f, all_image_embs)
+        if args.model == "clip":
+            with open(f"{emb_output_dir}/image.npy", "wb") as f:
+                np.save(f, all_image_embs)
         logging.info(f"Saved {args.model} embeddings")
