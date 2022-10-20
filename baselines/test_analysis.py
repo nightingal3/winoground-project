@@ -1,6 +1,6 @@
 from analysis_util import WinogroundResult, WinogroundResultList
 
-CLIP_results = WinogroundResultList("CLIP_scores.txt")
+CLIP_results = WinogroundResultList("CLIP/CLIP_scores.txt")
 
 # to check our hypothesis that the captions both prefer the same image most of the time
 same_image = 0
