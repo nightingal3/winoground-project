@@ -7,7 +7,7 @@ import json
 model_name = 'bert-base-uncased'
 model = AutoModelForMaskedLM.from_pretrained(model_name)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-preprocess = True
+preprocess = False
 separator = "\t"
 
 # scoring function taken from https://stackoverflow.com/questions/70464428/how-to-calculate-perplexity-of-a-sentence-using-huggingface-masked-language-mode
@@ -22,21 +22,30 @@ def score(sentence, model=model, tokenizer=tokenizer):
         loss = model(masked_input, labels=labels).loss
     return np.exp(loss.item())
 
-f = open("data/winoground_captions.jsonl")
-lines = f.readlines()
-output = open("outputs/perplexity/winoground_perplexities.txt", "w")
-for line in lines:
-    d = json.loads(line.strip())
-    s1 = d["caption_0"]
-    s2 = d["caption_1"]
+# print(score("standing on feet."))
+# print(score("on feet standing."))
+print(score("I am happy today."))
+print(score("I am sad today."))
+print(score("bear catching fish."))
+print(score("fish catching bear."))
+print(score("dog chasing cat."))
+print(score("cat chasing dog."))
 
-    # bert has a seizure if the sentence doesn't end with a period
-    if preprocess:
-        s1 = s1 + "."
-        s2 = s2 + "."
-
-    p1 = score(s1)
-    p2 = score(s2)
-    output.write(s1 + separator + s2 + separator + str(p1) + separator + str(p2) + "\n")
-f.close()
-output.close()
+# f = open("data/winoground_captions.jsonl")
+# lines = f.readlines()
+# output = open("outputs/perplexity/winoground_perplexities_nopre.txt", "w")
+# for line in lines:
+#     d = json.loads(line.strip())
+#     s1 = d["caption_0"]
+#     s2 = d["caption_1"]
+#
+#     # bert has a seizure if the sentence doesn't end with a period
+#     if preprocess:
+#         s1 = s1 + "."
+#         s2 = s2 + "."
+#
+#     p1 = score(s1)
+#     p2 = score(s2)
+#     output.write(s1 + separator + s2 + separator + str(p1) + separator + str(p2) + "\n")
+# f.close()
+# output.close()

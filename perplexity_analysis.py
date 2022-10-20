@@ -56,6 +56,7 @@ def summary_statistics(data, plot_type="hist", plot_path=None, log_scale=False, 
             plt.clf()
         elif plot_type == "box":
             plt.boxplot(plot_data)
+            plt.ylabel("difference in perplexity")
             plt.savefig(plot_path)
             plt.clf()
 
@@ -69,6 +70,7 @@ for ((s1, p1), (s2, p2)) in pairs:
 summary_statistics(abs_diff, "hist", "outputs/perplexity/abs_diff_upper1000.png", True, 1000)
 summary_statistics(abs_diff, "hist", "outputs/perplexity/abs_diff_upper100.png", True, 100, 20)
 summary_statistics(abs_diff, "box", "outputs/perplexity/abs_diff_box.png")
+summary_statistics(abs_diff, "box", "outputs/perplexity/abs_diff_box1000.png", upper=1000)
 print("Avg diff: " + str(mean))
 print("std: " + str(std))
 print("Max diff: " + str(max_val))
@@ -83,3 +85,7 @@ print(pairs[min_ind][1][0])
 abs_diff_np = np.array(abs_diff)
 under_20 = (abs_diff_np < 20).sum()
 print("Number of pairs with absolute difference <20: " + str(under_20))
+
+for pair in pairs:
+    if abs(pair[0][1] - pair[1][1]) > 1000:
+        print(pair[0][0], pair[1][0])
