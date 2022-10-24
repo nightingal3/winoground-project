@@ -110,13 +110,25 @@ if __name__ == "__main__":
 
     lang_csv_output_path = os.path.join(args.output_dir, "winoground_langdata.csv")
     emb_output_dir = os.path.join(args.output_dir, f"{args.model}_embs/")
-
+    img_output_dir = os.path.join(args.output_dir, "imgs/")
+    
     if not os.path.exists(lang_csv_output_path):
         logging.info(
             f"Summary csv for language doesn't exist yet, writing it to {lang_csv_output_path}"
         )
         df_lang = winoground_lang_hf.to_pandas()
         df_lang.to_csv(lang_csv_output_path, index=False)
+    
+    if not os.path.exists(img_output_dir):
+        logging.info(
+            f"Image embeddings don't exist yet, writing them to {img_output_dir}"
+        )
+        os.makedirs(img_output_dir)
+        for i, example in enumerate(tqdm(winoground_hf)):
+            img_0 = example["image_0"]
+            img_1 = example["image_1"]
+            img_0.save(os.path.join(img_output_dir, f"{i}_0.png"))
+            img_1.save(os.path.join(img_output_dir, f"{i}_1.png"))
 
     if not os.path.isdir(emb_output_dir) or len(os.listdir(emb_output_dir)) == 0:
         Path(emb_output_dir).mkdir(parents=False, exist_ok=True)
