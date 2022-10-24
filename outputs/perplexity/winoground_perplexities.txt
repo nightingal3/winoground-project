@@ -1,0 +1,400 @@
+an old person kisses a young person.	a young person kisses an old person.	9.595432580293119	11.841020025352899
+the taller person hugs the shorter person.	the shorter person hugs the taller person.	6.318684169000878	5.710821346621969
+the masked wrestler hits the unmasked wrestler.	the unmasked wrestler hits the masked wrestler.	4.224473356663061	4.961058495960337
+a person watches an animal.	an animal watches a person.	36.733195253896966	70.01731582685802
+the person without earrings pays the person with earrings.	the person with earrings pays the person without earrings.	11.327554693580817	5.3782711083419645
+a bird eats a snake.	a snake eats a bird.	31.48978357370568	33.54552434279627
+a plant was harmed by another organism, and that organism broke the plant into pieces.	another organism was harmed by a plant, and that plant broke the organism into pieces.	2.7346774988924762	4.038627468150347
+a bottle is in water.	water is in a bottle.	101.02031509803913	11.33537051237
+a tree smashed into a car.	a car smashed into a tree.	10.095111494533585	3.9914437536043943
+people fall on the leaves.	the leaves fall on people.	87.53959435850628	28.47373535040084
+the sail rests below the water.	the water rests below the sail.	50.383051874381664	66.45066350944533
+there is a table below someone.	there is someone below a table.	91.74713800386458	110.8192003105877
+the image shows a computer on top of books.	the image shows books on top of a computer.	11.433195994790722	11.389971751569961
+a caterpillar with some plants.	a plant with some caterpillars.	18.273044194080256	4.992960437588036
+there is a mug in some grass.	there is some grass in a mug.	94.90025613123693	80.35095980994997
+there are more skiers than snowboarders.	there are more snowboarders than skiers.	1.1327080874907058	1.1400262993647419
+there are fewer forks than spoons.	there are fewer spoons than forks.	4.222778087601078	5.584257013758541
+there are more ladybugs than flowers.	there are more flowers than ladybugs.	2.828747467014945	3.194552604670308
+there is less orange juice than milk.	there is less milk than orange juice.	3.4878989198101684	4.105521003104554
+there is more dirt than empty space in the jar.	there is more empty space than dirt in the jar.	13.894818206962443	8.277814918230238
+there is a bit less milk chocolate than white chocolate.	there is a bit less white chocolate than milk chocolate.	4.674684079596958	4.650847275227141
+a person sits and a dog stands.	a person stands and a dog sits.	16.870532105372224	11.259295752111093
+The person with more facial hair lies awake while the other sleeps.	The person with more facial hair sleeps while the other lies awake.	4.786162311952462	5.237673188723143
+the person in the middle is floating and some others are standing.	the person in the middle is standing and some others are floating.	6.084469384002115	6.413460812279418
+the person closer to the camera weightlifts and the person farther from the camera runs.	the person closer to the camera runs and the person farther from the camera weightlifts.	4.039673776936466	6.116259739841087
+the person with the white collared shirt waters the plant while the other holds it.	the person with the white collared shirt holds the plant while the other waters it.	9.316781584269954	10.597747510126043
+the taller person chops food and the shorter person eats food.	the taller person eats food and the shorter person chops food.	4.6342033747039615	4.043682881023564
+the person with the ponytail packs stuff and other buys it.	the person with the ponytail buys stuff and other packs it.	64.88048360102127	51.881645306053606
+a person walking in a field of yellow flowers with a red dress.	a person walking in a field of red flowers with a yellow dress.	5.66102194263229	6.589958439495958
+a brown dog is on a white couch.	a white dog is on a brown couch.	17.17423837150298	18.256357199479567
+a blue bird is next to a red berry.	a red bird is next to a blue berry.	21.344210356280172	24.00517390025784
+The red book is above the yellow book and below the blue book.	The yellow book is above the blue book and below the red book.	1.5372269312000122	1.4705911065158996
+astronauts in blue suits with a red planet in the background.	astronauts in red suits with a blue planet in the background.	6.592629967356702	7.044433463227211
+the square table has a round base.	the round table has a square base.	11.607559651784959	4.140246251650316
+pointy bushes are behind rectangular bushes.	rectangular bushes are behind pointy bushes.	394.3234142951886	193.4999754722963
+a circular sign is above a rectangular sign.	a rectangular sign is above a circular sign.	10.278656305798977	11.573724307561285
+a wood chess piece rests on metal objects.	a metal chess piece rests on wood objects.	54.165385724920576	51.346570940998014
+soft shoes are on a smooth floor.	smooth shoes are on a soft floor.	64.52038499123717	134.8511993718614
+the happy person is on the right and the sad person is on the left.	the sad person is on the right and the happy person is on the left.	1.29257761760746	1.3372234502681921
+the hurt person is on the left and the helpful person is on the right.	the helpful person is on the left and the hurt person is on the right.	3.4106957855723534	3.02476444650894
+the more content person has the healthier food and the less content person has the less healthy food.	the less content person has the healthier food and the more content person has the less healthy food.	1.3912919822220686	1.4585702353405958
+the orange lollipop is sad and the red lollipop is surprised.	the orange lollipop is surprised and the red lollipop is sad.	4.4447618001343505	4.192814635556597
+the larger person wears yellow and the smaller person does not.	the smaller person wears yellow and the larger person does not.	2.899812630810556	2.8744260203557817
+a big cat is next to a small dog.	a small cat is next to a big dog.	6.62597577778312	9.748116614306612
+the heavy oncoming traffic is contrasted with the light outgoing traffic.	the light oncoming traffic is contrasted with the heavy outgoing traffic.	3.460712144600057	4.911388968733126
+a cold drink on a hot day.	a hot drink on a cold day.	4.23223031564332	4.643562308460497
+a person is drinking now and eating later.	a person is drinking later and eating now.	13.601653214104685	26.24517184254396
+the sailboat sails close but the beach is far away.	the sailboat sails far away but the beach is close.	9.400415487376462	7.876959314180865
+the passenger is riding inattentive to the road and the driver is driving attentive to the road.	the passenger is riding attentive to the road and the driver is driving inattentive to the road.	2.05775751435937	1.9733779051005262
+it wears a hat but the person doesn't.	the person wears a hat but it doesn't.	3.361768162482949	2.988347984736742
+the person with green legs is running quite slowly and the red legged one runs faster.	the person with green legs is running faster and the red legged one runs quite slowly.	6.187170888511627	10.455659509191715
+a person is in the water and close to the sand.	a person is close to the water and in the sand.	7.417588737183576	8.624358701376325
+a frog is above rocks which are under the water.	a frog is under rocks which are above the water.	17.79529161960725	12.490902410956455
+driving off the road and on the unpaved terrain.	driving on the road and off the unpaved terrain.	5.358340468665628	9.16728365656749
+someone is in a helicopter with a car.	someone is with a helicopter in a car.	22.598832051017343	64.79920006894531
+the green one can fit inside the blue one and the blue one can fit outside the green one.	the green one can fit outside the blue one and the blue one can fit inside the green one.	1.7416290227114748	1.8505465335837692
+jumping away from the photographer and towards the others.	jumping towards the photographer and away from the others.	14.113925873793649	28.130173080008397
+someone bakes the dough before the dough is eaten.	the dough is eaten before someone bakes the dough.	3.9347460516557176	2.7461764445396915
+it hatched before it was eaten.	it was eaten before it hatched.	3.347057105701693	3.1770498614122262
+there are three bananas and two apples.	there are two bananas and three apples.	4.1665605330803235	4.590581591151948
+someone has loaded their plate with one of the toast slices and two of the eggs.	someone has loaded their plate with two of the toast slices and one of the eggs.	9.601746502123603	9.558194446195477
+there are three people and two windows.	there are two people and three windows.	33.19446788660833	46.04345167276312
+there are 50 stars on the right flag and 5 stars on the left flag.	there are 5 stars on the right flag and 50 stars on the left flag.	2.230922400637625	2.03967343536089
+no people wear blue shirts and six people wear white shirts.	six people wear blue shirts and no people wear white shirts.	6.477046088749204	5.856034944783044
+the dog's leg is on the person's torso.	the person's leg is on the dog's torso.	6.700283215581901	9.046593577602673
+the animal's eyes are bigger than the person's.	the person's eyes are bigger than the animal's.	3.0763131525372787	2.888030465508579
+the taller person's arm is around the shorter person's shoulder.	the shorter person's arm is around the taller person's shoulder.	2.199535658996139	2.1194871560530495
+the person in a brown coat looks back and the person in a black coat looks forward.	the person in a black coat looks back and the person in a brown coat looks forward.	1.8582059917173064	1.837482468197034
+it ran away while they pursued.	they ran away while it pursued.	21.904557438947332	39.692277020660256
+almost everyone is in a boat and one is swimming.	one is in a boat and almost everyone is swimming.	3.977217016436102	6.3310336352109795
+the person with the lighter shoes is holding an emoji and the person with the darker shoes isn't.	the person with the darker shoes is holding an emoji and the person with the lighter shoes isn't.	2.187733204906151	2.227202385144398
+the person wearing neutral colors poses and the person wearing brighter colors takes a picture.	the person wearing brighter colors poses and the person wearing neutral colors takes a picture.	4.403206144903972	5.178531873769475
+it's a fire truck.	it's a truck fire.	2.499595685598072	13.277593676129166
+watching the present.	presenting the watch.	230.22483996535013	230.00779797450758
+walking out on a rock.	rocking out on a walk.	16.04217367877929	101.5942499412682
+the kid with the magnifying glass looks at them.	the kid looks at them with the magnifying glass.	3.6934002936815458	5.703776868270351
+the person with the kids is sitting.	the person is sitting with the kids.	19.86829513189304	21.790042185244417
+the people with shoes are touching each other.	the people are touching each other with shoes.	9.53154858838115	15.768186749814951
+someone with an apple is hurt by a tree.	someone is hurt by a tree with an apple.	13.19234284519825	28.098702478070656
+the person that is on the table is eating the food.	the person is eating the food that is on the table.	2.6772340371788186	1.676073011681812
+the watering can is larger than the pot.	the pot is larger than the watering can.	18.619450007857285	10.599637650189555
+they hold a suitcase handle with their left hand and they hold a passport with their right hand.	they hold a passport with their left hand and they hold a suitcase handle with their right hand.	2.4326445508684333	2.3886605852642444
+the person with the patterned shirt is curly-haired and the other is straight-haired.	the person with the patterned shirt is straight-haired and the other is curly-haired.	5.372886947916479	5.08508880916875
+a diagram showing movement from right to left.	a diagram showing movement from left to right.	3.161314314826911	3.1835328158020713
+the flip flops are too big for these feet.	the feet are too big for these flip flops.	4.3558954310328515	4.5435335085688715
+the person who is wearing a crown is kissing a frog.	the person is kissing a frog who is wearing a crown.	11.10350313590237	14.677235016999616
+a dog sitting on a couch with a person lying on the floor.	a person lying on a couch with a dog sitting on the floor.	5.952404392679014	3.0500001206379004
+The uncaged bird has an opened cage door.	The caged bird has an unopened cage door.	15.479037579098042	4.613308722574453
+meat with potatoes.	potatoes with meat.	65.32832545333882	62.13759119603287
+the person in pink was close to not winning.	the person in pink was not close to winning.	11.130145521544117	19.345937563443737
+two humans and one wheel.	two wheels and one human.	72.68248163157658	64.46312464978973
+clothing on lines.	lines on clothing.	521.9462142182172	267.04332918314964
+someone talks on the phone angrily while another person sits happily.	someone talks on the phone happily while another person sits angrily.	13.486788247709256	13.460446897891376
+two boats and one direction down the stream.	one boat and two directions down the stream.	28.771731449892837	25.70445403551356
+The dog rides without a visible tongue.	The dog rides with a visible tongue out.	64.20748966996867	48.10687060185448
+handing a hammer.	hammering a hand.	192.87881164702628	1018.1170809599822
+leaves its shedding.	shedding its leaves.	221.9354703111529	16.029476703863278
+they are using no bait but still got fish.	they are using bait but still got no fish.	43.41888685508443	37.35360834339127
+someone on the ground is spraying water towards a vehicle.	someone is on a vehicle spraying water towards the ground.	7.537428002160732	28.59881212512164
+the dog wears as a hat what someone would normally bite.	the dog bites what someone would normally wear as a hat.	37.85778003101609	13.172344476785323
+the happy one is on the left and the upset one is on the right.	the upset one is on the left and the happy one is on the right.	2.670169866491919	2.7340562154557784
+fake mustache and real hair on head.	real mustache and fake hair on head.	13.912824900832142	20.917960994581453
+real cat with toy baby.	toy cat with real baby.	326.72482077975855	781.7561728146984
+the lion is loud and the lionness is quiet.	the lion is quiet and the lionness is loud.	26.730015380699694	22.69892468286731
+there is a pink couch with green pillows.	there is a green couch with pink pillows.	4.76985914599125	3.7935549869965874
+light colored dog with dark colored cat.	dark colored dog with light colored cat.	24.34084003742107	23.30028595847658
+someone is wearing a black hat and yellow shirt.	someone is wearing a yellow hat and black shirt.	14.076469127956797	20.832982102012615
+black socks and orange shoes.	orange socks and black shoes.	14.454326838567319	13.396389718435177
+red building with white shutters.	white building with red shutters.	5.256165530992533	3.1650123227841696
+blue pants and green top.	green pants and blue top.	13.069727416050203	14.612514634793984
+there's one blue and many yellow balls.	there's one yellow and many blue balls.	14.28937274240407	13.258363780401472
+there are more silver coins than gold coins.	there are more gold coins than silver coins.	1.1639470688078375	1.1379880518655026
+the red team kicking the ball directly next to the blue team.	the blue team kicking the ball directly next to the red team.	5.034113292699088	4.770520487032304
+black dog wearing a brown sweater.	brown dog wearing a black sweater.	37.65032833046986	44.03510740017467
+one green apple surrounded by a bunch of red apples.	one red apple surrounded by a bunch of green apples.	4.0719956079318695	3.665496457259324
+person in white is reading the orange book.	person in orange is reading the white book.	31.324343477564735	30.967745811481773
+the children are being quiet while the adult is loud.	the children are being loud while the adult is quiet.	10.482679175678813	9.228022140037611
+the circular mirror is on the left and the rectangular mirror is on the right.	the rectangular mirror is on the left and the circular mirror is on the right.	1.4556259841809809	1.4645960325045906
+circular food on heart-shaped wood.	heart-shaped food on circular wood.	62.24565499758133	70.60238075420786
+the dress on the left is long and the dress on the right is short.	the dress on the left is short and the dress on the right is long.	1.088597915166591	1.1172766546648338
+the balloon in the middle has less air and the other balloons have more air.	the balloon in the middle has more air and the other balloons have less air.	1.7324316093516066	1.6392061359046097
+the pool has no people and the area around it has a lot of people.	the pool has a lot of people and the area around it has no people.	3.7509927215701624	3.2869630587089342
+big fish beside a small person.	small fish beside a big person.	194.24323384952461	183.23040066193806
+the train is moving fast while the person is still.	the train is still while the person is moving fast.	10.48230429256115	16.04753305171833
+they're enjoying hot water on a cold day.	they're enjoying cold water on a hot day.	5.722048266889235	5.140260076850014
+concrete floors with wood walls.	wood floors with concrete walls.	27.023617515028928	10.632209493640257
+the person on the left has curly hair and the person on the right has straight hair.	the person on the left has straight hair and the person on the right has curly hair.	1.5506894875262047	1.483751913721569
+there's a metal bottle with a plastic lid.	there's a plastic bottle with a metal lid.	5.282025390541525	3.816062807854823
+the fruit is heavy while the junk food is light.	the fruit is light while the junk food is heavy.	10.09900173312528	9.487416892317453
+the car is sitting upside down while the person is standing rightside up.	the car is sitting rightside up while the person is standing upside down.	20.061191241384567	19.40758385250533
+the cup on the left is filled first and the cup on the right is filled second.	the cup on the left is filled second and the cup on the right is filled first.	1.1541850034846222	1.3258635208699656
+milk cow.	cow milk.	44.47026597585899	209.83201408659838
+there is a clock wall.	there is a wall clock.	22.52086268543756	9.626662756603158
+there is a split banana.	there is a banana split.	46.79384898728892	58.44226929171969
+there are two people and a bunch of horses.	there are a bunch of people and two horses.	6.099717387717912	5.815885521585647
+three white and two brown eggs.	two white and three brown eggs.	4.0507056128852925	4.234203957983286
+the plastic is in the fish.	the fish is in the plastic.	72.99392265422702	49.24098818490088
+the dog's paw is on the cat's face.	the cat's paw is on the dog's face.	5.228752794011055	4.577018623439691
+the computer's screen is on and the phone's screen is off.	the phone's screen is on and the computer's screen is off.	2.3177379050332423	2.1900371342136498
+the dog is in the driver's seat and the person is in the passenger's seat.	the dog is in the passenger's seat and the person is in the driver's seat.	1.989461868603192	2.119594035009811
+there are more trees than people.	there are more people than trees.	4.13413068067131	6.228339646821407
+there are more computers than people.	there are more people than computers.	4.337961272001832	6.627866225143273
+there is more wood than metal.	there is more metal than wood.	3.834041222534621	3.8311619541180186
+there are more hats than people.	there are more people than hats.	9.565656036897407	38.008307210144615
+there are more people than stools.	there are more stools than people.	19.637529444366336	9.761482556414347
+there is more red wine than white wine.	there is more white wine than red wine.	1.471791097832786	1.4595287759633604
+there's more milk than coffee.	there's more coffee than milk.	3.5964672681510423	2.8862201200326196
+there's more cereal in the bowl than milk.	there's more milk in the bowl than cereal.	2.8495775586167174	3.5833894726754525
+boat sail.	sail boat.	120.21259711894005	41.26862593140529
+boat house.	house boat.	110.19493761315796	249.5479138233977
+check a rip.	rip a check.	662.9030573311227	98.93229149250148
+dress the display.	display the dress.	3843.339714303077	240.64724731325825
+spoon holding honey.	honey holding spoon.	807.9656294491734	7383.587028999925
+books holding up a person.	a person holding up books.	170.3254550181375	23.797089742101836
+a dog is using a wheelchair next to a person.	a person is using a wheelchair next to a dog.	10.78701510097857	8.45696980651025
+some plants surrounding a lightbulb.	a lightbulb surrounding some plants.	20.946182804125936	8.383186510791159
+a more lightly-colored dog is holding a toy next to a black dog.	a black dog is holding a toy next to a more lightly-colored dog.	25.075371718103376	15.967128356634346
+the flowers are taller than the people.	the people are taller than the flowers.	27.488812828742525	46.48075574752457
+there's a human in a stroller next to a dog.	there's a dog in a stroller next to a human.	3.471284979620054	3.6896263164797283
+a person is casting a shadow beside a ball.	a ball is casting a shadow beside a person.	24.480040086643402	37.173780421000146
+its tail is shorter than its body.	its body is shorter than its tail.	1.5934514994151388	2.1916870826575243
+the child is throwing the adult the ball.	the adult is throwing the child the ball.	10.446210994306938	3.921565125837463
+a person underneath lights.	lights underneath a person.	289.83519754315165	415.03119708374726
+some green on the ball.	the ball on some green.	152.7155210131328	457.62431057495155
+mind in the clouds.	clouds in the mind.	31.791105644665453	284.3351468480532
+there's a phone on a map.	there's a map on a phone.	19.62481270043491	22.66397486023438
+a person on a rock next to a dog.	a dog on a rock next to a person.	7.900232165382116	11.858157455727836
+an adult is flexing beside a child.	a child is flexing beside an adult.	21.38433803959802	17.029783785909988
+the person is looking at the dog.	the dog is looking at the person.	7.593406695212453	11.630014356580226
+a cat is underneath a red blanket.	a red blanket is underneath a cat.	34.843034711022675	97.57927372979563
+the person is bigger than the house.	the house is bigger than the person.	11.58110251023677	11.477703444370041
+the person is underneath the car.	the car is underneath the person.	25.70270136731885	24.83173420807097
+the water is filled with plastic.	the plastic is filled with water.	12.274366289827938	11.463293890477308
+an apple is on a target.	a target is on an apple.	81.26710464397912	69.65763141429187
+plant made out of a light bulb.	light bulb made out of a plant.	11.030081062974753	13.776961778663038
+parent pointing at child.	child pointing at parent.	29.21600046444355	57.06066878951301
+the person reached the base before the ball.	the ball reached the base before the person.	73.56049293861291	61.00554581772427
+ice being dumped on top of fish.	fish being dumped on top of ice.	35.08280500075784	20.24284773203682
+an adult kisses a child.	a child kisses an adult.	14.84647892546339	10.394788145033722
+there's a dog in a mask and a person beside it.	there's a dog and a person in a mask beside it.	7.417355300049221	6.127997344361629
+the baby on the phone is next to an adult.	the baby is next to an adult on the phone.	12.560879674297937	12.02658857266081
+the person on the left has their arms up and the person on the right has their arms down.	the person on the right has their arms up and the person on the left has their arms down.	1.1227149490001052	1.1269294195894592
+the person on the left is holding the phone and the person on the right is staring at it.	the person on the right is holding the phone and the person on the left is staring at it.	1.6009429458401285	1.5935910268989646
+the orange on the left is moldy while the orange on the right is fresh.	the orange on the right is moldy while the orange on the left is fresh.	2.765623960911678	2.7703887564474274
+a pink scoop of ice cream on top and a blue scoop on bottom.	a pink scoop of ice cream on bottom and a blue scoop on top.	2.0877361328677915	2.446499598164794
+the glasses on the right are fuller than the glasses on the left.	the glasses on the left are fuller than the glasses on the right.	2.1662654857677386	2.1931793084054254
+the person on the left is blowing bubbles and the person on the right is watching.	the person on the right is blowing bubbles and the person on the left is watching.	2.1038547451506218	2.1187476154661193
+there's more foam on the left than on the right.	there's more foam on the right than on the left.	2.0585972379430877	2.0958404668166963
+a fish is jumping from left to right.	a fish is jumping from right to left.	8.750793587870584	8.221068446613266
+they worked out then they drank water.	they drank water then they worked out.	24.225448678219482	27.206880376062536
+the shrimp are peeled then the shrimp are cooked.	the shrimp are cooked then the shrimp are peeled.	7.250544707892566	7.486545964463354
+the coffee is poured before it is ground.	it is ground before the coffee is poured.	7.805345777661619	13.047046579047977
+the potato is washed and then it is cut.	the potato is cut and then it is washed.	5.895452941907131	5.091086955135223
+the banana is peeled then it is sliced.	the banana is sliced then it is peeled.	6.1772474984906225	7.860851183517593
+the dog is swimming and the person is standing.	the dog is standing and the person is swimming.	10.237216715378743	13.21674460274313
+the person is jumping while the cat is sitting.	the person is sitting while the cat is jumping.	14.28958737568857	12.262277282965208
+a cat is lying down and a person is stretching.	a cat is stretching and a person is lying down.	12.02837793974961	9.219159866610664
+some people are standing but more are sitting.	some people are sitting but more are standing.	3.557177064343202	3.2661397088233963
+The kid throws the pancake and the adult sees it.	The kids see the pancake and the adult throws it.	11.313473903184983	7.931196291430088
+painting gray walls white.	painting white walls gray.	652.8532220839082	665.8534130211428
+a shorter person wearing blue standing next to a taller person.	a taller person wearing blue standing next to a shorter person.	5.887770102357617	7.568971173972944
+a person wearing a bear mask in blue on the left hand side of a person wearing a panda mask with glasses in pink.	a person wearing a panda mask with glasses in blue on the left hand side of a person wearing a bear mask in pink.	3.8564154843433367	4.160409564906894
+a car containing many a box.	a box containing many a car.	197.74762495255294	159.84832961049378
+left is red and right is blue.	left is blue and right is red.	1.8998573923803102	1.8974401181475429
+many a table tennis racket, just one ball.	just one table tennis racket, many a ball.	19.385871638212926	28.55688872564162
+four lions, no tigers.	no lions, four tigers.	16.53195195626036	55.42775449490315
+a small spherical object is heavier than a big spherical object.	a big spherical object is heavier than a small spherical object.	2.191246496003844	2.1594952485235503
+an older person blocking a younger person.	a younger person blocking an older person.	7.590316955423218	7.503275158041691
+white land and black water.	black land and white water.	6.688512211282668	7.885775883728032
+the cube is smaller than the shape whose lateral faces meet at a vertex.	the shape whose lateral faces meet at a vertex is smaller than the cube.	10.124730382347845	11.467716838229657
+more bicycles than cars.	more cars than bicycles.	15.12617385187396	25.49206126337666
+there are more apples than pears.	there are more pears than apples.	1.4529082299081377	1.7230247644323928
+there is more love than hate.	there is more hate than love.	2.4676790494836225	4.076824511615611
+more water than oil.	more oil than water.	6.416505949606523	4.876859681804465
+a person cries while another person wearing jewelry above their shoulders consoles.	a person consoles while another person wearing jewelry above their shoulders cries.	69.51763673143901	43.792082629932274
+a person with long hair eating a meat-based product while a person with short hair snacks on some fries.	a person with short hair eating a meat-based product while a person with long hair snacks on some fries.	6.8160381269566175	6.992395111695298
+water below the boat.	boat below the water.	36.55285929295798	51.080936234624815
+the one in front is faster than the other one.	the other one is faster than the one in front.	3.152748275595464	5.9642918096073325
+You can catch more flies with honey than you can with vinegar.	You can catch more flies with vinegar than you can with honey.	3.2192577781791316	3.3805831186052195
+It starts with "A" and ends with "Z".	It starts with "Z" and ends with "A".	1.8220457529588536	2.0227134022256963
+a shadow within the line.	a line within the shadow.	41.06267562019363	31.85173188454484
+the brave in the face of fear.	fear in the face of the brave.	8.575594307287423	10.669924805648305
+I need my strength back.	I need my back strength.	2.7975868730738163	25.0856447723605
+the one in the middle is taller than the ones on the side are.	the ones on the side are taller than the one in the middle is.	4.365540503037159	4.174074313732191
+fish flying.	fly fishing.	1433.1028510439373	32.44840251096603
+the red car is behind the blue car.	the blue car is behind the red car.	5.038411335916728	4.634106698696286
+the driver wearing a shirt is in front of the other person wearing a sleeveless top.	the driver wearing a sleeveless top is in front of the other person wearing a shirt.	5.385558107183296	5.177072096221948
+an object that rolls is on some wood.	some wood is on an object that rolls.	162.65221098951505	69.04864843850228
+a cat viewing a human on a screen.	a human viewing a cat on a screen.	16.071655152505816	15.746753788821469
+a normal person wishing they were a superhero.	a superhero wishing they were a normal person.	8.188658301896448	19.18342236930697
+a mike in the right hand while raising the left.	a mike in the left hand while raising the right.	20.383605592548474	18.072587817959217
+a person with long hair behind a person with a beard.	a person with a beard behind a person with long hair.	9.715753460655936	8.899304854212957
+the person with hair to their shoulders has brown eyes and the other person's are blue.	the person with hair to their shoulders has blue eyes and the other person's are brown.	2.6776976443856424	2.6716435664697467
+a human being on a device that intercepts the sun's rays.	a device that intercepts the sun's rays on a human being.	7.087567512326321	2.4648789617067037
+more humans than phones.	more phones than humans.	117.43801065272183	25.682701227724678
+a person is in the tube.	a tube is in the person.	26.66018930209267	74.47822648174915
+the person's head is above the rest of their body.	the rest of their body is above the person's head.	2.3676009923874144	3.759600892399238
+person overboard.	person over board.	936.8928059491429	602.1255421057921
+more red buttons than blue.	more blue buttons than red.	8.693498811915388	10.602127185791582
+the object at the top left is purple and the one at the bottom right of the group is red.	the object at the bottom right is purple and the one at the top left of the group is red.	4.391699583232155	4.365152812581492
+flat at the bottom and pointy on top.	flat on top and pointy at the bottom.	3.6253786614709123	3.5561904402169486
+seat numbers increasing from left to right.	seat numbers increasing from right to left.	16.307786055218923	16.97021115904374
+the number on the right is larger than the number on the left.	the number on the left is larger than the number on the right.	1.1201689113016373	1.1273390896871287
+more hair on the person's face than on their head.	more hair on the person's head than on their face.	5.286199208924461	4.519504964753283
+the knife on the left and the fork on the right.	the knife on the right and the fork on the left.	3.028256153766666	3.066587240515025
+food on their eyes.	eyes on their food.	156.5625096292233	9.593776407150637
+cars of bits.	bits of cars.	786.4357171292854	249.85963390619614
+a person on top of the world.	the world on top of a person.	4.120605537950585	7.394603975256362
+two people; the one on the right has curly hair and the one on the left doesn't.	two people; the one on the left has curly hair and the one on the right doesn't.	1.878558499902476	1.879288355429408
+first the cream, then the jam.	first the jam, then the cream.	4.450658246353321	5.2209186013663365
+more kisses than hugs.	more hugs than kisses.	9.032024839375307	10.818457674697415
+an inflatable flamingo on a person.	a person on an inflatable flamingo.	15.987637651688425	5.552060636087872
+a pink bird with a white beak.	a white bird with a pink beak.	4.689460997001942	3.6840942303988307
+a large pink inflatable flamingo along with some other lilos on the water including one that is mostly white.	a large white inflatable flamingo along with some other lilos on the water including one that is mostly pink.	23.70716223324111	24.034305885411253
+there are more eyes in the image than there are on a typical human.	there are more eyes on a typical human than there are in the image.	3.8025808525929166	4.670704667686459
+the confident doctor's stethoscope is around their neck, and their jacket is over their name tag.	the confident doctor's stethoscope is around their neck, and their name tag is over their jacket.	3.641562172580174	3.8791908307084
+few wind turbines and many clouds.	few clouds and many wind turbines.	58.777889466102195	89.42093234762746
+an adult is reading to their young child.	their young child is reading to an adult.	16.075935822064622	72.44884909121713
+the shopping basket is full and the shelves on the person's right are empty.	the shelves on the person's right are full and the shopping basket is empty.	4.532214535646416	4.847716556691113
+Young person playing baseball with a green bat and blue ball.	Young person playing baseball with a blue bat and green ball.	25.566580242462457	25.89392878988837
+painting the white wall red.	painting the red wall white.	31.60524620122161	95.38946471968896
+wearing a red jacket over blue.	wearing a blue jacket over red.	20.18930362711791	21.539538811311633
+I had cleaned my car.	I had my car cleaned.	12.828284138948424	6.089177114685576
+unfortunate poor people.	poor unfortunate people.	69.10490717891578	35.89373723406143
+there are less gloves than masks.	there are less masks than gloves.	20.689170423648036	23.864235706188094
+there are more pineapples than boxes.	there are more boxes than pineapples.	5.187304133988595	10.511735844288165
+the outer bristles are blue and the inner ones are white.	the outer bristles are white and the inner ones are blue.	2.1363941923380443	2.149106938012235
+the first vowel is E and the last consonant is N.	the last vowel is E and the first consonant is N.	3.11591883929569	3.356373537681568
+the cat on the left of the photo has its right paw ahead of its left.	the cat on the left of the photo has its left paw ahead of its right.	4.538250260169148	3.922984673212304
+the text is black on white.	the text is white on black.	7.228501508785831	5.772578566545591
+the dog sits and the cat stands.	the dog stands and the cat sits.	5.647008584138812	5.070797394007604
+the person with facial hair cycles and the other person runs.	the person with facial hair runs and the other person cycles.	14.086389873437671	16.084316510494407
+using the laptop while the guitar is close by.	using the guitar while the laptop is close by.	20.551706390751832	28.690900564656275
+a person in a blue coat with a brown-ish coffee cup.	a person in a brown-ish coat with a blue coffee cup.	4.614860940447993	4.2886027860702525
+space in a star.	a star in space.	78.68107831647343	8.522650423457566
+star of death.	death of star.	19.566291976576228	107.82901310824404
+the younger person is making noise while the other is silent.	the younger person is silent while the other is making noise.	9.005669112962016	8.555156533455133
+the one on the left is happy and the other is sad.	the one on the left is sad and the other is happy.	1.9084376782924701	1.9492546917360796
+the person on the left is dancing and the person on the very right is sitting on the sofa.	the person on the left is sitting on the sofa and the person on the very right is dancing.	2.1748403225483774	1.9292254835028582
+the person on the left is crying sadly while the one on the right is smiling happily.	the person on the left is smiling happily while the one on the right is crying sadly.	3.695545998029711	3.688532162469846
+the large person is drinking from the small coffee cup.	the small person is drinking from the large coffee cup.	13.702150033370698	11.377812444149772
+hot rubber and cool metal.	cool rubber and hot metal.	19.095434990744675	20.989019783274745
+the triangular shape is beneath the square one.	the square shape is beneath the triangular one.	28.762924923445727	30.072580380435074
+rough outside but smooth inside.	smooth outside but rough inside.	8.334068825636233	7.74833668472601
+the green one is fast and the one in white is comparatively slow.	the green one is slow and the one in white is comparatively fast.	3.8496658045644234	4.32251953552199
+there are more humans than balls.	there are more balls than humans.	17.457237584695587	14.397981624156586
+there are more legs than wheels.	there are more wheels than legs.	7.333282088730775	9.232703007417173
+a group of three people with longer hair and two with short hair in a business context.	a group of two people with longer hair and three with short hair in a business context.	5.507110220828066	7.148365853115326
+the gesture of the person sitting down is supporting the understanding of the person standing up.	the gesture of the person standing up is supporting the understanding of the person sitting down.	6.785918382397434	7.000451924424625
+the circle is above the cross.	the cross is above the circle.	10.071851940062263	11.86836522978151
+aerial view of a green tree in the brown freshly turned soil next to a green field.	aerial view of a green tree in a green field next to the brown freshly turned soil.	14.883294655808301	10.295689978405555
+physical therapist inspecting blue elastic therapeutic kinesio tape over pink.	physical therapist inspecting pink elastic therapeutic kinesio tape over blue.	211.26830430150713	259.41293480190257
+the skipping rope color is different to the shoelaces but similar to the shoes.	the skipping rope color is similar to the shoelaces but different to the shoes.	8.651805358165573	7.047018724652447
+the blue balloon is being lifted by the weight.	the weight is being lifted by the blue balloon.	26.942076614257147	24.146011822805523
+the sea is rough but the rocks are smooth.	the sea is smooth but the rocks are rough.	4.836361568022928	7.347139797444558
+the melting white food is cold while the brown is warm.	the melting white food is warm while the brown is cold.	17.753981528747406	18.047970956312874
+the person with a beard is smiling while the person with long hair is not.	the person with long hair is smiling while the person with a beard is not.	3.325998957113672	3.15044523708697
+the pet on the right is white and the one on the left is not.	the pet on the left is white and the one on the right is not.	5.87747345796253	5.684821023484312
+the outlet carrying water from the faucet to the shower head is near the hot tap not the cold.	the outlet carrying water from the faucet to the shower head is near the cold tap not the hot.	14.375267913031077	14.961123421898934
+the larger ball is heavier and the smaller one is lighter.	the larger ball is lighter and the smaller one is heavier.	3.540528985409844	3.4294407412206125
+The adult with the magnifying glass looks at the kid.	The adult looks at the kid with the magnifying glass.	4.578913419071921	3.703321387155463
+a dog is on a blanket with spots.	a blanket is on a dog with spots.	27.25336428102649	140.19090277197432
+There is a mouse cake for a birthday.	There is a birthday cake for a mouse.	45.222401790145014	16.15410745371344
+The cold-blooded animal isn't happy in warm water.	The warm-blooded animal isn't happy in cold water.	10.165898837882295	6.9531036118224
+The white queen is taking the black king.	The black queen is taking the white king.	9.360251219521377	8.356890870534135
+visiting animals at home can be fun.	animals visiting at home can be fun.	11.490328373803797	50.978349058806806
+the person is not happy with the cat.	the cat is not happy with the person.	8.365528565485688	9.985317372264745
+the person is too big for the small door.	the door is too small for the big person.	18.20828893554352	10.14680076885918
+a taller person is covering the eyes of a shorter person.	a shorter person is covering the eyes of a taller person.	5.235189372615021	5.6475249336453155
+the plant is eating the bug.	the bug is eating the plant.	22.389167573716367	8.759711023186624
+every bug has a leaf.	every leaf has a bug.	117.335018035812	56.49914265939054
+the green leaves will soon be red as the seasons change.	the red leaves will soon be green as the seasons change.	7.723354723714034	7.672602220412874
+the white wall will soon be painted blue.	the blue wall will soon be painted white.	9.399709525269733	8.24113839217846
+the moon prevents the sun's rays from falling on the earth.	the earth prevents the sun's rays from falling on the moon.	1.7975847542193986	2.3710024501416007
+all paper airplanes fly on a straight path except for one which takes a curved one.	all paper airplanes fly on a curved path except for one which takes a straight one.	8.07119972037729	9.07432813525585
+the person is too big for the pants.	the pants is too big for the person.	11.156567218011066	22.96920302516457
+a kid jumped then threw a basketball.	a kid threw a basketball then jumped.	20.89390147983379	8.045144185820726
+one cheerlearder supporting multiple cheerleaders.	multiple cheerleaders supporting one cheerlearder.	279.54771368701614	295.4879910856546
+two persons wearing one scarf.	one person wearing two scarfs.	66.78375648920144	19.12312639979397
+human head on pet.	pet head on human.	1520.0949399104927	1417.8717113364812
+the cow is over the moon.	the moon is over the cow.	19.315887875688286	22.870268572079745
+someone babys a pet.	someone pets a baby.	278.5650337523708	136.36526884140054
+cat house.	house cat.	277.0017750631875	66.23254629440737
+gold for pan.	pan for gold.	434.5874051593496	124.73386223442262
+water for plants.	plants for water.	46.944447266729476	246.3160921929355
+the businessperson's down fall.	the businessperson's fall down.	128.36777759259496	32.786768790986415
+outswam the person in the red swimcap.	the person in the red swimcap swamout.	218.25414172351435	248.22619341310192
+manning a ship.	shiping a mann.	158.75131853672298	787.0682243348717
+the person wearing a sweater stands in front of the person who isn't wearing a sweater.	the person who isn't wearing a sweater stands in front of the person wearing a sweater.	1.162292104402115	1.5139815166096078
+a person without glasses pushes a person with glasses sitting in a box.	a person with glasses pushes a person without glasses sitting in a box.	6.160349256341976	6.790723595413584
+what is green will soon be yellow.	what is yellow will soon be green.	4.713602467538405	6.430723708720152
+soon this animal not with a tail will have one.	soon this animal with a tail will not have one.	27.58902637216359	15.334108346473723
+a mouse is touching a dog.	a dog is touching a mouse.	45.91651716790238	32.387652117069905
+fishing for compliments.	compliments for fishing.	12.916622811269098	177.93043684697525
+that person dusting off their hands.	that person hands off their dusting.	16.110944369258505	151.39549025261474
+a person wearing black shoes cleaning a bookshelf with an orange duster while a person wearing green shoes drinks wine from an orange glass and relaxes.	a person wearing green shoes cleaning a bookshelf with an orange duster while a person wearing black shoes drinks wine from an orange glass and relaxes.	4.2187719630773355	4.1300973837274775
+a person with short hair is happily ironing a light blue shirt while a person with long hair sits on a white couch.	a person with long hair is happily ironing a light blue shirt while a person with short hair sits on a white couch.	2.6993718667591837	2.666009946179052
+yellow duck shoes on.	yellow duck on shoes.	1337.9508428422255	2743.0736874688414
+child in front facing row of yellow rubber ducks.	front facing child in row of yellow rubber ducks.	58.097012277417356	85.5745994767403
+a bird cooking a person.	a person cooking a bird.	382.3178558671042	151.90782840664983
+a person wearing yellow and a person wearing stripes jumping.	a jumping person wearing yellow and a person wearing stripes.	22.636099084874626	26.516335645212955
+a person wearing yellow with their feet in the air and a person wearing stripes.	a person wearing stripes with their feet in the air and a person wearing yellow.	7.4484812235809255	5.638830039976731
+darker things become light in stripes.	light things in stripes become darker.	848.9841262981267	277.102177656671
+together hammering something.	hammering something together.	5860.08026221841	157.0398321609147
+A person sits next to a baby using an orange screwdriver to assemble a white piece of furniture.	A baby sits next to a person using an orange screwdriver to assemble a white piece of furniture.	5.793556845339424	5.419447420611472
+a worker in a yellow hat uses a drill to the left of where the opening in the wall is.	the opening in the wall is to the left of where a worker in a yellow hat uses a drill.	7.374503049002325	6.245637325306294
+A small animal with curled hair.	A curled small animal with hair.	20.734675063108558	102.83235417226712
+A right hand pulls a glove onto a left hand.	A left hand pulls a glove onto a right hand.	5.128513911356476	5.123515981673011
+A dog and a person with their feet hanging out of a car window.	A dog with their feet hanging out of a car window and a person.	4.151657164236442	10.040103848205574
+A person whispering into a dog's ear.	A dog whispering into a person's ear.	3.821085133435525	5.387042635531711
+one ear that some donkey is whispering a secret into.	donkey ear that some one is whispering a secret into.	92.21129796852911	517.212644161266
+walking someone cut lines into green plants.	someone walking lines cut into green plants.	453.89874544273744	444.4404445341939
+a volcano above water makes steam.	water above a volcano makes steam.	334.2549260691362	173.79716299563145
+A child riding a bike and an adult.	A child and an adult riding a bike.	4.310876417950029	2.030751238279106
+an adult putting a helmet on a child.	a child putting a helmet on an adult.	6.150633122042505	7.250636327693477
+An adult wearing purple lying next to a child.	An adult lying next to a child wearing purple.	10.798633142065519	9.707568379336124
+a fencer who is wearing black pants having a point scored against them by another fencer using a wheelchair.	a fencer having a point scored against them by another fencer who is wearing black pants using a wheelchair.	7.545815964245714	6.755434840633992
+a person with long braids is exercising in front of a person without braids.	a person without braids is exercising in front of a person with long braids.	4.000278020961976	4.480956126971102
+in the stadium, the person wearing gray outperformed the one wearing blue.	in the stadium, the person wearing blue outperformed the one wearing gray.	4.211844948013182	4.1171370596124355
+butchering white meat while wearing yellow but not red.	butchering red meat while wearing white but not yellow.	9.087335687592372	8.68486619479624
+a child with a fake beard and an adult.	an adult with a fake beard and a child.	19.46908308335629	16.278053833937665
+on halloween, a child dressed as an insect is to the right of a child dressed as a mammal.	on halloween, a child dressed as a mammal is to the right of a child dressed as an insect.	2.769459241564382	2.691647906530603
+a modern office complex with many windows above a nicely landscaped lawn.	a nicely landscaped lawn above a modern office complex with many windows.	11.78830585978081	13.891581995081442
+a tree is partially inside a parked car.	a parked car is partially inside a tree.	32.534482274543585	43.9420291688724
+some are parking in a train.	some are training in a park.	108.78656010113177	40.904245282231
+an athlete running on water.	water running on an athlete.	12.199232654598523	228.18510979066488
+a horse getting wet.	getting a horse wet.	15.25123731229366	126.7220611005829
+the glasses full of water are above the person's head and leg.	the person's head and leg are above the glasses full of water.	7.034160595673931	10.523278183595547
+a person is touching the head of a squirrel.	a squirrel is touching the head of a person.	10.818106892686751	16.883267325581553
+a deer's nose is resting on a child's hand.	a child's hand is resting on a deer's nose.	6.711961316323396	4.6811623206985855
+two sparklers for one hand.	one sparkler for two hands.	23.91629035636661	20.253560060804162
+an animal giving a person food.	a person giving an animal food.	9.162520175969115	19.97134900089308
+a spider towering over a dog.	a dog towering over a spider.	22.547429987360857	28.337366342981113
+a car going into a hollow tube.	a hollow tube going into a car.	43.96354288554918	31.48581973149238
+two people wearing clothes of the same colors are on different side of the tennis net.	two people wearing clothes of different colors are on the same side of the tennis net.	12.315848237213	5.166216626461077
+living things drinking.	drinking living things.	1519.901420550154	218.05098433444363
+a person near water using a lasso.	near a person using a water lasso.	11.571114218121835	28.159523731694716
+a person spraying water on someone else and a person on a bike.	a person spraying water on a person on a bike and someone else.	5.749778674332498	9.703875196441759
+a person stretching behind a brown dog.	a brown dog stretching behind a person.	101.70296776807646	148.20361888637373
+a person carrying more than one flotation device.	more than one flotation device carrying a person.	2.7622055615786087	4.830966442707296
+two kids on a pool floatie and one kid swimming.	one kid on a pool floatie and two kids swimming.	23.290322022929182	23.39474345050149
+gears for moving something.	moving gears for something.	312.6444626260754	119.15515914977466
+looking from above at a collection of similar objects below.	looking from below at a collection of similar objects above.	5.303759475214628	7.9283962969161825
+a toy herbivore stands on top of at least one toy carnivore.	at least one toy herbivore stands on top of a toy carnivore.	1.9006225980755982	2.017841055251821
+a person supports a small chair.	a chair supports a small person.	199.70583046129377	42.99889597585813
+a person smiles at another person wearing a checked shirt who is hitting a ping pong ball.	a person wearing a checked shirt smiles at another person who is hitting a ping pong ball.	5.794822246608149	4.226497291946299
+two versions of one person.	one version of two persons.	10.013258021190952	52.749094586462526
+There are not pink flowers below the bird with yellow head feathers.	There are pink flowers not below the bird with yellow head feathers.	64.67452045689073	43.68737148128554
+In a shopping cart, there are two animals that are the same species but are looking in different directions.	In a shopping cart, there are two animals that are the different species but are looking in same directions.	3.020961998174696	12.337913924020706
+water is on and under a vessel.	a vessel is on and under water.	50.6994107158037	28.022434690868305
+two bodies share with one head.	one bodies share with two head.	61.27045754183472	411.3851249786668
+The worker wears something striped over a white undershirt with a collar.	The worker wears something white over a striped undershirt with a collar.	7.329503042105762	8.944828673315838
+A person seen from above has a grid below them.	A person seen from below has a grid above them.	33.25391696269315	27.348702585146224
+head in the clouds.	clouds in the head.	26.76168848570758	530.0754282178913
+standing on feet.	on feet standing.	75.23766786879953	232.44357306668417
+They have sunglasses over their hair.	They have hair over their sunglasses.	21.86261434347195	41.61866585969539
+an odd number of sweet things on a plate with an even number of sides.	an even number of sweet things on a plate with an odd number of sides.	6.090989923012569	6.135992188948794
+a large living thing in front of a large non-living thing.	a large non-living thing in front of a large living thing.	1.722573866515178	2.2648906048608066
+racing over it.	racing it over.	60.00641225687454	399.64274960014745
+someone is overdoing it.	someone is doing it over.	2.686305124828282	50.81891719710091
