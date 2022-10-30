@@ -1,0 +1,401 @@
+id,caption_0,caption_1,tag,secondary_tag,num_main_preds,collapsed_tag,prob_0,prob_1,likely_caption
+0,an old person kisses a young person,a young person kisses an old person,Adjective-Age,,1,Relation,-27.9341637,-31.437377400000003,1
+1,the taller person hugs the shorter person,the shorter person hugs the taller person,Adjective-Size,,1,Relation,-32.535336820000005,-30.13979368,0
+2,the masked wrestler hits the unmasked wrestler,the unmasked wrestler hits the masked wrestler,Adjective-Manner,Series,1,Relation,-35.997533427,-39.270882910000005,1
+3,a person watches an animal,an animal watches a person,Noun,,1,Object,-30.978499899999996,-27.9315571,0
+4,the person without earrings pays the person with earrings,the person with earrings pays the person without earrings,"Negation, Scope",Morpheme-Level,1,Relation,-41.98813573699999,-40.784440153400006,0
+5,a bird eats a snake,a snake eats a bird,Noun,,1,Object,-24.9889901,-24.321190899999998,0
+6,"a plant was harmed by another organism, and that organism broke the plant into pieces","another organism was harmed by a plant, and that plant broke the organism into pieces","Determiner-Numeral, Noun Phrase",,1,Object,-68.09714857,-68.6071972,1
+7,a bottle is in water,water is in a bottle,Noun Phrase,,1,Object,-28.078573499999997,-20.1143265,0
+8,a tree smashed into a car,a car smashed into a tree,Noun,,1,Object,-26.924484600000003,-21.10118173,0
+9,people fall on the leaves,the leaves fall on people,Noun Phrase,,1,Object,-25.473285699999998,-30.0269737,1
+10,the sail rests below the water,the water rests below the sail,Noun,Series,1,Object,-35.27970502,-37.56064430000001,1
+11,there is a table below someone,there is someone below a table,Noun Phrase,,1,Object,-32.6098202,-31.885086300000005,0
+12,the image shows a computer on top of books,the image shows books on top of a computer,Noun Phrase,,1,Object,-38.076159624,-36.25082088,0
+13,a caterpillar with some plants,a plant with some caterpillars,Noun,Morpheme-Level,1,Object,-32.049162125,-33.281626624000005,1
+14,there is a mug in some grass,there is some grass in a mug,"Determiner-Numeral, Noun Phrase",,1,Object,-37.0068943,-34.988514099999996,0
+15,there are more skiers than snowboarders,there are more snowboarders than skiers,Noun,,1,Object,-22.41613967,-23.0879716762,1
+16,there are fewer forks than spoons,there are fewer spoons than forks,Noun,,1,Object,-30.79508474,-27.9180113,0
+17,there are more ladybugs than flowers,there are more flowers than ladybugs,Noun,,1,Object,-29.0641253,-29.62046656,1
+18,there is less orange juice than milk,there is less milk than orange juice,Noun,,1,Object,-32.492165199999995,-30.181127086,0
+19,there is more dirt than empty space in the jar,there is more empty space than dirt in the jar,Noun,,1,Object,-37.974778359999995,-36.625661789999995,0
+20,there is a bit less milk chocolate than white chocolate,there is a bit less white chocolate than milk chocolate,Adjective-Manner,,1,Relation,-34.5130926,-36.5400155,1
+21,a person sits and a dog stands,a person stands and a dog sits,Verb-Intransitive,,2,Relation,-33.6278578,-31.473590700000003,0
+22,The person with more facial hair lies awake while the other sleeps,The person with more facial hair sleeps while the other lies awake,Verb-Intransitive,,2,Relation,-54.39062013999999,-53.71074105,0
+23,the person in the middle is floating and some others are standing,the person in the middle is standing and some others are floating,Verb-Intransitive,Series,2,Relation,-47.9184912,-50.00811812,1
+24,the person closer to the camera weightlifts and the person farther from the camera runs,the person closer to the camera runs and the person farther from the camera weightlifts,Verb-Intransitive,,2,Relation,-54.76156519600001,-54.476285689499996,0
+25,the person with the white collared shirt waters the plant while the other holds it,the person with the white collared shirt holds the plant while the other waters it,Verb-Transitive,,2,Relation,-56.9326092,-58.347742440000005,1
+26,the taller person chops food and the shorter person eats food,the taller person eats food and the shorter person chops food,Verb-Transitive,,2,Relation,-51.52422285000001,-52.08659695,1
+27,the person with the ponytail packs stuff and other buys it,the person with the ponytail buys stuff and other packs it,Verb-Transitive,Series,2,Relation,-64.73769365,-65.10060295,1
+28,a person walking in a field of yellow flowers with a red dress,a person walking in a field of red flowers with a yellow dress,Adjective-Color,,1,Relation,-43.78350329999999,-46.138974499999996,1
+29,a brown dog is on a white couch,a white dog is on a brown couch,Adjective-Color,,1,Relation,-32.3261915,-32.187105100000004,0
+30,a blue bird is next to a red berry,a red bird is next to a blue berry,Adjective-Color,,1,Relation,-39.407285640000005,-40.12482765000001,1
+31,The red book is above the yellow book and below the blue book,The yellow book is above the blue book and below the red book,Adjective-Color (3-way swap),Symbolic,2,Relation,-35.93949211000001,-37.80084600600001,1
+32,astronauts in blue suits with a red planet in the background,astronauts in red suits with a blue planet in the background,Adjective-Color,Symbolic,1,Relation,-37.24897514,-36.23325639,0
+33,the square table has a round base,the round table has a square base,Adjective-Shape,,1,Relation,-31.114028699999995,-31.5517253,1
+34,pointy bushes are behind rectangular bushes,rectangular bushes are behind pointy bushes,Adjective-Shape,,1,Relation,-40.20582149999999,-42.937944959999996,1
+35,a circular sign is above a rectangular sign,a rectangular sign is above a circular sign,Adjective-Shape,,1,Relation,-35.906451970000006,-35.8679094,0
+36,a wood chess piece rests on metal objects,a metal chess piece rests on wood objects,Adjective-Texture,,1,Relation,-52.6079395,-50.1512535,0
+37,soft shoes are on a smooth floor,smooth shoes are on a soft floor,Adjective-Texture,,1,Relation,-31.221181870000002,-35.9519424,1
+38,the happy person is on the right and the sad person is on the left,the sad person is on the right and the happy person is on the left,Adjective-Animate,,2,Relation,-35.1656234116,-33.961169883900006,0
+39,the hurt person is on the left and the helpful person is on the right,the helpful person is on the left and the hurt person is on the right,Adjective-Animate,,2,Relation,-42.6926154527,-38.4418187871,0
+40,the more content person has the healthier food and the less content person has the less healthy food,the less content person has the healthier food and the more content person has the less healthy food,Adjective-Animate,,2,Relation,-58.627992033,-60.35142544,1
+41,the orange lollipop is sad and the red lollipop is surprised,the orange lollipop is surprised and the red lollipop is sad,Adjective-Animate,"Symbolic, Series",2,Relation,-48.37572530750001,-50.0580256697,1
+42,the larger person wears yellow and the smaller person does not,the smaller person wears yellow and the larger person does not,Adjective-Size,,2,Relation,-45.42437336999999,-45.80896517,1
+43,a big cat is next to a small dog,a small cat is next to a big dog,Adjective-Size,,1,Relation,-34.96823324,-32.8730298,0
+44,the heavy oncoming traffic is contrasted with the light outgoing traffic,the light oncoming traffic is contrasted with the heavy outgoing traffic,Adjective-Weight,,1,Relation,-47.456519959999994,-48.53492172,1
+45,a cold drink on a hot day,a hot drink on a cold day,Adjective-Temperature,,1,Relation,-21.84418078,-22.03636921,1
+46,a person is drinking now and eating later,a person is drinking later and eating now,Adverb-Temporal,,2,Relation,-41.5762562,-48.3386846,1
+47,the sailboat sails close but the beach is far away,the sailboat sails far away but the beach is close,Adverb-Spatial Phrase,,2,Relation,-46.887755340000005,-47.7359802,1
+48,the passenger is riding inattentive to the road and the driver is driving attentive to the road,the passenger is riding attentive to the road and the driver is driving inattentive to the road,"Negation, Scope",,2,Relation,-59.81303319800001,-58.11461871099999,0
+49,it wears a hat but the person doesn't,the person wears a hat but it doesn't,"Pronoun, Noun Phrase",,2,Object,-37.29342174999999,-40.22298687,1
+50,the person with green legs is running quite slowly and the red legged one runs faster,the person with green legs is running faster and the red legged one runs quite slowly,"Adjective-Speed Phrase, Verb-Intransitive","Symbolic, Series",2,Relation,-71.66344334499999,-75.618342012,1
+51,a person is in the water and close to the sand,a person is close to the water and in the sand,Preposition Phrase,,2,Relation,-38.624881804000005,-41.667901230000005,1
+52,a frog is above rocks which are under the water,a frog is under rocks which are above the water,Preposition,,2,Relation,-49.06166086,-47.29148311,0
+53,driving off the road and on the unpaved terrain,driving on the road and off the unpaved terrain,Preposition,,2,Relation,-36.378574412999996,-41.06448335300001,1
+54,someone is in a helicopter with a car,someone is with a helicopter in a car,Preposition,Symbolic,1,Relation,-33.64696565,-36.1593773,1
+55,the green one can fit inside the blue one and the blue one can fit outside the green one,the green one can fit outside the blue one and the blue one can fit inside the green one,Preposition,Symbolic,2,Relation,-46.141275177,-49.11685394300001,1
+56,jumping away from the photographer and towards the others,jumping towards the photographer and away from the others,Preposition Phrase,,2,Relation,-45.26372864,-46.09166569,1
+57,someone bakes the dough before the dough is eaten,the dough is eaten before someone bakes the dough,Sentence,,2,Relation,-40.746042360000004,-53.421093888,1
+58,it hatched before it was eaten,it was eaten before it hatched,Verb-Intransitive,,2,Relation,-29.2235141,-26.8011338,0
+59,there are three bananas and two apples,there are two bananas and three apples,Determiner-Numeral,,1,Relation,-26.186596299999998,-25.649193099999998,0
+60,someone has loaded their plate with one of the toast slices and two of the eggs,someone has loaded their plate with two of the toast slices and one of the eggs,Determiner-Numeral,,1,Relation,-57.85813600999999,-55.915939340000016,0
+61,there are three people and two windows,there are two people and three windows,Determiner-Numeral,Symbolic,1,Relation,-28.0256245,-29.2044888,1
+62,there are 50 stars on the right flag and 5 stars on the left flag,there are 5 stars on the right flag and 50 stars on the left flag,Determiner-Numeral,Symbolic,2,Relation,-40.281342855000005,-42.026037755999994,1
+63,no people wear blue shirts and six people wear white shirts,six people wear blue shirts and no people wear white shirts,Determiner-Numeral,,2,Relation,-44.64441335,-42.163727314,0
+64,the dog's leg is on the person's torso,the person's leg is on the dog's torso,Determiner-Possessive,,1,Relation,-39.733498119999986,-42.43232964,1
+65,the animal's eyes are bigger than the person's,the person's eyes are bigger than the animal's,Determiner-Possessive,,1,Relation,-37.003933880000005,-39.709365344999995,1
+66,the taller person's arm is around the shorter person's shoulder,the shorter person's arm is around the taller person's shoulder,Determiner-Possessive,,1,Relation,-36.69097405,-34.091470784,0
+67,the person in a brown coat looks back and the person in a black coat looks forward,the person in a black coat looks back and the person in a brown coat looks forward,Adjective-Color,Series,2,Relation,-48.66562092000001,-48.32346470999999,0
+68,it ran away while they pursued,they ran away while it pursued,"Pronoun, Verb-Intransitive",,2,Object,-34.3026843,-31.473574600000003,0
+69,almost everyone is in a boat and one is swimming,one is in a boat and almost everyone is swimming,Determiner-Numeral Phrase,,2,Object,-40.774654399999996,-41.5553763,1
+70,the person with the lighter shoes is holding an emoji and the person with the darker shoes isn't,the person with the darker shoes is holding an emoji and the person with the lighter shoes isn't,Adjective-Color,"Symbolic, Series",2,Relation,-61.48434360000002,-62.81451354,1
+71,the person wearing neutral colors poses and the person wearing brighter colors takes a picture,the person wearing brighter colors poses and the person wearing neutral colors takes a picture,Adjective-Color,,2,Relation,-58.63146277,-58.98057725999998,1
+72,it's a fire truck,it's a truck fire,Noun,,1,Object,-19.169129400000003,-24.0521487,1
+73,watching the present,presenting the watch,Altered POS,Morpheme-Level,1,Both,-17.3420461,-17.7643232,1
+74,walking out on a rock,rocking out on a walk,Altered POS,Morpheme-Level,1,Both,-29.826577699999998,-28.169947999999998,0
+75,the kid with the magnifying glass looks at them,the kid looks at them with the magnifying glass,"Preposition Phrase, Scope",Pragmatics,1,Relation,-34.483157444999996,-38.84223506,1
+76,the person with the kids is sitting,the person is sitting with the kids,"Preposition Phrase, Scope",Pragmatics,1,Relation,-36.0614739,-33.695673000000006,0
+77,the people with shoes are touching each other,the people are touching each other with shoes,"Preposition Phrase, Scope",Pragmatics,1,Relation,-38.43631208,-40.035657145,1
+78,someone with an apple is hurt by a tree,someone is hurt by a tree with an apple,"Preposition Phrase, Scope","Symbolic, Pragmatics",1,Relation,-40.309410299999996,-42.7889332,1
+79,the person that is on the table is eating the food,the person is eating the food that is on the table,"Preposition Phrase, Scope",,1,Relation,-41.193307360000006,-34.57427367,0
+80,the watering can is larger than the pot,the pot is larger than the watering can,Noun,,1,Object,-35.72641624,-35.299547440000005,0
+81,they hold a suitcase handle with their left hand and they hold a passport with their right hand,they hold a passport with their left hand and they hold a suitcase handle with their right hand,Noun,,2,Object,-51.915877419999994,-56.68654359000001,1
+82,the person with the patterned shirt is curly-haired and the other is straight-haired,the person with the patterned shirt is straight-haired and the other is curly-haired,Adjective-Texture,,2,Relation,-54.17257670699999,-56.184929579,1
+83,a diagram showing movement from right to left,a diagram showing movement from left to right,Preposition,Symbolic,1,Relation,-33.110659821000006,-32.486231154,0
+84,the flip flops are too big for these feet,the feet are too big for these flip flops,Noun,,1,Object,-37.5203573,-34.811505636,0
+85,the person who is wearing a crown is kissing a frog,the person is kissing a frog who is wearing a crown,"Relative Clause, Scope",,1,Relation,-45.05463903,-40.52893459,0
+86,a dog sitting on a couch with a person lying on the floor,a person lying on a couch with a dog sitting on the floor,"Noun, Verb-Intransitive",,2,Both,-36.358406900000006,-40.7184602,1
+87,The uncaged bird has an opened cage door,The caged bird has an unopened cage door,"Negation, Scope","Morpheme-Level, Series",1,Relation,-41.66524093,-41.1083976,0
+88,meat with potatoes,potatoes with meat,Noun,Pragmatics,1,Object,-16.9131234,-18.3316796,1
+89,the person in pink was close to not winning,the person in pink was not close to winning,"Negation, Scope",Symbolic,1,Relation,-47.67687647,-45.912853,0
+90,two humans and one wheel,two wheels and one human,Noun,Morpheme-Level,1,Object,-25.980514699999997,-24.5281086,0
+91,clothing on lines,lines on clothing,Noun,,1,Object,-23.731044,-28.279553099999998,1
+92,someone talks on the phone angrily while another person sits happily,someone talks on the phone happily while another person sits angrily,Adverb-Animate,,2,Relation,-45.01988735,-46.49809505,1
+93,two boats and one direction down the stream,one boat and two directions down the stream,Determiner-Numeral,"Symbolic, Morpheme-Level",1,Relation,-42.7727486,-43.3719393,1
+94,The dog rides without a visible tongue,The dog rides with a visible tongue out,"Negation, Scope",,1,Relation,-45.29018473,-47.0025361,1
+95,handing a hammer,hammering a hand,Altered POS,,1,Both,-24.121992399999996,-25.070225,1
+96,leaves its shedding,shedding its leaves,Altered POS,,1,Both,-28.446445699999998,-22.8988384,0
+97,they are using no bait but still got fish,they are using bait but still got no fish,"Negation, Scope",,2,Relation,-44.60335844000001,-43.94015280000001,0
+98,someone on the ground is spraying water towards a vehicle,someone is on a vehicle spraying water towards the ground,"Verb-Transitive, Noun",,1,Both,-38.582465260000006,-44.33399240000001,1
+99,the dog wears as a hat what someone would normally bite,the dog bites what someone would normally wear as a hat,"Verb-Transitive Phrase, Verb-Intransitive, Preposition Phrase",Morpheme-Level,2,Relation,-63.4289482,-54.63658710000001,0
+100,the happy one is on the left and the upset one is on the right,the upset one is on the left and the happy one is on the right,Adjective-Animate,,2,Relation,-35.3499017807,-36.903199996999994,1
+101,fake mustache and real hair on head,real mustache and fake hair on head,Adjective-Animate,,1,Relation,-36.6126525,-34.0283991,0
+102,real cat with toy baby,toy cat with real baby,Adjective-Animate,,1,Relation,-33.717154099999995,-33.6854268,0
+103,the lion is loud and the lionness is quiet,the lion is quiet and the lionness is loud,Adjective-Animate,,2,Relation,-41.566181629999996,-42.1188767,1
+104,there is a pink couch with green pillows,there is a green couch with pink pillows,Adjective-Color,,1,Relation,-31.446080954350002,-29.276552776839996,0
+105,light colored dog with dark colored cat,dark colored dog with light colored cat,Adjective-Color,,1,Relation,-32.646928700000004,-32.39846356,0
+106,someone is wearing a black hat and yellow shirt,someone is wearing a yellow hat and black shirt,Adjective-Color,,1,Relation,-29.340388500000003,-30.649960600000004,1
+107,black socks and orange shoes,orange socks and black shoes,Adjective-Color,Symbolic,1,Relation,-21.6587594,-18.320593600000002,0
+108,red building with white shutters,white building with red shutters,Adjective-Color,,1,Relation,-24.2911425823,-21.272185376,0
+109,blue pants and green top,green pants and blue top,Adjective-Color,,1,Relation,-20.3745681,-20.4156372,1
+110,there's one blue and many yellow balls,there's one yellow and many blue balls,Adjective-Color,Symbolic,1,Relation,-35.48944469999999,-37.319889100000005,1
+111,there are more silver coins than gold coins,there are more gold coins than silver coins,Adjective-Color,,1,Relation,-23.309706249999998,-24.122411599999996,1
+112,the red team kicking the ball directly next to the blue team,the blue team kicking the ball directly next to the red team,Adjective-Color,,1,Relation,-54.064569385000006,-52.26149257,0
+113,black dog wearing a brown sweater,brown dog wearing a black sweater,Adjective-Color,,1,Relation,-27.481981940000004,-29.660538600000002,1
+114,one green apple surrounded by a bunch of red apples,one red apple surrounded by a bunch of green apples,Adjective-Color,,1,Relation,-32.180321717999995,-31.570785342000004,0
+115,person in white is reading the orange book,person in orange is reading the white book,Adjective-Color,,1,Relation,-39.455252099999996,-41.2011635,1
+116,the children are being quiet while the adult is loud,the children are being loud while the adult is quiet,Adjective-Manner,,2,Relation,-44.07694964,-45.5428889,1
+117,the circular mirror is on the left and the rectangular mirror is on the right,the rectangular mirror is on the left and the circular mirror is on the right,Adjective-Shape,,2,Relation,-34.836371063,-34.02399389320001,0
+118,circular food on heart-shaped wood,heart-shaped food on circular wood,Adjective-Shape,,1,Relation,-41.98470946,-42.5229738,1
+119,the dress on the left is long and the dress on the right is short,the dress on the left is short and the dress on the right is long,Adjective-Size,,2,Relation,-33.236620034000005,-33.20709553600001,0
+120,the balloon in the middle has less air and the other balloons have more air,the balloon in the middle has more air and the other balloons have less air,Adjective-Size,,2,Relation,-48.62954826,-46.89047613499999,0
+121,the pool has no people and the area around it has a lot of people,the pool has a lot of people and the area around it has no people,Adjective-Size,,2,Relation,-52.01032384999999,-48.83584690000001,0
+122,big fish beside a small person,small fish beside a big person,Adjective-Size,,1,Relation,-34.2375751,-32.9558043,0
+123,the train is moving fast while the person is still,the train is still while the person is moving fast,Adjective-Speed,,2,Relation,-40.137888399999994,-44.518879059999996,1
+124,they're enjoying hot water on a cold day,they're enjoying cold water on a hot day,Adjective-Temperature,,1,Relation,-33.161261499999995,-33.16877974,1
+125,concrete floors with wood walls,wood floors with concrete walls,Adjective-Texture,,1,Relation,-26.9944453,-27.727660500000002,1
+126,the person on the left has curly hair and the person on the right has straight hair,the person on the left has straight hair and the person on the right has curly hair,Adjective-Texture,,2,Relation,-29.82687803100001,-29.76991971,0
+127,there's a metal bottle with a plastic lid,there's a plastic bottle with a metal lid,Adjective-Texture,,1,Relation,-33.601641900000004,-29.729640860000003,0
+128,the fruit is heavy while the junk food is light,the fruit is light while the junk food is heavy,Adjective-Weight,,2,Relation,-46.68315897,-47.41323772999999,1
+129,the car is sitting upside down while the person is standing rightside up,the car is sitting rightside up while the person is standing upside down,Adverb-Spatial,,2,Relation,-49.558258011999996,-52.37639094,1
+130,the cup on the left is filled first and the cup on the right is filled second,the cup on the left is filled second and the cup on the right is filled first,Adverb-Temporal,,2,Relation,-39.973222188,-43.316391639,1
+131,milk cow,cow milk,Noun,,1,Object,-13.9808757,-14.3188327,1
+132,there is a clock wall,there is a wall clock,Noun,,1,Object,-24.6114092,-20.0477381,0
+133,there is a split banana,there is a banana split,Altered POS,,1,Both,-28.1109968,-22.866403099999996,0
+134,there are two people and a bunch of horses,there are a bunch of people and two horses,Determiner-Numeral,,1,Relation,-30.966856139000004,-33.184164376999995,1
+135,three white and two brown eggs,two white and three brown eggs,Determiner-Numeral,,1,Relation,-20.6341713,-22.1214146,1
+136,the plastic is in the fish,the fish is in the plastic,Noun,Symbolic,1,Object,-27.3823804,-27.50014985,1
+137,the dog's paw is on the cat's face,the cat's paw is on the dog's face,Determiner-Possessive,,1,Relation,-33.64197448,-37.911081839999994,1
+138,the computer's screen is on and the phone's screen is off,the phone's screen is on and the computer's screen is off,Determiner-Possessive,,2,Relation,-36.248417275,-38.01337578999999,1
+139,the dog is in the driver's seat and the person is in the passenger's seat,the dog is in the passenger's seat and the person is in the driver's seat,Determiner-Possessive,,2,Relation,-39.334537275,-37.86591999,0
+140,there are more trees than people,there are more people than trees,Noun,,1,Object,-20.113419299999997,-23.1886355,1
+141,there are more computers than people,there are more people than computers,Noun,,1,Object,-21.7355703,-22.2907103,1
+142,there is more wood than metal,there is more metal than wood,Noun,,1,Object,-24.9047187,-23.919910199999997,0
+143,there are more hats than people,there are more people than hats,Noun,,1,Object,-24.074669900000004,-25.4034742,1
+144,there are more people than stools,there are more stools than people,Noun,,1,Object,-28.8567349,-23.4474665,0
+145,there is more red wine than white wine,there is more white wine than red wine,Adjective-Color,,1,Relation,-27.036794460000003,-28.3726704,1
+146,there's more milk than coffee,there's more coffee than milk,Noun,,1,Object,-24.596434599999995,-27.447566600000002,1
+147,there's more cereal in the bowl than milk,there's more milk in the bowl than cereal,Noun,,1,Object,-29.33672985,-32.41389948,1
+148,boat sail,sail boat,Noun,,1,Object,-21.7078187,-19.2792709,0
+149,boat house,house boat,Noun,,1,Object,-20.7460895,-15.0156908,0
+150,check a rip,rip a check,Altered POS,,1,Both,-19.6839869,-24.9650246,1
+151,dress the display,display the dress,Altered POS,,1,Both,-25.1318353,-20.4493901,0
+152,spoon holding honey,honey holding spoon,Noun,,1,Object,-27.991306700000003,-28.259096,1
+153,books holding up a person,a person holding up books,Noun Phrase,,1,Object,-27.8397029,-29.7178583,1
+154,a dog is using a wheelchair next to a person,a person is using a wheelchair next to a dog,Noun,,1,Object,-43.448763135,-39.17956585,0
+155,some plants surrounding a lightbulb,a lightbulb surrounding some plants,"Determiner-Numeral, Noun Phrase",,1,Object,-38.336218675000005,-40.5166145033,1
+156,a more lightly-colored dog is holding a toy next to a black dog,a black dog is holding a toy next to a more lightly-colored dog,Adjective-Color,,1,Relation,-57.67287009739999,-60.62877605800001,1
+157,the flowers are taller than the people,the people are taller than the flowers,Noun,,1,Object,-35.5186647,-33.52585,0
+158,there's a human in a stroller next to a dog,there's a dog in a stroller next to a human,Noun,,1,Object,-41.034410991,-39.411947124,0
+159,a person is casting a shadow beside a ball,a ball is casting a shadow beside a person,Noun,,1,Object,-47.75762786,-43.882601220000005,0
+160,its tail is shorter than its body,its body is shorter than its tail,Noun,,1,Object,-18.426625939999997,-21.480455699999997,1
+161,the child is throwing the adult the ball,the adult is throwing the child the ball,Noun,,1,Object,-36.46552734,-36.994325399999994,1
+162,a person underneath lights,lights underneath a person,Noun Phrase,,1,Object,-32.3511894,-32.2160864,0
+163,some green on the ball,the ball on some green,"Determiner-Numeral, Noun Phrase",,1,Object,-25.842622900000002,-34.328756500000004,1
+164,mind in the clouds,clouds in the mind,Noun,Symbolic,1,Object,-16.5787734,-17.79248845,1
+165,there's a phone on a map,there's a map on a phone,Noun,,1,Object,-29.6557011,-26.562558499999998,0
+166,a person on a rock next to a dog,a dog on a rock next to a person,Noun,,1,Object,-38.21845802000001,-38.97364423,1
+167,an adult is flexing beside a child,a child is flexing beside an adult,Noun,,1,Object,-36.98387776,-41.20878810000001,1
+168,the person is looking at the dog,the dog is looking at the person,Noun,,1,Object,-28.6320427,-26.898215699999998,0
+169,a cat is underneath a red blanket,a red blanket is underneath a cat,Noun Phrase,,1,Object,-35.63595374,-40.087661,1
+170,the person is bigger than the house,the house is bigger than the person,Noun,,1,Object,-28.38135571,-30.092796980000003,1
+171,the person is underneath the car,the car is underneath the person,Noun,,1,Object,-27.92647834,-30.237689500000002,1
+172,the water is filled with plastic,the plastic is filled with water,Noun,,1,Object,-23.663693700000003,-26.503926709999998,1
+173,an apple is on a target,a target is on an apple,Noun,,1,Object,-29.1609454,-34.0031854,1
+174,plant made out of a light bulb,light bulb made out of a plant,Noun,Symbolic,1,Object,-29.0006308,-30.413768195000003,1
+175,parent pointing at child,child pointing at parent,Noun,,1,Object,-22.1616835,-25.7482192,1
+176,the person reached the base before the ball,the ball reached the base before the person,Noun,,1,Object,-40.375412000000004,-35.38524972,0
+177,ice being dumped on top of fish,fish being dumped on top of ice,Noun,,1,Object,-32.774031179999994,-30.532438499999998,0
+178,an adult kisses a child,a child kisses an adult,Noun,,1,Object,-22.876209900000003,-30.1474106,1
+179,there's a dog in a mask and a person beside it,there's a dog and a person in a mask beside it,"Preposition Phrase, Scope",,2,Relation,-44.892924199999996,-42.16408685,0
+180,the baby on the phone is next to an adult,the baby is next to an adult on the phone,"Preposition Phrase, Scope",Pragmatics,1,Relation,-41.54245284,-38.83926863,0
+181,the person on the left has their arms up and the person on the right has their arms down,the person on the right has their arms up and the person on the left has their arms down,Preposition,,2,Relation,-32.83552917400001,-33.70166387900001,1
+182,the person on the left is holding the phone and the person on the right is staring at it,the person on the right is holding the phone and the person on the left is staring at it,Preposition,,2,Relation,-40.853567853,-41.699303474000004,1
+183,the orange on the left is moldy while the orange on the right is fresh,the orange on the right is moldy while the orange on the left is fresh,Preposition,,2,Relation,-41.916193386599986,-42.7962557545,1
+184,a pink scoop of ice cream on top and a blue scoop on bottom,a pink scoop of ice cream on bottom and a blue scoop on top,Preposition,,2,Relation,-42.445734475,-43.426457393,1
+185,the glasses on the right are fuller than the glasses on the left,the glasses on the left are fuller than the glasses on the right,Preposition,,1,Relation,-38.03058701,-38.1774422029,1
+186,the person on the left is blowing bubbles and the person on the right is watching,the person on the right is blowing bubbles and the person on the left is watching,Preposition,,2,Relation,-38.645859454,-39.784140648,1
+187,there's more foam on the left than on the right,there's more foam on the right than on the left,Preposition,,1,Relation,-29.011656892499996,-29.05032062,1
+188,a fish is jumping from left to right,a fish is jumping from right to left,Preposition,,1,Relation,-30.737494718,-31.572389699000002,1
+189,they worked out then they drank water,they drank water then they worked out,Verb-Transitive Phrase,,2,Relation,-32.6517394,-35.783683100000005,1
+190,the shrimp are peeled then the shrimp are cooked,the shrimp are cooked then the shrimp are peeled,Verb-Intransitive,,2,Relation,-39.4891077,-39.1830905,0
+191,the coffee is poured before it is ground,it is ground before the coffee is poured,Sentence,,2,Relation,-30.8004971,-35.40381414,1
+192,the potato is washed and then it is cut,the potato is cut and then it is washed,Verb-Intransitive,,2,Relation,-35.93523344,-41.882406059999994,1
+193,the banana is peeled then it is sliced,the banana is sliced then it is peeled,Verb-Intransitive,,2,Relation,-33.19391668,-38.172195499999994,1
+194,the dog is swimming and the person is standing,the dog is standing and the person is swimming,"Verb-Intransitive, Noun",,2,Relation,-38.15439594,-39.97833262,1
+195,the person is jumping while the cat is sitting,the person is sitting while the cat is jumping,"Verb-Intransitive, Noun",,2,Relation,-39.93818656,-37.965651,0
+196,a cat is lying down and a person is stretching,a cat is stretching and a person is lying down,Verb-Intransitive Phrase,,2,Relation,-44.5516431,-42.868184959999994,0
+197,some people are standing but more are sitting,some people are sitting but more are standing,"Verb-Intransitive, Determiner-Numeral",,2,Relation,-28.974442699999997,-30.76284954,1
+198,The kid throws the pancake and the adult sees it,The kids see the pancake and the adult throws it,Verb-Transitive,Morpheme-Level,2,Relation,-46.957975893,-52.36361471,1
+199,painting gray walls white,painting white walls gray,Adjective-Color,,1,Relation,-22.8485562,-23.707636,1
+200,a shorter person wearing blue standing next to a taller person,a taller person wearing blue standing next to a shorter person,Adjective-Height,,1,Relation,-47.1294096203,-44.464385807000006,0
+201,a person wearing a bear mask in blue on the left hand side of a person wearing a panda mask with glasses in pink,a person wearing a panda mask with glasses in blue on the left hand side of a person wearing a bear mask in pink,"Noun, Preposition Phrase, Scope",Series,1,Both,-81.16274480700001,-83.48264916999997,1
+202,a car containing many a box,a box containing many a car,Noun,Symbolic,1,Object,-39.984161300000004,-37.5600416,0
+203,left is red and right is blue,left is blue and right is red,Adjective-Color,Symbolic,2,Relation,-19.37677576,-18.924518176,0
+204,"many a table tennis racket, just one ball","just one table tennis racket, many a ball",Determiner-Numeral,,1,Relation,-47.0764704,-44.796445600000006,0
+205,"four lions, no tigers","no lions, four tigers",Determiner-Numeral,,1,Relation,-24.6739695,-33.0912023,1
+206,a small spherical object is heavier than a big spherical object,a big spherical object is heavier than a small spherical object,Adjective-Size,,1,Relation,-37.752014517,-37.51770874,0
+207,an older person blocking a younger person,a younger person blocking an older person,Adjective-Age,,1,Relation,-31.22838933,-34.049519520000004,1
+208,white land and black water,black land and white water,Adjective-Color,Symbolic,1,Relation,-23.2766988,-25.0978306,1
+209,the cube is smaller than the shape whose lateral faces meet at a vertex,the shape whose lateral faces meet at a vertex is smaller than the cube,Noun Phrase,Symbolic,1,Object,-60.31246126,-61.845538930000004,1
+210,more bicycles than cars,more cars than bicycles,Noun,,1,Object,-20.8073577,-21.771183599999997,1
+211,there are more apples than pears,there are more pears than apples,Noun,,1,Object,-20.799892599699998,-23.871123259999997,1
+212,there is more love than hate,there is more hate than love,Noun,,1,Object,-19.332310999999997,-21.482538779999995,1
+213,more water than oil,more oil than water,Noun,,1,Object,-18.7226134,-19.0905939,1
+214,a person cries while another person wearing jewelry above their shoulders consoles,a person consoles while another person wearing jewelry above their shoulders cries,Verb-Intransitive,,2,Relation,-76.3825887,-74.34907223999998,0
+215,a person with long hair eating a meat-based product while a person with short hair snacks on some fries,a person with short hair eating a meat-based product while a person with long hair snacks on some fries,Adjective-Size,,2,Relation,-71.05851909749998,-72.120446699,1
+216,water below the boat,boat below the water,Noun,,1,Object,-20.0750184,-25.0671483,1
+217,the one in front is faster than the other one,the other one is faster than the one in front,Noun Phrase,Symbolic,1,Object,-30.146238819999994,-36.804758899999996,1
+218,You can catch more flies with honey than you can with vinegar,You can catch more flies with vinegar than you can with honey,Noun,Pragmatics,2,Object,-15.1021162545,-19.181514079,1
+219,"It starts with ""A"" and ends with ""Z""","It starts with ""Z"" and ends with ""A""",Noun,"Symbolic, Pragmatics",2,Object,-26.84712704,-30.18515701999999,1
+220,a shadow within the line,a line within the shadow,Noun,,1,Object,-31.300145699999998,-29.7058993,0
+221,the brave in the face of fear,fear in the face of the brave,Noun Phrase,Pragmatics,1,Object,-28.073699833999996,-24.836188707,0
+222,I need my strength back,I need my back strength,Altered POS,Pragmatics,1,Both,-19.285775400000002,-30.4393457,1
+223,the one in the middle is taller than the ones on the side are,the ones on the side are taller than the one in the middle is,Sentence,,1,Relation,-37.187958159999994,-37.66699223,1
+224,fish flying,fly fishing,Altered POS,Morpheme-Level,1,Both,-14.2283366,-14.1361566,0
+225,the red car is behind the blue car,the blue car is behind the red car,Adjective-Color,,1,Relation,-25.414861329999997,-25.872405620000002,1
+226,the driver wearing a shirt is in front of the other person wearing a sleeveless top,the driver wearing a sleeveless top is in front of the other person wearing a shirt,Noun,,2,Object,-59.136853352500005,-57.53828018934,0
+227,an object that rolls is on some wood,some wood is on an object that rolls,"Determiner-Numeral, Noun Phrase",,1,Object,-48.16625929999999,-46.8995898,0
+228,a cat viewing a human on a screen,a human viewing a cat on a screen,Noun,,1,Object,-36.64188790000001,-37.575076,1
+229,a normal person wishing they were a superhero,a superhero wishing they were a normal person,Noun Phrase,"Symbolic, Pragmatics",1,Object,-34.03603820000001,-33.598879,0
+230,a mike in the right hand while raising the left,a mike in the left hand while raising the right,Preposition,,2,Relation,-46.1576323,-46.256932899999995,1
+231,a person with long hair behind a person with a beard,a person with a beard behind a person with long hair,Noun Phrase,,1,Object,-39.2591978,-38.396612466,0
+232,the person with hair to their shoulders has brown eyes and the other person's are blue,the person with hair to their shoulders has blue eyes and the other person's are brown,Adjective-Color,,2,Relation,-56.29223,-56.857708470000006,1
+233,a human being on a device that intercepts the sun's rays,a device that intercepts the sun's rays on a human being,Noun Phrase,,1,Object,-55.940763221000005,-52.801321853000005,0
+234,more humans than phones,more phones than humans,Noun,,1,Object,-27.2006726,-23.295196400000002,0
+235,a person is in the tube,a tube is in the person,Noun,,1,Object,-27.408898699999998,-32.8143568,1
+236,the person's head is above the rest of their body,the rest of their body is above the person's head,Noun Phrase,,1,Object,-31.765173916000006,-42.89882128000001,1
+237,person overboard,person over board,Scope,Morpheme-Level,1,Relation,-18.087179799999998,-20.285877,1
+238,more red buttons than blue,more blue buttons than red,Adjective-Color,Symbolic,1,Relation,-27.619978,-26.758003199999997,0
+239,the object at the top left is purple and the one at the bottom right of the group is red,the object at the bottom right is purple and the one at the top left of the group is red,Preposition Phrase,,2,Relation,-54.32576773999999,-55.996663500000004,1
+240,flat at the bottom and pointy on top,flat on top and pointy at the bottom,Preposition Phrase,,1,Relation,-27.64605108,-27.714111909999996,1
+241,seat numbers increasing from left to right,seat numbers increasing from right to left,Preposition,,1,Relation,-33.676930698,-34.52850650839999,1
+242,the number on the right is larger than the number on the left,the number on the left is larger than the number on the right,Preposition,,1,Relation,-26.681950860400004,-25.036375330499997,0
+243,more hair on the person's face than on their head,more hair on the person's head than on their face,Noun,,1,Object,-35.94518111000001,-36.7337119,1
+244,the knife on the left and the fork on the right,the knife on the right and the fork on the left,Preposition,,2,Relation,-29.729210410400007,-30.297940947,1
+245,food on their eyes,eyes on their food,Noun,Symbolic,1,Object,-20.000956499999997,-26.8942748,1
+246,cars of bits,bits of cars,Noun,Symbolic,1,Object,-29.275207599999998,-23.9347111,0
+247,a person on top of the world,the world on top of a person,Noun,Symbolic,1,Object,-26.223419919999994,-31.221956969999994,1
+248,two people; the one on the right has curly hair and the one on the left doesn't,two people; the one on the left has curly hair and the one on the right doesn't,Preposition,,2,Relation,-44.075902913,-43.622509133,0
+249,"first the cream, then the jam","first the jam, then the cream",Noun,,1,Object,-23.539118730000002,-26.141088759999995,1
+250,more kisses than hugs,more hugs than kisses,Noun,,1,Object,-27.010849200000003,-21.4334723,0
+251,an inflatable flamingo on a person,a person on an inflatable flamingo,Noun Phrase,,1,Object,-38.13600097,-29.4641161945,0
+252,a pink bird with a white beak,a white bird with a pink beak,Adjective-Color,,1,Relation,-29.001141809400004,-26.309296134999997,0
+253,a large pink inflatable flamingo along with some other lilos on the water including one that is mostly white,a large white inflatable flamingo along with some other lilos on the water including one that is mostly pink,Adjective-Color,,1,Relation,-96.27176620200001,-96.4594317258,1
+254,there are more eyes in the image than there are on a typical human,there are more eyes on a typical human than there are in the image,Preposition Phrase,Symbolic,1,Relation,-46.04484847,-53.732545855000005,1
+255,"the confident doctor's stethoscope is around their neck, and their jacket is over their name tag","the confident doctor's stethoscope is around their neck, and their name tag is over their jacket",Noun,,2,Object,-76.8368573787,-69.91366777869999,0
+256,few wind turbines and many clouds,few clouds and many wind turbines,Noun,,1,Object,-31.0160269,-33.0968757,1
+257,an adult is reading to their young child,their young child is reading to an adult,"Noun Phrase, Determiner-Possessive",,1,Object,-30.44545965,-33.874572799999996,1
+258,the shopping basket is full and the shelves on the person's right are empty,the shelves on the person's right are full and the shopping basket is empty,Sentence,,2,Relation,-58.182937360000004,-57.71239608,0
+259,Young person playing baseball with a green bat and blue ball,Young person playing baseball with a blue bat and green ball,"Noun, Adjective-Color",,1,Relation,-42.18336360000001,-41.468481999999995,0
+260,painting the white wall red,painting the red wall white,Adjective-Color,,1,Relation,-22.5590603,-24.034644699999998,1
+261,wearing a red jacket over blue,wearing a blue jacket over red,Adjective-Color,,1,Relation,-32.0344741,-33.7673653,1
+262,I had cleaned my car,I had my car cleaned,Altered POS,Pragmatics,1,Both,-25.2202481,-21.658049300000002,0
+263,unfortunate poor people,poor unfortunate people,Adjective-Manner,Pragmatics,1,Relation,-23.5576398,-18.5445457,0
+264,there are less gloves than masks,there are less masks than gloves,Noun,,1,Object,-33.73540090000001,-35.6962696,1
+265,there are more pineapples than boxes,there are more boxes than pineapples,Noun,,1,Object,-33.2093298737,-33.072069707400004,0
+266,the outer bristles are blue and the inner ones are white,the outer bristles are white and the inner ones are blue,Adjective-Color,,2,Relation,-33.278697075,-34.056277488,1
+267,the first vowel is E and the last consonant is N,the last vowel is E and the first consonant is N,Adjective-Temporal,"Symbolic, Pragmatics",2,Relation,-35.56393961,-38.575177827000005,1
+268,the cat on the left of the photo has its right paw ahead of its left,the cat on the left of the photo has its left paw ahead of its right,Adjective-Spatial,,1,Relation,-51.046875199999995,-50.7373248,0
+269,the text is black on white,the text is white on black,Adjective-Color,,1,Relation,-22.189354100000003,-22.661700099999997,1
+270,the dog sits and the cat stands,the dog stands and the cat sits,Verb-Intransitive,,1,Relation,-27.3385287,-29.7302163,1
+271,the person with facial hair cycles and the other person runs,the person with facial hair runs and the other person cycles,Verb-Intransitive,,2,Relation,-57.79493789999999,-52.99914849999999,0
+272,using the laptop while the guitar is close by,using the guitar while the laptop is close by,Noun,,1,Object,-40.043996660000005,-41.551771869999996,1
+273,a person in a blue coat with a brown-ish coffee cup,a person in a brown-ish coat with a blue coffee cup,Adjective-Color,,1,Relation,-53.300648100000004,-50.35951039999999,0
+274,space in a star,a star in space,Noun,Symbolic,1,Object,-21.747003199999998,-21.693501899999998,0
+275,star of death,death of star,Noun,"Symbolic, Pragmatics",1,Object,-16.2533143,-16.9775571,1
+276,the younger person is making noise while the other is silent,the younger person is silent while the other is making noise,"Verb-Intransitive, Adjective-Manner",,2,Relation,-44.04098085999999,-47.44969413999999,1
+277,the one on the left is happy and the other is sad,the one on the left is sad and the other is happy,"Noun Phrase, Adjective-Animate",,2,Relation,-29.626883859999996,-29.714420719999996,1
+278,the person on the left is dancing and the person on the very right is sitting on the sofa,the person on the left is sitting on the sofa and the person on the very right is dancing,"Verb-Intransitive, Verb-Transitive Phrase",,2,Relation,-51.522129077,-52.64044911400001,1
+279,the person on the left is crying sadly while the one on the right is smiling happily,the person on the left is smiling happily while the one on the right is crying sadly,"Verb-Intransitive Phrase, Adverb-Animate",,2,Relation,-43.326906318000006,-41.836140052000005,0
+280,the large person is drinking from the small coffee cup,the small person is drinking from the large coffee cup,Adjective-Size,,1,Relation,-45.49445744999999,-43.884812829999994,0
+281,hot rubber and cool metal,cool rubber and hot metal,Adjective-Temperature,,1,Relation,-22.7217236,-26.479057400000002,1
+282,the triangular shape is beneath the square one,the square shape is beneath the triangular one,Adjective-Shape,,1,Relation,-40.64108366,-40.6112801,0
+283,rough outside but smooth inside,smooth outside but rough inside,Adjective-Texture,,1,Relation,-26.251561279999997,-23.35764242,0
+284,the green one is fast and the one in white is comparatively slow,the green one is slow and the one in white is comparatively fast,Adjective-Speed,,2,Relation,-49.34988479999999,-50.71386822,1
+285,there are more humans than balls,there are more balls than humans,Noun,,1,Object,-28.790549600000002,-25.9834684,0
+286,there are more legs than wheels,there are more wheels than legs,Noun,,1,Object,-25.181585700000003,-30.1444057,1
+287,a group of three people with longer hair and two with short hair in a business context,a group of two people with longer hair and three with short hair in a business context,Determiner-Numeral,,2,Relation,-60.688409050000004,-62.866762,1
+288,the gesture of the person sitting down is supporting the understanding of the person standing up,the gesture of the person standing up is supporting the understanding of the person sitting down,"Verb-Intransitive Phrase, Preposition",,1,Relation,-58.42937577,-57.674958749999995,0
+289,the circle is above the cross,the cross is above the circle,Noun,,1,Object,-27.29403446,-27.6313129,1
+290,aerial view of a green tree in the brown freshly turned soil next to a green field,aerial view of a green tree in a green field next to the brown freshly turned soil,"Noun Phrase, Adjective-Color",,1,Object,-76.718201125,-70.93935977400001,0
+291,physical therapist inspecting blue elastic therapeutic kinesio tape over pink,physical therapist inspecting pink elastic therapeutic kinesio tape over blue,Adjective-Color,Series,1,Relation,-77.95708272,-77.4548792,0
+292,the skipping rope color is different to the shoelaces but similar to the shoes,the skipping rope color is similar to the shoelaces but different to the shoes,Adjective-Manner,,2,Relation,-66.701300234,-64.36082012600001,0
+293,the blue balloon is being lifted by the weight,the weight is being lifted by the blue balloon,Noun Phrase,,1,Object,-42.95065316,-41.6736872,0
+294,the sea is rough but the rocks are smooth,the sea is smooth but the rocks are rough,Adjective-Manner,,2,Relation,-31.7642855,-32.70660245,1
+295,the melting white food is cold while the brown is warm,the melting white food is warm while the brown is cold,Adjective-Temperature,,2,Relation,-66.30216440000001,-63.10568504999999,0
+296,the person with a beard is smiling while the person with long hair is not,the person with long hair is smiling while the person with a beard is not,Noun Phrase,,2,Object,-48.85120804,-45.717603919999995,0
+297,the pet on the right is white and the one on the left is not,the pet on the left is white and the one on the right is not,Preposition,,2,Relation,-41.376679485,-39.529261157,0
+298,the outlet carrying water from the faucet to the shower head is near the hot tap not the cold,the outlet carrying water from the faucet to the shower head is near the cold tap not the hot,Adjective-Temperature,,1,Relation,-66.56924687999997,-66.942296186,1
+299,the larger ball is heavier and the smaller one is lighter,the larger ball is lighter and the smaller one is heavier,Adjective-Weight,,2,Relation,-32.080535469999994,-34.24080979999999,1
+300,The adult with the magnifying glass looks at the kid,The adult looks at the kid with the magnifying glass,Preposition Phrase,,1,Relation,-45.31400934,-39.56082717,0
+301,a dog is on a blanket with spots,a blanket is on a dog with spots,Noun,,1,Object,-40.271838300000006,-41.7432134,1
+302,There is a mouse cake for a birthday,There is a birthday cake for a mouse,Noun,,1,Object,-33.9116289,-30.292429900000002,0
+303,The cold-blooded animal isn't happy in warm water,The warm-blooded animal isn't happy in cold water,Adjective-Temperature,"Symbolic, Morpheme-Level",1,Relation,-46.54711090000001,-42.67090089999999,0
+304,The white queen is taking the black king,The black queen is taking the white king,Adjective-Color,,1,Relation,-31.039593600000003,-31.4294258,1
+305,visiting animals at home can be fun,animals visiting at home can be fun,Altered POS,,1,Both,-26.50459925,-32.7489754,1
+306,the person is not happy with the cat,the cat is not happy with the person,Noun,,1,Object,-32.684847999999995,-33.3623634,1
+307,the person is too big for the small door,the door is too small for the big person,"Noun, Adjective-Size",Pragmatics,1,Both,-34.80969105,-33.770411,0
+308,a taller person is covering the eyes of a shorter person,a shorter person is covering the eyes of a taller person,Adjective-Size,,1,Relation,-39.11715471,-40.41080513999999,1
+309,the plant is eating the bug,the bug is eating the plant,Noun,,1,Object,-30.7809374,-30.370867200000003,0
+310,every bug has a leaf,every leaf has a bug,Noun,Pragmatics,1,Object,-26.10511627,-25.231332300000002,0
+311,the green leaves will soon be red as the seasons change,the red leaves will soon be green as the seasons change,Adjective-Color,,1,Relation,-42.81646710000001,-43.30696363,1
+312,the white wall will soon be painted blue,the blue wall will soon be painted white,Adjective-Color,,1,Relation,-33.3502056,-33.3764677,1
+313,the moon prevents the sun's rays from falling on the earth,the earth prevents the sun's rays from falling on the moon,Noun,,1,Object,-35.19987135999999,-38.70258016,1
+314,all paper airplanes fly on a straight path except for one which takes a curved one,all paper airplanes fly on a curved path except for one which takes a straight one,Adjective-Manner,Symbolic,2,Relation,-58.31275345,-59.68457624,1
+315,the person is too big for the pants,the pants is too big for the person,Noun,,1,Object,-32.482753100000004,-33.1501751,1
+316,a kid jumped then threw a basketball,a kid threw a basketball then jumped,"Verb-Intransitive, Verb-Transitive Phrase",Series,2,Relation,-43.97329909999999,-41.45561548,0
+317,one cheerlearder supporting multiple cheerleaders,multiple cheerleaders supporting one cheerlearder,Determiner-Numeral,,1,Relation,-46.2337377,-43.587997426,0
+318,two persons wearing one scarf,one person wearing two scarfs,Determiner-Numeral,Morpheme-Level,1,Relation,-31.753489,-28.5527127,0
+319,human head on pet,pet head on human,Noun,,1,Object,-31.023262399999997,-31.095416999999998,1
+320,the cow is over the moon,the moon is over the cow,Noun,Symbolic,1,Object,-25.615877599999997,-28.4517784,1
+321,someone babys a pet,someone pets a baby,Altered POS,Morpheme-Level,1,Both,-29.013389,-25.114683199999998,0
+322,cat house,house cat,Noun,,1,Object,-13.919954,-15.694971800000001,1
+323,gold for pan,pan for gold,Noun,Pragmatics,1,Object,-22.497319,-15.6915941,0
+324,water for plants,plants for water,Noun,,1,Object,-15.6310791,-19.807285399999998,1
+325,the businessperson's down fall,the businessperson's fall down,Altered POS,,1,Both,-35.9958913,-39.50122759999999,1
+326,outswam the person in the red swimcap,the person in the red swimcap swamout,"Scope, Preposition, Verb-Intransitive",Morpheme-Level,1,Relation,-51.238403000000005,-51.630041629999994,1
+327,manning a ship,shiping a mann,Altered POS,"Symbolic, Morpheme-Level",1,Both,-19.387045200000003,-31.505895399999996,1
+328,the person wearing a sweater stands in front of the person who isn't wearing a sweater,the person who isn't wearing a sweater stands in front of the person wearing a sweater,"Negation, Scope",,1,Relation,-44.67260409700001,-43.524878564999995,0
+329,a person without glasses pushes a person with glasses sitting in a box,a person with glasses pushes a person without glasses sitting in a box,"Negation, Scope",,1,Relation,-52.63183288000001,-52.148303250000005,0
+330,what is green will soon be yellow,what is yellow will soon be green,Adjective-Color,,1,Relation,-30.3669868,-29.884362300000003,0
+331,soon this animal not with a tail will have one,soon this animal with a tail will not have one,"Negation, Scope",,2,Relation,-47.312538999999994,-40.1597204,0
+332,a mouse is touching a dog,a dog is touching a mouse,Noun,,1,Object,-33.063231699999996,-32.7718117,0
+333,fishing for compliments,compliments for fishing,Altered POS,,1,Both,-17.4174402,-25.5677235,1
+334,that person dusting off their hands,that person hands off their dusting,Altered POS,,1,Both,-35.028218100000004,-46.5275522,1
+335,a person wearing black shoes cleaning a bookshelf with an orange duster while a person wearing green shoes drinks wine from an orange glass and relaxes,a person wearing green shoes cleaning a bookshelf with an orange duster while a person wearing black shoes drinks wine from an orange glass and relaxes,Adjective-Color,Series,2,Relation,-99.85204348455,-100.92810732324001,1
+336,a person with short hair is happily ironing a light blue shirt while a person with long hair sits on a white couch,a person with long hair is happily ironing a light blue shirt while a person with short hair sits on a white couch,Adjective-Size,Series,2,Relation,-76.24383521499999,-75.5688187476,0
+337,yellow duck shoes on,yellow duck on shoes,Altered POS,,1,Both,-25.497172,-26.6591199,1
+338,child in front facing row of yellow rubber ducks,front facing child in row of yellow rubber ducks,"Scope, Preposition Phrase",Series,1,Relation,-49.92507900000001,-58.99467860000001,1
+339,a bird cooking a person,a person cooking a bird,Noun,Symbolic,1,Object,-35.8621182,-31.074389299999996,0
+340,a person wearing yellow and a person wearing stripes jumping,a jumping person wearing yellow and a person wearing stripes,"Scope, Adjective-Manner",Series,2,Relation,-55.19112439999999,-51.1528801,0
+341,a person wearing yellow with their feet in the air and a person wearing stripes,a person wearing stripes with their feet in the air and a person wearing yellow,Adjective-Color,Series,2,Relation,-58.134107240000006,-62.50086397,1
+342,darker things become light in stripes,light things in stripes become darker,"Scope, Preposition Phrase, Adjective-Color",,1,Both,-44.9755561,-39.316077099999994,0
+343,together hammering something,hammering something together,Scope,Pragmatics,1,Relation,-26.8408497,-23.4669577,0
+344,A person sits next to a baby using an orange screwdriver to assemble a white piece of furniture,A baby sits next to a person using an orange screwdriver to assemble a white piece of furniture,Noun,"Pragmatics, Series",1,Object,-73.573659605,-69.4285720817,0
+345,a worker in a yellow hat uses a drill to the left of where the opening in the wall is,the opening in the wall is to the left of where a worker in a yellow hat uses a drill,Sentence,Series,1,Relation,-68.94436038599999,-66.06677191,0
+346,A small animal with curled hair,A curled small animal with hair,"Scope, Adjective-Texture",,1,Relation,-31.861212099999996,-39.8955965,1
+347,A right hand pulls a glove onto a left hand,A left hand pulls a glove onto a right hand,Adjective-Spatial,,1,Relation,-39.925645695,-41.505648740000005,1
+348,A dog and a person with their feet hanging out of a car window,A dog with their feet hanging out of a car window and a person,"Scope, Conjunction Phrase",Pragmatics,1,Relation,-44.55963606,-54.61135427,1
+349,A person whispering into a dog's ear,A dog whispering into a person's ear,Noun,Morpheme-Level,1,Object,-31.715055489999994,-31.576243144,0
+350,one ear that some donkey is whispering a secret into,donkey ear that some one is whispering a secret into,"Altered POS, Determiner-Numeral",Morpheme-Level,1,Both,-55.092219,-57.39051803999999,1
+351,walking someone cut lines into green plants,someone walking lines cut into green plants,"Scope, Altered POS, Verb-Intransitive, Verb-Transitive",,1,Both,-61.6221494,-49.167379700000005,0
+352,a volcano above water makes steam,water above a volcano makes steam,Noun Phrase,,1,Object,-39.520887099999996,-35.40033,0
+353,A child riding a bike and an adult,A child and an adult riding a bike,"Scope, Conjunction Phrase",Pragmatics,1,Relation,-31.558782800000003,-27.610016400000003,0
+354,an adult putting a helmet on a child,a child putting a helmet on an adult,Noun,Series,1,Object,-28.394766882000006,-34.569983900000004,1
+355,An adult wearing purple lying next to a child,An adult lying next to a child wearing purple,"Scope, Adjective-Manner","Pragmatics, Series",1,Relation,-41.10584646139999,-38.789048727,0
+356,a fencer who is wearing black pants having a point scored against them by another fencer using a wheelchair,a fencer having a point scored against them by another fencer who is wearing black pants using a wheelchair,"Scope, Relative Clause",Series,1,Relation,-87.1928141999,-81.8678223295,0
+357,a person with long braids is exercising in front of a person without braids,a person without braids is exercising in front of a person with long braids,"Negation, Noun Phrase, Preposition Phrase",Series,1,Relation,-55.65821163500001,-61.618223927,1
+358,"in the stadium, the person wearing gray outperformed the one wearing blue","in the stadium, the person wearing blue outperformed the one wearing gray",Adjective-Color,Series,1,Relation,-56.572908559999995,-54.83028570999999,0
+359,butchering white meat while wearing yellow but not red,butchering red meat while wearing white but not yellow,Adjective-Color,,1,Relation,-60.080486099999995,-57.16496796,0
+360,a child with a fake beard and an adult,an adult with a fake beard and a child,Noun,,1,Object,-38.8124683,-33.969152,0
+361,"on halloween, a child dressed as an insect is to the right of a child dressed as a mammal","on halloween, a child dressed as a mammal is to the right of a child dressed as an insect",Noun,,2,Object,-57.841393456000006,-56.13204836300001,0
+362,a modern office complex with many windows above a nicely landscaped lawn,a nicely landscaped lawn above a modern office complex with many windows,Noun Phrase,,1,Object,-57.32913369783,-61.309689482700016,1
+363,a tree is partially inside a parked car,a parked car is partially inside a tree,Noun Phrase,,1,Object,-38.12310715,-41.01457833,1
+364,some are parking in a train,some are training in a park,Altered POS,Morpheme-Level,1,Both,-39.209445599999995,-26.9898569,0
+365,an athlete running on water,water running on an athlete,Noun Phrase,,1,Object,-28.475607000000004,-31.8366358,1
+366,a horse getting wet,getting a horse wet,Scope,,1,Relation,-30.645306399999996,-22.408953099999998,0
+367,the glasses full of water are above the person's head and leg,the person's head and leg are above the glasses full of water,Noun Phrase,Series,1,Object,-57.22167103,-59.06261395,1
+368,a person is touching the head of a squirrel,a squirrel is touching the head of a person,Noun,,1,Object,-39.953730900000004,-38.56616342,0
+369,a deer's nose is resting on a child's hand,a child's hand is resting on a deer's nose,"Noun Phrase, Determiner-Possessive",Series,1,Object,-45.350941049999996,-37.02828839,0
+370,two sparklers for one hand,one sparkler for two hands,Determiner-Numeral,,1,Relation,-29.8590482,-32.9734269,1
+371,an animal giving a person food,a person giving an animal food,Noun,,1,Object,-30.6329449,-32.3574932,1
+372,a spider towering over a dog,a dog towering over a spider,Noun,"Symbolic, Series",1,Object,-34.7026153,-36.4375619,1
+373,a car going into a hollow tube,a hollow tube going into a car,Noun,,1,Object,-38.671162200000005,-36.9938741,0
+374,two people wearing clothes of the same colors are on different side of the tennis net,two people wearing clothes of different colors are on the same side of the tennis net,Adjective-Manner Phrase,,1,Relation,-57.55165559,-45.98996847,0
+375,living things drinking,drinking living things,"Scope, Adjective-Manner",,1,Relation,-24.142311499999998,-22.5579826,0
+376,a person near water using a lasso,near a person using a water lasso,"Scope, Noun, Preposition",,1,Both,-44.44385117,-39.47572699999999,0
+377,a person spraying water on someone else and a person on a bike,a person spraying water on a person on a bike and someone else,"Scope, Conjunction",,2,Relation,-53.70285479000001,-55.4663369,1
+378,a person stretching behind a brown dog,a brown dog stretching behind a person,Noun,,1,Object,-44.0007164,-43.86433804000001,0
+379,a person carrying more than one flotation device,more than one flotation device carrying a person,"Noun Phrase, Determiner-Numeral",,1,Object,-35.49074296,-37.038171989999995,1
+380,two kids on a pool floatie and one kid swimming,one kid on a pool floatie and two kids swimming,Determiner-Numeral,Series,2,Relation,-37.835193700000005,-40.274550899999994,1
+381,gears for moving something,moving gears for something,"Scope, Verb-Transitive",,1,Relation,-29.788841,-27.523555199999997,0
+382,looking from above at a collection of similar objects below,looking from below at a collection of similar objects above,Preposition,,1,Relation,-41.643041446999995,-43.016903722,1
+383,a toy herbivore stands on top of at least one toy carnivore,at least one toy herbivore stands on top of a toy carnivore,Determiner-Numeral,"Symbolic, Series",1,Relation,-54.5610917153,-52.563886418,0
+384,a person supports a small chair,a chair supports a small person,Noun,,1,Object,-39.9004995,-33.0556504,0
+385,a person smiles at another person wearing a checked shirt who is hitting a ping pong ball,a person wearing a checked shirt smiles at another person who is hitting a ping pong ball,"Scope, Adjective-Manner",Series,1,Relation,-68.58998091993999,-60.69717109577,0
+386,two versions of one person,one version of two persons,Determiner-Numeral,Morpheme-Level,1,Relation,-21.65250913,-28.926172670000003,1
+387,There are not pink flowers below the bird with yellow head feathers,There are pink flowers not below the bird with yellow head feathers,"Negation, Scope",,1,Relation,-62.056351,-66.8545995,1
+388,"In a shopping cart, there are two animals that are the same species but are looking in different directions","In a shopping cart, there are two animals that are the different species but are looking in same directions",Adjective-Manner,Series,2,Relation,-58.33178700500001,-76.7501007,1
+389,water is on and under a vessel,a vessel is on and under water,Noun,,2,Object,-38.79964410000001,-40.1251564,1
+390,two bodies share with one head,one bodies share with two head,Determiner-Numeral,,1,Relation,-35.128423500000004,-41.753055,1
+391,The worker wears something striped over a white undershirt with a collar,The worker wears something white over a striped undershirt with a collar,Adjective-Color,,1,Relation,-58.339658883700004,-60.33054850899998,1
+392,A person seen from above has a grid below them,A person seen from below has a grid above them,Preposition,,1,Relation,-47.664777199999996,-51.2801116,1
+393,head in the clouds,clouds in the head,Noun,Symbolic,1,Object,-11.048715300000001,-16.289651,1
+394,standing on feet,on feet standing,"Scope, Preposition Phrase",Pragmatics,1,Relation,-15.701295,-25.1811825,1
+395,They have sunglasses over their hair,They have hair over their sunglasses,Noun,,1,Object,-30.696234040000004,-33.72688996000001,1
+396,an odd number of sweet things on a plate with an even number of sides,an even number of sweet things on a plate with an odd number of sides,Adjective-Manner,,1,Relation,-50.003024108000005,-50.42979015500001,1
+397,a large living thing in front of a large non-living thing,a large non-living thing in front of a large living thing,"Negation, Scope",,1,Relation,-45.313392814,-42.19697171999999,0
+398,racing over it,racing it over,"Scope, Preposition",,1,Relation,-22.9688775,-25.4236265,1
+399,someone is overdoing it,someone is doing it over,"Scope, Preposition",Morpheme-Level,1,Relation,-17.2940744,-24.714985399999996,1
