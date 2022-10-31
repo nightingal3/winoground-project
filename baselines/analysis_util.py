@@ -5,9 +5,25 @@ class WinogroundResult:
     :param
     s: string of the format "id,tag,secondary_tag,num_main_preds,collapsed_tag,C0I0,C0I1,C1I0,C1I1"
     sep: the separator for string s, by default \xa0
+    annotations: whether s comes with our annotations
     """
-    def __init__(self, s, sep="\xa0"):
-        [self.id, self.tag, self.secondary_tag, self.num_main_preds, self.collapsed_tag, self.c0i0, self.c0i1, self.c1i0, self.c1i1] = s.strip().split(sep)
+    def __init__(self, s, sep="\xa0", annotations=False):
+        if not annotations:
+            [self.id, self.tag, self.secondary_tag, self.num_main_preds, self.collapsed_tag, self.c0i0, self.c0i1, self.c1i0, self.c1i1] = s.strip().split(sep)
+        else:
+            [self.id, self.tag, self.secondary_tag, self.num_main_preds, self.collapsed_tag, self.c0i0, self.c0i1,
+             self.c1i0, self.c1i1, self.unnatural, self.counting, self.spatial, self.commonsense, self.figurative] = s.strip().split(sep)
+            self.annotations = []
+            if self.unnatural == "1":
+                self.annotations.append("unnatural")
+            if self.counting == "1":
+                self.annotations.append("counting")
+            if self.unnatural == "1":
+                self.annotations.append("spatial")
+            if self.unnatural == "1":
+                self.annotations.append("commonsense")
+            if self.unnatural == "1":
+                self.annotations.append("figurative")
         self.id = int(self.id)
         # since sometimes they have "Tag1, Tag2"
         self.tag = [s.strip() for s in self.tag.split(",")]
@@ -44,8 +60,9 @@ class WinogroundResultList:
     filepath: path to the file to read. the file format should be a WinogroundResult string on each line, by default None
     header: whether or not the file contains a header line, by default True
     sep: the separator used in each line, by default \xa0
+    annotations: whether the file comes with our annotations
     """
-    def __init__(self, filepath=None, header=True, sep="\xa0"):
+    def __init__(self, filepath=None, header=True, sep="\xa0", annotations=False):
         self.results = []
         if filepath is not None:
             f = open(filepath)
@@ -53,7 +70,7 @@ class WinogroundResultList:
             if header:
                 lines = lines[1:]
             for line in lines:
-                self.results.append(WinogroundResult(line, sep))
+                self.results.append(WinogroundResult(line, sep=sep, annotations=annotations))
             f.close()
 
     """
@@ -82,6 +99,15 @@ class WinogroundResultList:
             for result in self.results:
                 if tag in result.tag or tag in result.secondary_tag or tag in result.collapsed_tag:
                     new_wrl_results.add(result)
+        new_wrl.set_results(list(new_wrl_results))
+        return new_wrl
+
+    def filter_annotation(self, annotation):
+        new_wrl = WinogroundResultList()
+        new_wrl_results = set()
+        for result in self.results:
+            if annotation in result.annotations:
+                new_wrl_results.add(result)
         new_wrl.set_results(list(new_wrl_results))
         return new_wrl
 
