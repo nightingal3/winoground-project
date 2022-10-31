@@ -1,6 +1,10 @@
 from analysis_util import WinogroundResult, WinogroundResultList
 
-CLIP_results = WinogroundResultList("BLIP/BLIP_scores.txt")
+CLIP_results = WinogroundResultList("FLAVA/FLAVA_contrastive_scores.txt")
+
+print("text score: " + str(CLIP_results.text_score()))
+print("image score: " + str(CLIP_results.image_score()))
+print("group score: " + str(CLIP_results.group_score()))
 
 # to check our hypothesis that the captions both prefer the same image most of the time
 same_image = 0

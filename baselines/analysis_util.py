@@ -31,9 +31,9 @@ class WinogroundResult:
     """
     def get_comparisons(self):
         c0 = 0 if self.c0i0 > self.c0i1 else 1
-        c1 = 0 if self.c1i0 > self.c1i1 else 1
+        c1 = 0 if self.c1i0 >= self.c1i1 else 1 # >= here to be consistent with the formal definition
         i0 = 0 if self.c0i0 > self.c1i0 else 1
-        i1 = 0 if self.c0i1 > self.c1i1 else 1
+        i1 = 0 if self.c0i1 >= self.c1i1 else 1 # >= here to be consistent with the formal definition
         return (c0, c1, i0, i1)
 
 class WinogroundResultList:
