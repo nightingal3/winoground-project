@@ -84,3 +84,30 @@ class WinogroundResultList:
                     new_wrl_results.add(result)
         new_wrl.set_results(list(new_wrl_results))
         return new_wrl
+
+    def text_score(self):
+        denom = len(self.results)
+        correct = 0
+        for result in self.results:
+            (c0, c1, i0, i1) = result.get_comparisons()
+            if i0 == 0 and i1 == 1:
+                correct += 1
+        return correct / denom
+
+    def image_score(self):
+        denom = len(self.results)
+        correct = 0
+        for result in self.results:
+            (c0, c1, i0, i1) = result.get_comparisons()
+            if c0 == 0 and c1 == 1:
+                correct += 1
+        return correct / denom
+
+    def group_score(self):
+        denom = len(self.results)
+        correct = 0
+        for result in self.results:
+            (c0, c1, i0, i1) = result.get_comparisons()
+            if i0 == 0 and i1 == 1 and c0 == 0 and c1 == 1:
+                correct += 1
+        return correct / denom
