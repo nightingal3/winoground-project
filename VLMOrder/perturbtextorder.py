@@ -133,7 +133,7 @@ def get2random(ls):
         return np.flip(two)
     return two
 
-# Swapping Noun Phrases:
+# Swapping Nouns:
 def nounshuf(doc):
     text = nlp(doc)
     newtext = doc.split()
@@ -149,10 +149,21 @@ def nounshuf(doc):
             adverbs.append(token.text)
     if(len(nouns)>1):
         word1,word2 = get2random(nouns)
-        index1, index2 = newtext.index(word1), newtext.index(word2)
-        nounswap = newtext.copy()
-        nounswap[index1],nounswap[index2] = newtext[index2],newtext[index1]
-        return " ".join(nounswap)
+        try:
+            index1, index2 = newtext.index(word1), newtext.index(word2)
+            nounswap = newtext.copy()
+            nounswap[index1],nounswap[index2] = newtext[index2],newtext[index1]
+            return " ".join(nounswap)
+        except:
+            nounswap = " ".join(newtext.copy())
+            nounswap = nounswap.replace(word1,"----REPLACE @ word @ ONE----")
+            nounswap = nounswap.replace(word2,"----REPLACE @ word @ TWO----")
+            nounswap = nounswap.replace("----REPLACE @ word @ ONE----",word2)
+            nounswap = nounswap.replace("----REPLACE @ word @ TWO----",word1)
+            return nounswap
+
+
+        
     else:
         return doc
 
@@ -171,10 +182,19 @@ def advshuf(doc):
             adverbs.append(token.text)
     if(len(adverbs)>1):
         word1,word2 = get2random(adverbs)
-        index1, index2 = newtext.index(word1), newtext.index(word2)
-        advswap = newtext.copy()
-        advswap[index1],advswap[index2] = newtext[index2],newtext[index1]
-        return " ".join(advswap)
+        try:
+            
+            index1, index2 = newtext.index(word1), newtext.index(word2)
+            advswap = newtext.copy()
+            advswap[index1],advswap[index2] = newtext[index2],newtext[index1]
+            return " ".join(advswap)
+        except:
+            advswap = " ".join(newtext.copy())
+            advswap = advswap.replace(word1,"----REPLACE @ word @ ONE----")
+            advswap = advswap.replace(word2,"----REPLACE @ word @ TWO----")
+            advswap = advswap.replace("----REPLACE @ word @ ONE----",word2)
+            advswap = advswap.replace("----REPLACE @ word @ TWO----",word1)
+            return advswap
     else:
         return doc
 
@@ -191,13 +211,22 @@ def adjshuf(doc):
             nouns.append(token.text)
         elif token.pos_=="ADV":
             adverbs.append(token.text)
-
-    if(len(adjectives)>1):
+    if(len(adjectives)>=2):
         word1,word2 = get2random(adjectives)
-        index1, index2 = newtext.index(word1), newtext.index(word2)
-        adjswap = newtext.copy()
-        adjswap[index1],adjswap[index2] = newtext[index2],newtext[index1]
-        return " ".join(adjswap)
+        try:
+            index1, index2 = newtext.index(word1), newtext.index(word2)
+            adjswap = newtext.copy()
+            adjswap[index1],adjswap[index2] = newtext[index2],newtext[index1]
+            return " ".join(adjswap)
+        except:
+            adjswap = " ".join(newtext.copy())
+            adjswap = adjswap.replace(word1,"----REPLACE @ word @ ONE----")
+            adjswap = adjswap.replace(word2,"----REPLACE @ word @ TWO----")
+            adjswap = adjswap.replace("----REPLACE @ word @ ONE----",word2)
+            adjswap = adjswap.replace("----REPLACE @ word @ TWO----",word1)
+            return adjswap
+    else:
+        return doc
 
 def nounchunkshuf(doc):
     text = nlp(doc)
@@ -213,6 +242,44 @@ def nounchunkshuf(doc):
         ncswap = ncswap.replace("----REPLACE @ PHRASE @ ONE----",phrase2)
         ncswap = ncswap.replace("----REPLACE @ PHRASE @ TWO----",phrase1)
         return ncswap
+    else: 
+        return doc
+
+def verbshuf(doc):
+    text = nlp(doc)
+    newtext = doc.split()
+    adjectives = []
+    verbs = []
+    adverbs = []
+    verbs = []
+    for token in text:
+        if token.pos_=="ADJ":
+            adjectives.append(token.text)
+        elif token.pos_=="verb":
+            verbs.append(token.text)
+        elif token.pos_=="ADV":
+            adverbs.append(token.text)
+        elif token.pos_=="VERB":
+            verbs.append(token.text)
+    if(len(verbs)>1):
+        word1,word2 = get2random(verbs)
+        try:
+            index1, index2 = newtext.index(word1), newtext.index(word2)
+            verbswap = newtext.copy()
+            verbswap[index1],verbswap[index2] = newtext[index2],newtext[index1]
+            return " ".join(verbswap)
+        except:
+            verbswap = " ".join(newtext.copy())
+            verbswap = verbswap.replace(word1,"----REPLACE @ word @ ONE----")
+            verbswap = verbswap.replace(word2,"----REPLACE @ word @ TWO----")
+            verbswap = verbswap.replace("----REPLACE @ word @ ONE----",word2)
+            verbswap = verbswap.replace("----REPLACE @ word @ TWO----",word1)
+            return verbswap
+
+
+        
+    else:
+        return doc
 
 
 # text1 = "remarkable scene with a blue ball behind a green chair"

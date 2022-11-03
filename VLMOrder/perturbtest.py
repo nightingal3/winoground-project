@@ -2,6 +2,9 @@ from perturbtextorder import *
 from perturbimage import *
 from PIL import Image
 
+
+
+
 text1 = "remarkable scene with a blue ball behind a green chair"
 text2 = "The old man is slowly eating the sandwich and the pretty woman is calmly watching the television"
 print("Evaluation Perturbations")
