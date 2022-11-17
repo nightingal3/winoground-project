@@ -17,6 +17,10 @@ class ContrastiveLoss(nn.Module):
         self.lamb = lamb
         self.c = c
 
+    """
+    takes in the caption+image embeddings of the pair
+    I don't think batching works on cosine similarity since it uses .dot
+    """
     def forward(self, c0, i0, c1, i1):
         caption_sim = self.sim(c0, c1)
         pair0_sim = self.sim(c0, i0)
