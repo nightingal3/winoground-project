@@ -1,0 +1,5 @@
+datasets
+transformers
+jupyterlab
+git+https://github.com/openai/CLIP.git
+matplotlib
