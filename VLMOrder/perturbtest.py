@@ -1,4 +1,9 @@
 from perturbtextorder import *
+from perturbimage import *
+from PIL import Image
+
+
+
 
 text1 = "remarkable scene with a blue ball behind a green chair"
 text2 = "The old man is slowly eating the sandwich and the pretty woman is calmly watching the television"
@@ -14,3 +19,7 @@ print("Shuffling Nouns:",nounshuf(text2))
 print("Shuffling Adjectives:",adjshuf(text2))
 print("Shuffling Adverbs:",advshuf(text2))
 print("Shuffling Noun Chunks:",nounchunkshuf(text2))
+
+im = Image.open("87_1.png")
+perturbim = RandomPatch(im,16)
+perturbim.show()
