@@ -34,7 +34,7 @@ class COCO:
             print('Done (t={:0.2f}s)'.format(time.time()- tic))
             self.dataset = dataset
             self.createIndex()
-
+    
     def createIndex(self):
         # create index
         print('creating index...')
@@ -328,10 +328,10 @@ class COCO:
 
 
 class COCODataset(Dataset):
-    def __init__(self, split="train", image_transforms=None, caption_transforms=None, root="/home/samuelyu/Documents/winoground/data/mscoco"):
+    def __init__(self, split="train", image_transforms=None, caption_transforms=None, root="/home/samuelyu/Documents/winoground/data/mscoco", caption_year="2014"):
         self.root = root
         self.split = split
-        self.coco = COCO(annotation_file=os.path.join(self.root, "annotations", f"captions_{self.split}2014.json"))
+        self.coco = COCO(annotation_file=os.path.join(self.root, "annotations", f"captions_{self.split}{caption_year}.json"))
         self.image_ids = self.coco.getImgIds()
         self.image_transforms = image_transforms
         self.caption_transforms = caption_transforms
@@ -344,6 +344,9 @@ class COCODataset(Dataset):
             img = self.coco.loadImgs(ids=[info["image_id"]])[0]
             data.append({"impath": os.path.join(self.root, self.split + "2014", img["file_name"]), "caption": info["caption"]})
         return data
+
+    def __len__(self):
+        return len(self.coco.dataset['images'])
 
     def __getitem__(self, index):  
         data = self.data[index]
