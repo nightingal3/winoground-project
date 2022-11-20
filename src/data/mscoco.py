@@ -328,9 +328,11 @@ class COCO:
 
 
 class COCODataset(Dataset):
-    def __init__(self, split="train", image_transforms=None, caption_transforms=None, root="/home/samuelyu/Documents/winoground/data/mscoco", caption_year="2014"):
+    def __init__(self, split="train", image_transforms=None, caption_transforms=None, root="/home/samuelyu/Documents/winoground/data/mscoco", caption_year="2014", img_to_np=False):
         self.root = root
         self.split = split
+        self.caption_year = caption_year
+        self.image_to_np = img_to_np
         self.coco = COCO(annotation_file=os.path.join(self.root, "annotations", f"captions_{self.split}{caption_year}.json"))
         self.image_ids = self.coco.getImgIds()
         self.image_transforms = image_transforms
@@ -342,7 +344,7 @@ class COCODataset(Dataset):
         annotation_info = self.coco.loadAnns(self.coco.getAnnIds())
         for info in annotation_info:
             img = self.coco.loadImgs(ids=[info["image_id"]])[0]
-            data.append({"impath": os.path.join(self.root, self.split + "2014", img["file_name"]), "caption": info["caption"]})
+            data.append({"impath": os.path.join(self.root, self.split + self.caption_year, img["file_name"]), "caption": info["caption"]})
         return data
 
     def __len__(self):
@@ -353,6 +355,8 @@ class COCODataset(Dataset):
         image = Image.open(data["impath"]).convert("RGB")
         if self.image_transforms is not None:
             image = self.image_transforms(image)
+        if self.image_to_np:
+            image = np.array(image)
         caption = data["caption"]
         if self.caption_transforms is not None:
             caption = self.caption_transforms(caption)
