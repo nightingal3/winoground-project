@@ -30,7 +30,7 @@ def train_transforms(data):
     return data
 
 def val_transforms(data):
-    image = data['image']
+    image = data['image'].convert('RGB')
     text = data['text']
     val_image_transforms = transforms.Compose([
         transforms.Resize(224),
