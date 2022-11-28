@@ -5,6 +5,8 @@ from torch.utils.data import DataLoader
 import torch.optim as optim
 import argparse
 import os
+import wandb
+import logging
 
 from data import get_dataset
 
@@ -17,8 +19,10 @@ def get_args():
     parser.add_argument('--caption_year', type=str, default="2017")
     parser.add_argument('--train_dataset', type=str, default="coco")
     parser.add_argument('--test_dataset', type=str, default="winoground")
-    parser.add_argument('--lr', type=float, default=1e-3)
-    parser.add_argument('--wd', type=float, default=1e-5)
+    parser.add_argument('--lr', type=float, default=1e-6)
+    parser.add_argument('--wd', type=float, default=0.2)
+    parser.add_argument('--betas', type=float, nargs=2, default=(0.9, 0.98))
+    parser.add_argument('--eps', type=float, default=1e-7)
     parser.add_argument('--epochs', type=int, default=10)
     args = parser.parse_args()
 
@@ -36,6 +40,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
     train_correct_text = 0
     train_total = 0
     model.train()
+    logging.info("Training for epoch {}".format(epoch))
     for i, batch in enumerate(dataloader):
         optimizer.zero_grad()
         image = batch['image'].cuda()
@@ -64,7 +69,8 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
         train_correct_text += (logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
         train_total += len(batch['image'])
         if i % 100 == 0:
-            print(f"Epoch {epoch} Batch {i}, train loss: {train_loss / train_total}, train acc image: {train_correct_image / train_total}, train acc text: {train_correct_text / train_total}")
+            logging.info(f"Epoch {epoch} Batch {i}, train loss: {train_loss / train_total}, train acc image: {train_correct_image / train_total}, train acc text: {train_correct_text / train_total}")
+            wandb.log({"train_step": i, "train_loss": train_loss / train_total, "train_acc_image": train_correct_image / train_total, "train_acc_text": train_correct_text / train_total})
             train_total = 0
             train_loss = 0
             train_correct_image = 0
@@ -76,6 +82,7 @@ def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False):
     val_correct_image = 0
     val_correct_text = 0
     val_total = 0
+    logging.info("Evaluation for epoch {}".format(epoch))
     with torch.no_grad():
         for i, batch in enumerate(dataloader):
             image = batch['image'].cuda()
@@ -93,7 +100,8 @@ def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False):
             val_correct_text += ((logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item() == len(batch['image']))*len(batch['image'])
             
     name = "test" if test else "val"
-    print(f"Epoch {epoch}, {name} loss: {val_loss / val_total}, {name} acc image: {val_correct_image / val_total}, {name} acc text: {val_correct_text / val_total}")
+    logging.info(f"Epoch {epoch}, {name} loss: {val_loss / val_total}, {name} acc image: {val_correct_image / val_total}, {name} acc text: {val_correct_text / val_total}")
+    return val_loss, val_correct_image, val_correct_text, val_total
 
 def main(args):
     train_dataset, val_dataset, test_dataset = get_dataset(args)
@@ -112,20 +120,31 @@ def main(args):
 
     loss_image = nn.CrossEntropyLoss()
     loss_text = nn.CrossEntropyLoss()
-    optimizer = optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.wd)
+    optimizer = optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.wd, betas=args.betas, eps=args.eps)
     epoch = 0
     eval(val_dataloader, model, loss_image, loss_text, args)
     eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True)
+    logging.info("Starting training")
     for epoch in range(args.epochs):
         train_epoch(train_dataloader, model, optimizer, loss_image, loss_text, args, epoch)
-        eval(val_dataloader, model, loss_image, loss_text, args, epoch)
+        val_loss, val_correct_img, val_correct_text, val_total = eval(val_dataloader, model, loss_image, loss_text, args, epoch)
+        wandb.log({"epoch": epoch, "val_loss": val_loss / val_total, "val_acc_img": val_correct_img / val_total, "val_acc_text": val_correct_text / val_total})
         os.makedirs("../save", exist_ok=True)
         torch.save(model.state_dict(), f"../save/{epoch}.pt")
-        eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True)
+        test_loss, test_correct_img, test_correct_text, test_total = eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True)
+        wandb.log({"epoch": epoch, "test_loss": test_loss / test_total, "test_acc_img": test_correct_img / test_total, "test_acc_text": test_correct_text / test_total})
 
 if __name__ == "__main__":
-    
     args = get_args()
+    logging.basicConfig(level=logging.INFO)
+    wandb.init(project="winoground-pretraining")
+    wandb.config.lr = args.lr
+    wandb.config.wd = args.wd
+    wandb.config.batch_size = args.batch_size
+    wandb.config.epochs = args.epochs
+    wandb.config.use_distractors = args.use_distractors
+    wandb.run.name = f"lr_{args.lr}_wd_{args.wd}_bs_{args.batch_size}_epochs_{args.epochs}_distractors_{args.use_distractors}"
+
     main(args)
     
 
