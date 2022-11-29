@@ -2,9 +2,11 @@ from torchvision import transforms
 from clip import tokenize
 from .VLMOrder.perturbtextorder import nounadjshuf
 from .VLMOrder.perturbimage import RandomPatch
+import copy
 
 # TODO: Actually make this take in args and stuff, and not just be hard coded. Also we must add more transformations.
 def train_transforms(data):
+    data = copy.deepcopy(data)
     image = data['image']
     text = data['text']
     distractor_image = RandomPatch(image, 4)
@@ -30,6 +32,7 @@ def train_transforms(data):
     return data
 
 def val_transforms(data):
+    data = copy.deepcopy(data)
     image = data['image'].convert('RGB')
     text = data['text']
     val_image_transforms = transforms.Compose([
