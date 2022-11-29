@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 def cos_similarity(a, b):
-    return torch.dot(a, b) / (torch.norm(a) * torch.norm(b))
+    return torch.sum(a * b, dim=-1) / (torch.norm(a, dim=-1) * torch.norm(b, dim=-1))
 
 class ContrastiveLoss(nn.Module):
     """
@@ -11,7 +11,7 @@ class ContrastiveLoss(nn.Module):
     :param lamb: the lambda in our formulation
     :param c: the c in our formulation
     """
-    def __init__(self, sim, lamb=0.5, c=-0.1):
+    def __init__(self, sim=cos_similarity, lamb=0.5, c=-0.1):
         super(ContrastiveLoss, self).__init__()
         self.sim = sim
         self.lamb = lamb
@@ -19,7 +19,6 @@ class ContrastiveLoss(nn.Module):
 
     """
     takes in the caption+image embeddings of the pair
-    I don't think batching works on cosine similarity since it uses .dot
     """
     def forward(self, c0, i0, c1, i1):
         caption_sim = self.sim(c0, c1)
@@ -28,15 +27,15 @@ class ContrastiveLoss(nn.Module):
         score = caption_sim - self.lamb * (pair0_sim + pair1_sim) + self.c
         zero = torch.tensor(0)
 
-        return torch.maximum(zero, score)
+        return torch.mean(torch.maximum(zero, score))
 
 # testing code
 if __name__ == "__main__":
-    loss = ContrastiveLoss(cos_similarity)
-    c0 = torch.tensor([1., 1.], dtype=torch.float32)
-    i0 = torch.tensor([-1., 2.], dtype=torch.float32)
-    c1 = torch.tensor([1.1, 1.], dtype=torch.float32)
-    i1 = torch.tensor([1.2, 1.1], dtype=torch.float32)
+    loss = ContrastiveLoss()
+    c0 = torch.tensor([[1., 1.], [1., 1.]], dtype=torch.float32)
+    i0 = torch.tensor([[-1., 2.], [-1., 2.]], dtype=torch.float32)
+    c1 = torch.tensor([[1.1, 1.], [1.1, 1.]], dtype=torch.float32)
+    i1 = torch.tensor([[1.2, 1.1], [1.2, 1.1]], dtype=torch.float32)
 
     # c0 c1 should be close, c0 i0 should be not close, c0 i1 should be close
     print(cos_similarity(c0, c1))
