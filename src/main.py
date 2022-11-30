@@ -8,6 +8,7 @@ import os
 import wandb
 import logging
 from utils.losses import ContrastiveLoss
+import pdb
 
 from data import get_dataset
 
@@ -36,7 +37,12 @@ def get_args():
 # TODO: Make a models folder and move this into there
 def load_model(args):
     model, preprocess = clip.load(args.model)
-    model = model.float().cuda()
+    model = model.float()
+    if torch.cuda.device_count() > 1:
+        logging.info()
+        model = nn.DataParallel(model)
+    elif torch.cuda.is_available():
+        model = model.cuda()
     return model
 
 def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch):
@@ -92,9 +98,9 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             logits_per_image = logit_scale * image_features @ text_features.t()
             logits_per_text = logits_per_image.t()
 
-        train_correct_image += (
-                logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
         train_correct_text += (
+                logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
+        train_correct_image += (
                 logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
         optimizer.step()
 
@@ -113,7 +119,7 @@ def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False):
     val_correct_image = 0
     val_correct_text = 0
     val_total = 0
-    logging.info("Evaluation for epoch {}".format(epoch))
+    logging.info(f"Evaluation for epoch {epoch}, on test? {test}")
     with torch.no_grad():
         for i, batch in enumerate(dataloader):
             image = batch['image'].cuda()
@@ -127,8 +133,8 @@ def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False):
             val_loss += total_loss.item()
             val_total += len(batch['image'])
 
-            val_correct_image += ((logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item() == len(batch['image']))*len(batch['image'])
-            val_correct_text += ((logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item() == len(batch['image']))*len(batch['image'])
+            val_correct_text += ((logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item() == len(batch['image']))*len(batch['image'])
+            val_correct_image += ((logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item() == len(batch['image']))*len(batch['image'])
             
     name = "test" if test else "val"
     logging.info(f"Epoch {epoch}, {name} loss: {val_loss / val_total}, {name} acc image: {val_correct_image / val_total}, {name} acc text: {val_correct_text / val_total}")
