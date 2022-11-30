@@ -11,10 +11,12 @@ class ContrastiveLoss(nn.Module):
     :param lamb: the lambda in our formulation
     :param c: the c in our formulation
     """
-    def __init__(self, sim=cos_similarity, lamb=0.5, c=-0.1):
+    def __init__(self, sim=cos_similarity, lamb1=0.5, lamb2=0.5, lamb3=0.0, c=-0.1):
         super(ContrastiveLoss, self).__init__()
         self.sim = sim
-        self.lamb = lamb
+        self.lamb1 = lamb1
+        self.lamb2 = lamb2
+        self.lamb3 = lamb3
         self.c = c
 
     """
@@ -24,7 +26,7 @@ class ContrastiveLoss(nn.Module):
         caption_sim = self.sim(c0, c1)
         pair0_sim = self.sim(c0, i0)
         pair1_sim = self.sim(c1, i1)
-        score = caption_sim - self.lamb * (pair0_sim + pair1_sim) + self.c
+        score = self.lamb1 * caption_sim - self.lamb2 * pair0_sim - self.lamb3 * pair1_sim + self.c
         zero = torch.tensor(0)
 
         return torch.mean(torch.maximum(zero, score))
