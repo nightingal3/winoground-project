@@ -9,7 +9,6 @@ import wandb
 import logging
 from utils.losses import ContrastiveLoss
 import pdb
-
 from data import get_dataset
 
 def get_args():
@@ -18,8 +17,12 @@ def get_args():
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--use_distractors', action='store_true')
     parser.add_argument('--is_contrastive', action='store_true')
-    parser.add_argument('--coco_path', type=str, default="../data/mscoco/")
-    parser.add_argument('--caption_year', type=str, default="2014")
+    parser.add_argument('--l1', type=float, default=0.5)
+    parser.add_argument('--l2', type=float, default=0.5)
+    parser.add_argument('--l3', type=float, default=0.0)
+    parser.add_argument('--c', type=float, default=-0.1)
+    parser.add_argument('--coco_path', type=str, default="/projects/tir1/corpora/COCO/")
+    parser.add_argument('--caption_year', type=str, default="2017")
     parser.add_argument('--train_dataset', type=str, default="coco")
     parser.add_argument('--test_dataset', type=str, default="winoground")
     parser.add_argument('--lr', type=float, default=1e-6)
@@ -52,14 +55,13 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
     train_total = 0
     model.train()
     if args.is_contrastive:
-        closs = ContrastiveLoss()  # default params
+        closs = ContrastiveLoss(lamb1=args.l1, lamb2=args.l2, lamb3=args.l3, c=args.c)  # default params
     logging.info("Training for epoch {}".format(epoch))
     for i, batch in enumerate(dataloader):
         optimizer.zero_grad()
         image = batch['image'].cuda()
         text = batch['text'].cuda().squeeze(1)
         num_image = len(batch['image'])
-
         if args.use_distractors:
             image = torch.cat((image, batch['distractor_image'].cuda()), dim=0)
             distractor_text = batch['distractor_text'].cuda().squeeze(1)
@@ -79,6 +81,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             total_loss.backward()
             train_loss += total_loss.item()
         else:
+            
             # since use_distractors must be true, 0-num_image are original images and num_image-end are distractors
             image_features = model.encode_image(image)
             i0 = image_features[:num_image]
@@ -97,6 +100,8 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             logit_scale = model.logit_scale.exp()
             logits_per_image = logit_scale * image_features @ text_features.t()
             logits_per_text = logits_per_image.t()
+            logits_per_image = logits_per_image[:len(batch['image']), :len(batch['image'])]
+            logits_per_text = logits_per_text[:len(batch['image']), :len(batch['image'])]
 
         train_correct_text += (
                 logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
