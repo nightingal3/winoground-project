@@ -7,7 +7,8 @@ import argparse
 import os
 import wandb
 import logging
-
+from utils.losses import ContrastiveLoss
+import pdb
 from data import get_dataset
 
 def get_args():
@@ -15,8 +16,18 @@ def get_args():
     parser.add_argument('--model', type=str, default='ViT-B/32')
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--use_distractors', action='store_true')
+<<<<<<< HEAD
     parser.add_argument('--coco_path', type=str, default="/scratch/samuelyu/mscoco/")
     parser.add_argument('--caption_year', type=str, default="2014")
+=======
+    parser.add_argument('--is_contrastive', action='store_true')
+    parser.add_argument('--l1', type=float, default=0.5)
+    parser.add_argument('--l2', type=float, default=0.5)
+    parser.add_argument('--l3', type=float, default=0.0)
+    parser.add_argument('--c', type=float, default=-0.1)
+    parser.add_argument('--coco_path', type=str, default="/projects/tir1/corpora/COCO/")
+    parser.add_argument('--caption_year', type=str, default="2017")
+>>>>>>> 8332aa40dda1886d7daa6569cc5aa4509bbcf5a9
     parser.add_argument('--train_dataset', type=str, default="coco")
     parser.add_argument('--test_dataset', type=str, default="winoground")
     parser.add_argument('--lr', type=float, default=1e-6)
@@ -26,12 +37,20 @@ def get_args():
     parser.add_argument('--epochs', type=int, default=10)
     args = parser.parse_args()
 
+    if args.is_contrastive and not args.use_distractors:
+        raise Exception("use_distractors must be True if is_contrastive is True")
+
     return args
 
 # TODO: Make a models folder and move this into there
 def load_model(args):
     model, preprocess = clip.load(args.model)
-    model = model.float().cuda()
+    model = model.float()
+    if torch.cuda.device_count() > 1:
+        logging.info()
+        model = nn.DataParallel(model)
+    elif torch.cuda.is_available():
+        model = model.cuda()
     return model
 
 def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch):
@@ -40,33 +59,61 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
     train_correct_text = 0
     train_total = 0
     model.train()
+    if args.is_contrastive:
+        closs = ContrastiveLoss(lamb1=args.l1, lamb2=args.l2, lamb3=args.l3, c=args.c)  # default params
     logging.info("Training for epoch {}".format(epoch))
     for i, batch in enumerate(dataloader):
         optimizer.zero_grad()
         image = batch['image'].cuda()
         text = batch['text'].cuda().squeeze(1)
-
+        num_image = len(batch['image'])
         if args.use_distractors:
             image = torch.cat((image, batch['distractor_image'].cuda()), dim=0)
             distractor_text = batch['distractor_text'].cuda().squeeze(1)
             text = torch.cat((text, distractor_text), dim=0)
-    
-        logits_per_image, logits_per_text = model(image, text)
-        
-        if args.use_distractors: # distractors have no corresponding label
+
+        if not args.is_contrastive:
+            logits_per_image, logits_per_text = model(image, text)
+
+            if args.use_distractors: # distractors have no corresponding label
+                logits_per_image = logits_per_image[:len(batch['image']), :len(batch['image'])]
+                logits_per_text = logits_per_text[:len(batch['image']), :len(batch['image'])]
+
+            loss_i = loss_image(logits_per_image, torch.arange(len(batch['image'])).cuda())
+            loss_t = loss_text(logits_per_text, torch.arange(len(batch['image'])).cuda())
+
+            total_loss = (loss_i + loss_t) / 2
+            total_loss.backward()
+            train_loss += total_loss.item()
+        else:
+            
+            # since use_distractors must be true, 0-num_image are original images and num_image-end are distractors
+            image_features = model.encode_image(image)
+            i0 = image_features[:num_image]
+            i1 = image_features[num_image:]
+            text_features = model.encode_text(text)
+            c0 = text_features[:num_image]
+            c1 = text_features[num_image:]
+
+            total_loss = closs(c0, i0, c1, i1)
+            total_loss.backward()
+            train_loss += total_loss.item()
+
+            image_features = image_features / image_features.norm(dim=1, keepdim=True)
+            text_features = text_features / text_features.norm(dim=1, keepdim=True)
+
+            logit_scale = model.logit_scale.exp()
+            logits_per_image = logit_scale * image_features @ text_features.t()
+            logits_per_text = logits_per_image.t()
             logits_per_image = logits_per_image[:len(batch['image']), :len(batch['image'])]
             logits_per_text = logits_per_text[:len(batch['image']), :len(batch['image'])]
 
-        loss_i = loss_image(logits_per_image, torch.arange(len(batch['image'])).cuda())
-        loss_t = loss_text(logits_per_text, torch.arange(len(batch['image'])).cuda())
-
-        total_loss = (loss_i + loss_t) / 2
-        total_loss.backward()
+        train_correct_text += (
+                logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
+        train_correct_image += (
+                logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
         optimizer.step()
 
-        train_loss += total_loss.item()
-        train_correct_image += (logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
-        train_correct_text += (logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
         train_total += len(batch['image'])
         if i % 100 == 0:
             logging.info(f"Epoch {epoch} Batch {i}, train loss: {train_loss / train_total}, train acc image: {train_correct_image / train_total}, train acc text: {train_correct_text / train_total}")
@@ -82,7 +129,7 @@ def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False):
     val_correct_image = 0
     val_correct_text = 0
     val_total = 0
-    logging.info("Evaluation for epoch {}".format(epoch))
+    logging.info(f"Evaluation for epoch {epoch}, on test? {test}")
     with torch.no_grad():
         for i, batch in enumerate(dataloader):
             image = batch['image'].cuda()
@@ -96,8 +143,8 @@ def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False):
             val_loss += total_loss.item()
             val_total += len(batch['image'])
 
-            val_correct_image += ((logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item() == len(batch['image']))*len(batch['image'])
-            val_correct_text += ((logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item() == len(batch['image']))*len(batch['image'])
+            val_correct_text += ((logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item() == len(batch['image']))*len(batch['image'])
+            val_correct_image += ((logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item() == len(batch['image']))*len(batch['image'])
             
     name = "test" if test else "val"
     logging.info(f"Epoch {epoch}, {name} loss: {val_loss / val_total}, {name} acc image: {val_correct_image / val_total}, {name} acc text: {val_correct_text / val_total}")
