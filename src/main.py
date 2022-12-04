@@ -9,14 +9,14 @@ import os
 import wandb
 import logging
 from utils.losses import ContrastiveLoss
-import pdb
 from data import get_dataset
 
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', type=str, default='ViT-B/32')
     parser.add_argument('--batch_size', type=int, default=32)
-    parser.add_argument('--use_distractors', action='store_true')
+    parser.add_argument('--distractor_text', choices=["nounadjshuf", "nonnounadjshuf", "trigramshuf", "nounshuf", "advshuf", "adjshuf", "verbshuf"])
+    parser.add_argument('--distractor_image', choices=["random_patch"])
     parser.add_argument('--coco_path', type=str, default="/scratch/samuelyu/mscoco/")
     parser.add_argument('--caption_year', type=str, default="2014")
     parser.add_argument('--is_contrastive', action='store_true')
@@ -33,17 +33,18 @@ def get_args():
     parser.add_argument('--epochs', type=int, default=10)
     args = parser.parse_args()
 
-    if args.is_contrastive and not args.use_distractors:
+    using_distractors = args.distractor_text is not None or args.distractor_image is not None
+    if args.is_contrastive and not using_distractors:
         raise Exception("use_distractors must be True if is_contrastive is True")
 
     return args
 
-def new_foward(self, image, text):
+def new_forward(self, image, text):
     image_features = self.encode_image(image)
     text_features = self.encode_text(text)
     return image_features, text_features
 
-CLIP.foward = new_foward
+CLIP.forward = new_forward
 
 # TODO: Make a models folder and move this into there
 def load_model(args):
@@ -71,7 +72,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
         image = batch['image'].cuda()
         text = batch['text'].cuda().squeeze(1)
         num_image = len(batch['image'])
-        if args.use_distractors:
+        if args.distractor_text or args.distractor_image:
             image = torch.cat((image, batch['distractor_image'].cuda()), dim=0)
             distractor_text = batch['distractor_text'].cuda().squeeze(1)
             text = torch.cat((text, distractor_text), dim=0)
@@ -81,7 +82,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             logits_per_image = 100.0 * image_features @ text_features.t()
             logits_per_text = logits_per_image.t()
             
-            if args.use_distractors: # distractors have no corresponding label
+            if args.distractor_text or args.distractor_image: # distractors have no corresponding label
                 logits_per_image = logits_per_image[:len(batch['image']), :len(batch['image'])]
                 logits_per_text = logits_per_text[:len(batch['image']), :len(batch['image'])]
 
@@ -195,12 +196,15 @@ if __name__ == "__main__":
     args = get_args()
     logging.basicConfig(level=logging.INFO)
     wandb.init(project="winoground-pretraining")
+    use_distractors = args.distractor_text is not None and args.distractor_image is not None
     wandb.config.lr = args.lr
     wandb.config.wd = args.wd
     wandb.config.batch_size = args.batch_size
     wandb.config.epochs = args.epochs
-    wandb.config.use_distractors = args.use_distractors
-    wandb.run.name = f"lr_{args.lr}_wd_{args.wd}_bs_{args.batch_size}_epochs_{args.epochs}_distractors_{args.use_distractors}"
+    wandb.config.contrastive = args.is_contrastive
+    wandb.config.txt_distractor = args.distractor_text
+    wandb.config.img_distractor = args.distractor_image
+    wandb.run.name = f"lr_{args.lr}_wd_{args.wd}_bs_{args.batch_size}_epochs_{args.epochs}_distractors_{use_distractors}_t_{args.distractor_text}_i_{args.distractor_image}_contrastive_{args.is_contrastive}"
 
     main(args)
     

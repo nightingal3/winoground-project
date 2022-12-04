@@ -23,9 +23,9 @@ class WinogroundDataset(Dataset):
         
         data = []
         for example in winoground:
-            e0 = {"image": example['image_0'], 'text': example['caption_0'], 'tag': example['tag'], 'secondary_tag': example['secondary_tag'], 'num_main_preds': example['num_main_preds'], 'collapsed_tag': example['collapsed_tag'], 'pair': len(data)+1}
+            e0 = {"image": example['image_0'].convert('RGB'), 'text': example['caption_0'], 'tag': example['tag'], 'secondary_tag': example['secondary_tag'], 'num_main_preds': example['num_main_preds'], 'collapsed_tag': example['collapsed_tag'], 'pair': len(data)+1}
             data.append(e0)
-            e1 = {"image": example['image_1'], 'text': example['caption_1'], 'tag': example['tag'], 'secondary_tag': example['secondary_tag'], 'num_main_preds': example['num_main_preds'], 'collapsed_tag': example['collapsed_tag'], 'pair': len(data)-1}
+            e1 = {"image": example['image_1'].convert('RGB'), 'text': example['caption_1'], 'tag': example['tag'], 'secondary_tag': example['secondary_tag'], 'num_main_preds': example['num_main_preds'], 'collapsed_tag': example['collapsed_tag'], 'pair': len(data)-1}
             data.append(e1)
             
         return data
