@@ -42,10 +42,12 @@ def load_model(args):
     model, preprocess = clip.load(args.model)
     model = model.float()
     if torch.cuda.device_count() > 1:
-        logging.info()
+        logging.info("using multiple GPUs")
         model = nn.DataParallel(model)
     elif torch.cuda.is_available():
         model = model.cuda()
+    else:
+        logging.info("using CPU only")
     return model
 
 def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch):
@@ -81,7 +83,6 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             total_loss.backward()
             train_loss += total_loss.item()
         else:
-            
             # since use_distractors must be true, 0-num_image are original images and num_image-end are distractors
             image_features = model.encode_image(image)
             i0 = image_features[:num_image]
@@ -185,6 +186,12 @@ if __name__ == "__main__":
     wandb.config.batch_size = args.batch_size
     wandb.config.epochs = args.epochs
     wandb.config.use_distractors = args.use_distractors
+    wandb.config.is_contrastive = args.is_contrastive
+    wandb.config.c = args.c
+    wandb.config.betas = args.betas
+    wandb.config.l1 = args.l1
+    wandb.config.l2 = args.l2
+    wandb.config.l3 = args.l3
     wandb.run.name = f"lr_{args.lr}_wd_{args.wd}_bs_{args.batch_size}_epochs_{args.epochs}_distractors_{args.use_distractors}"
 
     main(args)
