@@ -1,0 +1,1 @@
+{"train_step": 2500, "train_loss": 0.010761346290819348, "train_acc_image": 0.879375, "train_acc_text": 0.8653125, "_timestamp": 1669764552.9221387, "_runtime": 2122.7482736110687, "_step": 25, "_wandb": {"runtime": 2570}}
