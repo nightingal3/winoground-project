@@ -43,10 +43,7 @@ def load_model(args):
     model, preprocess = clip.load(args.model)
     model = model.float()
     if torch.cuda.device_count() > 1:
-<<<<<<< HEAD
-=======
         logging.info(f"using {torch.cuda.device_count()} GPUS")
->>>>>>> b05675ee61cb8199c0950d0b104442f8c86f4f02
         model = nn.DataParallel(model)
     elif torch.cuda.is_available():
         model = model.cuda()
