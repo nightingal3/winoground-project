@@ -25,8 +25,9 @@ class ContrastiveLoss(nn.Module):
     def forward(self, c0, i0, c1, i1):
         caption_sim = self.sim(c0, c1)
         pair0_sim = self.sim(c0, i0)
-        pair1_sim = self.sim(c1, i1)
-        score = self.lamb1 * caption_sim - self.lamb2 * pair0_sim - self.lamb3 * pair1_sim + self.c
+        # pair1_sim = self.sim(c1, i1)
+        pair1_sim = self.sim(c1, i0)
+        score = self.lamb1 * caption_sim - self.lamb2 * pair0_sim + self.lamb3 * pair1_sim + self.c
         zero = torch.tensor(0)
 
         return torch.mean(torch.maximum(zero, score))

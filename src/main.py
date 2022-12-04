@@ -16,18 +16,13 @@ def get_args():
     parser.add_argument('--model', type=str, default='ViT-B/32')
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--use_distractors', action='store_true')
-<<<<<<< HEAD
     parser.add_argument('--coco_path', type=str, default="/scratch/samuelyu/mscoco/")
     parser.add_argument('--caption_year', type=str, default="2014")
-=======
     parser.add_argument('--is_contrastive', action='store_true')
     parser.add_argument('--l1', type=float, default=0.5)
     parser.add_argument('--l2', type=float, default=0.5)
     parser.add_argument('--l3', type=float, default=0.0)
     parser.add_argument('--c', type=float, default=-0.1)
-    parser.add_argument('--coco_path', type=str, default="/projects/tir1/corpora/COCO/")
-    parser.add_argument('--caption_year', type=str, default="2017")
->>>>>>> 8332aa40dda1886d7daa6569cc5aa4509bbcf5a9
     parser.add_argument('--train_dataset', type=str, default="coco")
     parser.add_argument('--test_dataset', type=str, default="winoground")
     parser.add_argument('--lr', type=float, default=1e-6)
@@ -47,7 +42,7 @@ def load_model(args):
     model, preprocess = clip.load(args.model)
     model = model.float()
     if torch.cuda.device_count() > 1:
-        logging.info()
+        logging.info(f"using {torch.cuda.device_count()} GPUS")
         model = nn.DataParallel(model)
     elif torch.cuda.is_available():
         model = model.cuda()
@@ -73,8 +68,11 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             text = torch.cat((text, distractor_text), dim=0)
 
         if not args.is_contrastive:
-            logits_per_image, logits_per_text = model(image, text)
-
+            image_features = model.encode_image(image)
+            text_features = model.encode_text(text)
+            logits_per_image = 100.0 * image_features @ text_features.t()
+            logits_per_text = logits_per_image.t()
+            
             if args.use_distractors: # distractors have no corresponding label
                 logits_per_image = logits_per_image[:len(batch['image']), :len(batch['image'])]
                 logits_per_text = logits_per_text[:len(batch['image']), :len(batch['image'])]
@@ -135,7 +133,14 @@ def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False):
             image = batch['image'].cuda()
             text = batch['text'].cuda().squeeze(1)
 
-            logits_per_image, logits_per_text = model(image, text)
+            image_features = model.encode_image(image)
+            text_features = model.encode_text(text)
+            logits_per_image = 100.0 * image_features @ text_features.t()
+            logits_per_text = logits_per_image.t()
+            
+            # print(logits_per_text.shape)
+            # print(torch.arange(len(batch['image'])))
+            # assert False
             loss_i = loss_image(logits_per_image, torch.arange(len(batch['image'])).cuda())
             loss_t = loss_text(logits_per_text, torch.arange(len(batch['image'])).cuda())
 

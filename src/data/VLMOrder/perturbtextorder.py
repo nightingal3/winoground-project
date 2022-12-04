@@ -275,9 +275,6 @@ def verbshuf(doc):
             verbswap = verbswap.replace("----REPLACE @ word @ ONE----",word2)
             verbswap = verbswap.replace("----REPLACE @ word @ TWO----",word1)
             return verbswap
-
-
-        
     else:
         return doc
 
