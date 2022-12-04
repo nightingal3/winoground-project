@@ -23,7 +23,8 @@ def get_args():
     parser.add_argument('--l1', type=float, default=0.5)
     parser.add_argument('--l2', type=float, default=0.5)
     parser.add_argument('--l3', type=float, default=0.0)
-    parser.add_argument('--c', type=float, default=0.1)
+    parser.add_argument('--l4', type=float, default=0.0)
+    parser.add_argument('--c', type=float, default=-0.1)
     parser.add_argument('--train_dataset', type=str, default="coco")
     parser.add_argument('--test_dataset', type=str, default="winoground")
     parser.add_argument('--lr', type=float, default=1e-6)
@@ -193,13 +194,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     wandb.init(project="winoground-pretraining")
     use_distractors = args.distractor_text is not None and args.distractor_image is not None
-    wandb.config.lr = args.lr
-    wandb.config.wd = args.wd
-    wandb.config.batch_size = args.batch_size
-    wandb.config.epochs = args.epochs
-    wandb.config.contrastive = args.is_contrastive
-    wandb.config.txt_distractor = args.distractor_text
-    wandb.config.img_distractor = args.distractor_image
+    wandb.config.update(args)
     wandb.run.name = f"lr_{args.lr}_wd_{args.wd}_bs_{args.batch_size}_epochs_{args.epochs}_distractors_{use_distractors}_t_{args.distractor_text}_i_{args.distractor_image}_contrastive_{args.is_contrastive}"
 
     main(args)
