@@ -42,6 +42,8 @@ def get_args():
 def new_forward(self, image, text):
     image_features = self.encode_image(image)
     text_features = self.encode_text(text)
+    image_features = image_features / image_features.norm(dim=-1, keepdim=True)
+    text_features = text_features / text_features.norm(dim=-1, keepdim=True)
     return image_features, text_features
 
 CLIP.forward = new_forward
