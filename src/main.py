@@ -23,7 +23,7 @@ def get_args():
     parser.add_argument('--l1', type=float, default=0.5)
     parser.add_argument('--l2', type=float, default=0.5)
     parser.add_argument('--l3', type=float, default=0.0)
-    parser.add_argument('--c', type=float, default=-0.1)
+    parser.add_argument('--c', type=float, default=0.1)
     parser.add_argument('--train_dataset', type=str, default="coco")
     parser.add_argument('--test_dataset', type=str, default="winoground")
     parser.add_argument('--lr', type=float, default=1e-6)
@@ -79,8 +79,9 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             distractor_text = batch['distractor_text'].cuda().squeeze(1)
             text = torch.cat((text, distractor_text), dim=0)
 
+        image_features, text_features = model(image, text)
+
         if not args.is_contrastive:
-            image_features, text_features = model(image, text)
             logits_per_image = 100.0 * image_features @ text_features.t()
             logits_per_text = logits_per_image.t()
             
@@ -95,9 +96,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             total_loss.backward()
             train_loss += total_loss.item()
         else:
-            
             # since use_distractors must be true, 0-num_image are original images and num_image-end are distractors
-            image_features, text_features = model(image, text)
             i0 = image_features[:num_image]
             i1 = image_features[num_image:]
             c0 = text_features[:num_image]
@@ -107,19 +106,14 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             total_loss.backward()
             train_loss += total_loss.item()
 
-            image_features = image_features / image_features.norm(dim=1, keepdim=True)
-            text_features = text_features / text_features.norm(dim=1, keepdim=True)
-
-            logit_scale = model.logit_scale.exp()
+            logit_scale = 100.0
             logits_per_image = logit_scale * image_features @ text_features.t()
             logits_per_text = logits_per_image.t()
             logits_per_image = logits_per_image[:len(batch['image']), :len(batch['image'])]
             logits_per_text = logits_per_text[:len(batch['image']), :len(batch['image'])]
 
-        train_correct_text += (
-                logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
-        train_correct_image += (
-                logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
+        train_correct_text += (logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
+        train_correct_image += (logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
         optimizer.step()
 
         train_total += len(batch['image'])
@@ -182,8 +176,8 @@ def main(args):
     epoch = 0
     # val_loss, val_correct_img, val_correct_text, val_total = eval(val_dataloader, model, loss_image, loss_text, args)
     # wandb.log({"epoch": -1, "val_loss": val_loss / val_total, "val_acc_img": val_correct_img / val_total, "val_acc_text": val_correct_text / val_total})
-    test_loss, test_correct_img, test_correct_text, test_total = eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True)
-    wandb.log({"epoch": -1, "test_loss": test_loss / test_total, "test_acc_img": test_correct_img / test_total, "test_acc_text": test_correct_text / test_total})
+    # test_loss, test_correct_img, test_correct_text, test_total = eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True)
+    # wandb.log({"epoch": -1, "test_loss": test_loss / test_total, "test_acc_img": test_correct_img / test_total, "test_acc_text": test_correct_text / test_total})
     logging.info("Starting training")
     for epoch in range(args.epochs):
         train_epoch(train_dataloader, model, optimizer, loss_image, loss_text, args, epoch)
