@@ -1,4 +1,5 @@
 import clip
+from clip.model import CLIP
 import torch.nn as nn
 import torch
 from torch.utils.data import DataLoader
@@ -37,10 +38,18 @@ def get_args():
 
     return args
 
+def new_foward(self, image, text):
+    image_features = self.encode_image(image)
+    text_features = self.encode_text(text)
+    return image_features, text_features
+
+CLIP.foward = new_foward
+
 # TODO: Make a models folder and move this into there
 def load_model(args):
     model, preprocess = clip.load(args.model)
     model = model.float()
+    
     if torch.cuda.device_count() > 1:
         logging.info(f"using {torch.cuda.device_count()} GPUS")
         model = nn.DataParallel(model)
@@ -68,8 +77,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             text = torch.cat((text, distractor_text), dim=0)
 
         if not args.is_contrastive:
-            image_features = model.encode_image(image)
-            text_features = model.encode_text(text)
+            image_features, text_features = model(image, text)
             logits_per_image = 100.0 * image_features @ text_features.t()
             logits_per_text = logits_per_image.t()
             
@@ -86,10 +94,9 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
         else:
             
             # since use_distractors must be true, 0-num_image are original images and num_image-end are distractors
-            image_features = model.encode_image(image)
+            image_features, text_features = model(image, text)
             i0 = image_features[:num_image]
             i1 = image_features[num_image:]
-            text_features = model.encode_text(text)
             c0 = text_features[:num_image]
             c1 = text_features[num_image:]
 
@@ -133,14 +140,10 @@ def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False):
             image = batch['image'].cuda()
             text = batch['text'].cuda().squeeze(1)
 
-            image_features = model.encode_image(image)
-            text_features = model.encode_text(text)
+            image_features, text_features = model(image, text)
             logits_per_image = 100.0 * image_features @ text_features.t()
             logits_per_text = logits_per_image.t()
             
-            # print(logits_per_text.shape)
-            # print(torch.arange(len(batch['image'])))
-            # assert False
             loss_i = loss_image(logits_per_image, torch.arange(len(batch['image'])).cuda())
             loss_t = loss_text(logits_per_text, torch.arange(len(batch['image'])).cuda())
 
@@ -174,8 +177,10 @@ def main(args):
     loss_text = nn.CrossEntropyLoss()
     optimizer = optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.wd, betas=args.betas, eps=args.eps)
     epoch = 0
-    eval(val_dataloader, model, loss_image, loss_text, args)
-    eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True)
+    # val_loss, val_correct_img, val_correct_text, val_total = eval(val_dataloader, model, loss_image, loss_text, args)
+    # wandb.log({"epoch": -1, "val_loss": val_loss / val_total, "val_acc_img": val_correct_img / val_total, "val_acc_text": val_correct_text / val_total})
+    test_loss, test_correct_img, test_correct_text, test_total = eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True)
+    wandb.log({"epoch": -1, "test_loss": test_loss / test_total, "test_acc_img": test_correct_img / test_total, "test_acc_text": test_correct_text / test_total})
     logging.info("Starting training")
     for epoch in range(args.epochs):
         train_epoch(train_dataloader, model, optimizer, loss_image, loss_text, args, epoch)
