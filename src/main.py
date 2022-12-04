@@ -8,14 +8,14 @@ import os
 import wandb
 import logging
 from utils.losses import ContrastiveLoss
-import pdb
 from data import get_dataset
 
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', type=str, default='ViT-B/32')
     parser.add_argument('--batch_size', type=int, default=32)
-    parser.add_argument('--use_distractors', action='store_true')
+    parser.add_argument('--distractor_text', choices=["nounadjshuf", "nonnounadjshuf", "trigramshuf", "nounshuf", "advshuf", "adjshuf", "verbshuf"])
+    parser.add_argument('--distractor_image', choices=["random_patch"])
     parser.add_argument('--is_contrastive', action='store_true')
     parser.add_argument('--l1', type=float, default=0.5)
     parser.add_argument('--l2', type=float, default=0.5)
@@ -32,7 +32,8 @@ def get_args():
     parser.add_argument('--epochs', type=int, default=10)
     args = parser.parse_args()
 
-    if args.is_contrastive and not args.use_distractors:
+    using_distractors = args.distractor_text is not None or args.distractor_image is not None
+    if args.is_contrastive and not using_distractors:
         raise Exception("use_distractors must be True if is_contrastive is True")
 
     return args
@@ -42,7 +43,6 @@ def load_model(args):
     model, preprocess = clip.load(args.model)
     model = model.float()
     if torch.cuda.device_count() > 1:
-        logging.info()
         model = nn.DataParallel(model)
     elif torch.cuda.is_available():
         model = model.cuda()
@@ -62,7 +62,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
         image = batch['image'].cuda()
         text = batch['text'].cuda().squeeze(1)
         num_image = len(batch['image'])
-        if args.use_distractors:
+        if args.distractor_text or args.distractor_image:
             image = torch.cat((image, batch['distractor_image'].cuda()), dim=0)
             distractor_text = batch['distractor_text'].cuda().squeeze(1)
             text = torch.cat((text, distractor_text), dim=0)
@@ -70,7 +70,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
         if not args.is_contrastive:
             logits_per_image, logits_per_text = model(image, text)
 
-            if args.use_distractors: # distractors have no corresponding label
+            if args.distractor_text or args.distractor_image: # distractors have no corresponding label
                 logits_per_image = logits_per_image[:len(batch['image']), :len(batch['image'])]
                 logits_per_text = logits_per_text[:len(batch['image']), :len(batch['image'])]
 
@@ -164,6 +164,7 @@ def main(args):
     loss_text = nn.CrossEntropyLoss()
     optimizer = optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.wd, betas=args.betas, eps=args.eps)
     epoch = 0
+    logging.info("Eval (before training)")
     eval(val_dataloader, model, loss_image, loss_text, args)
     eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True)
     logging.info("Starting training")
@@ -180,12 +181,15 @@ if __name__ == "__main__":
     args = get_args()
     logging.basicConfig(level=logging.INFO)
     wandb.init(project="winoground-pretraining")
+    use_distractors = args.distractor_text is not None and args.distractor_image is not None
     wandb.config.lr = args.lr
     wandb.config.wd = args.wd
     wandb.config.batch_size = args.batch_size
     wandb.config.epochs = args.epochs
-    wandb.config.use_distractors = args.use_distractors
-    wandb.run.name = f"lr_{args.lr}_wd_{args.wd}_bs_{args.batch_size}_epochs_{args.epochs}_distractors_{args.use_distractors}"
+    wandb.config.contrastive = args.is_contrastive
+    wandb.config.txt_distractor = args.distractor_text
+    wandb.config.img_distractor = args.distractor_image
+    wandb.run.name = f"lr_{args.lr}_wd_{args.wd}_bs_{args.batch_size}_epochs_{args.epochs}_distractors_{use_distractors}_t_{args.distractor_text}_i_{args.distractor_image}_contrastive_{args.is_contrastive}"
 
     main(args)
     
