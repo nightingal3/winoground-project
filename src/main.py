@@ -59,12 +59,16 @@ def load_model(args):
         logging.info()
         model = nn.DataParallel(model)
     elif torch.cuda.is_available():
+<<<<<<< HEAD
         model = model.cuda()
     else:
         logging.info("using CPU only")
+=======
+        model = model.to(device)
+>>>>>>> 939ab1f0a4b5cc507a21d40ed3e82e52da1e918f
     return model
 
-def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch):
+def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch, device=torch.device("cuda")):
     train_loss = 0
     train_correct_image = 0
     train_correct_text = 0
@@ -76,12 +80,12 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
     logging.info("Training for epoch {}".format(epoch))
     for i, batch in enumerate(dataloader):
         optimizer.zero_grad()
-        image = batch['image'].cuda()
-        text = batch['text'].cuda().squeeze(1)
+        image = batch['image'].to(device)
+        text = batch['text'].to(device).squeeze(1)
         num_image = len(batch['image'])
         if args.distractor_text or args.distractor_image:
-            image = torch.cat((image, batch['distractor_image'].cuda()), dim=0)
-            distractor_text = batch['distractor_text'].cuda().squeeze(1)
+            image = torch.cat((image, batch['distractor_image'].to(device)), dim=0)
+            distractor_text = batch['distractor_text'].to(device).squeeze(1)
             text = torch.cat((text, distractor_text), dim=0)
 
         image_features, text_features = model(image, text)
@@ -94,8 +98,8 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
                 logits_per_image = logits_per_image[:len(batch['image']), :len(batch['image'])]
                 logits_per_text = logits_per_text[:len(batch['image']), :len(batch['image'])]
 
-            loss_i = loss_image(logits_per_image, torch.arange(len(batch['image'])).cuda())
-            loss_t = loss_text(logits_per_text, torch.arange(len(batch['image'])).cuda())
+            loss_i = loss_image(logits_per_image, torch.arange(len(batch['image'])).to(device))
+            loss_t = loss_text(logits_per_text, torch.arange(len(batch['image'])).to(device))
 
             total_loss = (loss_i + loss_t) / 2
             total_loss.backward()
@@ -118,8 +122,8 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             logits_per_image = logits_per_image[:len(batch['image']), :len(batch['image'])]
             logits_per_text = logits_per_text[:len(batch['image']), :len(batch['image'])]
 
-        train_correct_text += (logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
-        train_correct_image += (logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item()
+        train_correct_text += (logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).to(device)).sum().item()
+        train_correct_image += (logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).to(device)).sum().item()
         optimizer.step()
 
         train_total += len(batch['image'])
@@ -131,7 +135,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             train_correct_image = 0
             train_correct_text = 0
 
-def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False):
+def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False, device=torch.device("cuda")):
     model.eval()
     val_loss = 0
     val_correct_image = 0
@@ -140,22 +144,22 @@ def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False):
     # logging.info(f"Evaluation for epoch {epoch}, on test? {test}")
     with torch.no_grad():
         for i, batch in enumerate(dataloader):
-            image = batch['image'].cuda()
-            text = batch['text'].cuda().squeeze(1)
+            image = batch['image'].to(device)
+            text = batch['text'].to(device).squeeze(1)
 
             image_features, text_features = model(image, text)
             logits_per_image = 100.0 * image_features @ text_features.t()
             logits_per_text = logits_per_image.t()
             
-            loss_i = loss_image(logits_per_image, torch.arange(len(batch['image'])).cuda())
-            loss_t = loss_text(logits_per_text, torch.arange(len(batch['image'])).cuda())
+            loss_i = loss_image(logits_per_image, torch.arange(len(batch['image'])).to(device))
+            loss_t = loss_text(logits_per_text, torch.arange(len(batch['image'])).to(device))
 
             total_loss = (loss_i + loss_t) / 2
             val_loss += total_loss.item()
             val_total += len(batch['image'])
 
-            val_correct_text += ((logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item() == len(batch['image']))*len(batch['image'])
-            val_correct_image += ((logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).cuda()).sum().item() == len(batch['image']))*len(batch['image'])
+            val_correct_text += ((logits_per_image.argmax(dim=1) == torch.arange(len(batch['image'])).to(device)).sum().item() == len(batch['image']))*len(batch['image'])
+            val_correct_image += ((logits_per_text.argmax(dim=1) == torch.arange(len(batch['image'])).to(device)).sum().item() == len(batch['image']))*len(batch['image'])
             
     name = "test" if test else "val"
     logging.info(f"Epoch {epoch}, {name} loss: {val_loss / val_total}, {name} acc image: {val_correct_image / val_total}, {name} acc text: {val_correct_text / val_total}")
@@ -166,7 +170,7 @@ def main(args):
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=args.train_dataset != "winoground")
     val_dataloader = DataLoader(val_dataset, batch_size=2, shuffle=False)
     test_dataloader = DataLoader(test_dataset, batch_size=2, shuffle=False)
-
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = load_model(args)
 
     # freeze layers
@@ -188,14 +192,19 @@ def main(args):
     # wandb.log({"epoch": -1, "test_loss": test_loss / test_total, "test_acc_img": test_correct_img / test_total, "test_acc_text": test_correct_text / test_total})
     logging.info("Starting training")
     for epoch in range(args.epochs):
+<<<<<<< HEAD
         print("LR: ", optimizer.param_groups[0]['lr'])
         train_epoch(train_dataloader, model, optimizer, loss_image, loss_text, args, epoch)
         scheduler.step()
         val_loss, val_correct_img, val_correct_text, val_total = eval(val_dataloader, model, loss_image, loss_text, args, epoch)
+=======
+        train_epoch(train_dataloader, model, optimizer, loss_image, loss_text, args, epoch, device=device)
+        val_loss, val_correct_img, val_correct_text, val_total = eval(val_dataloader, model, loss_image, loss_text, args, epoch, device=device)
+>>>>>>> 939ab1f0a4b5cc507a21d40ed3e82e52da1e918f
         wandb.log({"epoch": epoch, "val_loss": val_loss / val_total, "val_acc_img": val_correct_img / val_total, "val_acc_text": val_correct_text / val_total})
         os.makedirs("../save", exist_ok=True)
         torch.save(model.state_dict(), f"../save/{epoch}.pt")
-        test_loss, test_correct_img, test_correct_text, test_total = eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True)
+        test_loss, test_correct_img, test_correct_text, test_total = eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True, device=device)
         wandb.log({"epoch": epoch, "test_loss": test_loss / test_total, "test_acc_img": test_correct_img / test_total, "test_acc_text": test_correct_text / test_total})
 
 if __name__ == "__main__":
