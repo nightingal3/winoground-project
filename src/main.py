@@ -188,15 +188,10 @@ def main(args):
     # wandb.log({"epoch": -1, "test_loss": test_loss / test_total, "test_acc_img": test_correct_img / test_total, "test_acc_text": test_correct_text / test_total})
     logging.info("Starting training")
     for epoch in range(args.epochs):
-<<<<<<< HEAD
         print("LR: ", optimizer.param_groups[0]['lr'])
         train_epoch(train_dataloader, model, optimizer, loss_image, loss_text, args, epoch)
         scheduler.step()
         val_loss, val_correct_img, val_correct_text, val_total = eval(val_dataloader, model, loss_image, loss_text, args, epoch)
-=======
-        train_epoch(train_dataloader, model, optimizer, loss_image, loss_text, args, epoch, device=device)
-        val_loss, val_correct_img, val_correct_text, val_total = eval(val_dataloader, model, loss_image, loss_text, args, epoch, device=device)
->>>>>>> 939ab1f0a4b5cc507a21d40ed3e82e52da1e918f
         wandb.log({"epoch": epoch, "val_loss": val_loss / val_total, "val_acc_img": val_correct_img / val_total, "val_acc_text": val_correct_text / val_total})
         os.makedirs("../save", exist_ok=True)
         torch.save(model.state_dict(), f"../save/{epoch}.pt")
