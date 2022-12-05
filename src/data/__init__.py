@@ -11,7 +11,7 @@ def get_dataset(args):
         train_dataset = COCODataset(transform=train_transforms, root=args.coco_path, caption_year=args.caption_year)
         val_dataset = COCODataset(transform=val_transforms, root=args.coco_path, split='val', caption_year=args.caption_year)
     elif args.train_dataset == 'winoground':
-        train_dataset = WinogroundDataset(transform=train_transforms, ratio=0.9)
+        train_dataset = WinogroundDataset(transform=train_transforms, split="train", ratio=0.9)
         val_dataset = WinogroundDataset(transform=val_transforms, split='test', ratio=0.1)
     else:
         raise ValueError('Unknown dataset: {}'.format(args.dataset))
