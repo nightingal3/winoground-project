@@ -59,13 +59,9 @@ def load_model(args):
         logging.info()
         model = nn.DataParallel(model)
     elif torch.cuda.is_available():
-<<<<<<< HEAD
         model = model.cuda()
     else:
         logging.info("using CPU only")
-=======
-        model = model.to(device)
->>>>>>> 939ab1f0a4b5cc507a21d40ed3e82e52da1e918f
     return model
 
 def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch, device=torch.device("cuda")):
