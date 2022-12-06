@@ -353,6 +353,6 @@ class COCODataset(Dataset):
         data = self.data[index]
         image = Image.open(data["impath"]).convert("RGB")
         if self.transform is not None:
-            return self.transform({"image": image, "text": data["text"]})
+            return self.transform({"image_0": image, "text_0": data["text"]})
         else:
-            return {"image": image, "text": data["text"]}
+            return {"image_0": image, "text_0": data["text"]}

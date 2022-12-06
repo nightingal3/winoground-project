@@ -18,7 +18,7 @@ def get_args():
     parser.add_argument('--distractor_text', choices=["nounadjshuf", "nonnounadjshuf", "trigramshuf", "nounshuf", "advshuf", "adjshuf", "verbshuf"])
     parser.add_argument('--unfreeze', nargs="*", type=str, default=['11', 'ln_post', 'ln_final'])
     parser.add_argument('--distractor_image', choices=["random_patch"])
-    parser.add_argument('--coco_path', type=str, default="../data/mscoco/")
+    parser.add_argument('--coco_path', type=str, default="/scratch/samuelyu/mscoco/")
     parser.add_argument('--caption_year', type=str, default="2014")
     parser.add_argument('--is_contrastive', action='store_true')
     parser.add_argument('--l1', type=float, default=0.5)
@@ -28,7 +28,7 @@ def get_args():
     parser.add_argument('--c', type=float, default=-0.1)
     parser.add_argument('--r1', type=float, default=0.25)
     parser.add_argument('--r2', type=float, default=0.25)
-    parser.add_argument('--train_dataset', type=str, default="coco")
+    parser.add_argument('--train_dataset', type=str, default="winoground")
     parser.add_argument('--test_dataset', type=str, default="winoground")
     parser.add_argument('--ratio', type=float, default=0.5)
     parser.add_argument('--lr', type=float, default=1e-5)
@@ -77,21 +77,26 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
     for i, batch in enumerate(dataloader):
         optimizer.zero_grad()
         img0 = batch['image_0'].to(device)
+        img1 = batch['image_1'].to(device)
         text0 = batch['text_0'].to(device).squeeze(1)
+        text1 = batch['text_1'].to(device).squeeze(1)
         num = len(batch['image_0'])
 
-        i0, t0 = model(img0, text0)
-        image_features, text_features = i0, t0
+        i0,t0 = model(img0, text0)
+        i1,t1 = model(img1, text1)
+
+        image_features = torch.cat([i0, i1], dim=0)
+        text_features = torch.cat([t0, t1], dim=0)
 
         if args.distractor_image or args.distractor_text:
             dimg0 = batch['distractor_image_0'].to(device)
-            # dimg1 = batch['distractor_image_1'].to(device)
+            dimg1 = batch['distractor_image_1'].to(device)
             dtext0 = batch['distractor_text_0'].to(device).squeeze(1)
-            # dtext1 = batch['distractor_text_1'].to(device).squeeze(1)
+            dtext1 = batch['distractor_text_1'].to(device).squeeze(1)
             di0, dt0 = model(dimg0, dtext0)
-            # di1, dt1 = model(dimg1, dtext1)
-            image_features = torch.cat([image_features, di0], dim=0)
-            text_features = torch.cat([text_features, dt0], dim=0)
+            di1, dt1 = model(dimg1, dtext1)
+            image_features = torch.cat([image_features, di0, di1], dim=0)
+            text_features = torch.cat([text_features, dt0, dt1], dim=0)
 
         logits_per_image = 100.0 * image_features @ text_features.t()
         logits_per_text = logits_per_image.t()
@@ -106,7 +111,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
         total_loss = args.r1*loss_i + args.r2*loss_t
 
         if args.is_contrastive:
-            total_loss += (1-args.r1-args.r2)*closs(t0, i0, dt0, di0)
+            total_loss += (1-args.r1-args.r2)*closs(t0, i0, t1, i1)
 
         total_loss.backward()
         train_loss += total_loss.item()

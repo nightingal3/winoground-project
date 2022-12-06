@@ -19,32 +19,44 @@ def make_train_transforms(distractor_type_text, distractor_type_image):
         nonlocal distractor_type_text
         nonlocal distractor_type_image
         data = copy.deepcopy(data)
-        image = data['image']
-        text = data['text']
+        image0 = data['image_0']
+        # image1 = data['image_1']
+        text0 = data['text_0']
+        # text1 = data['text_1']
         if distractor_type_text is not None:
             text_transform = transform_names[distractor_type_text]
         else:
             text_transform = lambda x: x
 
-        distractor_image = RandomPatch(image, 4) # there's only one img transform
-        distractor_text = text_transform(text)
+        distractor_image0 = RandomPatch(image0, 4) # there's only one img transform
+        distractor_text0 = text_transform(text0)
+        # distractor_image1 = RandomPatch(image1, 4) # there's only one img transform
+        # distractor_text1 = text_transform(text1)
 
         train_image_transforms = transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
+            transforms.RandomResizedCrop((224,224), scale=(0.8,1.2), ratio=(0.95,1.05)),
             transforms.ToTensor(),
             transforms.Normalize([0.48145466, 0.4578275, 0.40821073], [0.26862954, 0.26130258, 0.27577711])
         ])
 
-        image = train_image_transforms(image)
-        text = tokenize(text)
-        distractor_image = train_image_transforms(distractor_image)
-        distractor_text = tokenize(distractor_text)
+        image0 = train_image_transforms(image0)
+        # image1 = train_image_transforms(image1)
+        text0 = tokenize(text0)
+        # text1 = tokenize(text1)
+        data['image_0'] = image0
+        # data['image_1'] = image1
+        data['text_0'] = text0
+        # data['text_1'] = text1
 
-        data['image'] = image
-        data['text'] = text
-        data['distractor_image'] = distractor_image
-        data['distractor_text'] = distractor_text
+        distractor_image0 = train_image_transforms(distractor_image0)
+        distractor_text0 = tokenize(distractor_text0)
+        # distractor_image1 = train_image_transforms(distractor_image1)
+        # distractor_text1 = tokenize(distractor_text1)
+
+        data['distractor_image_0'] = distractor_image0
+        data['distractor_text_0'] = distractor_text0
+        # data['distractor_image_1'] = distractor_image1
+        # data['distractor_text_1'] = distractor_text1
 
         return data
 
@@ -52,8 +64,10 @@ def make_train_transforms(distractor_type_text, distractor_type_image):
 
 def val_transforms(data):
     data = copy.deepcopy(data)
-    image = data['image']
-    text = data['text']
+    image0 = data['image_0']
+    image1 = data['image_1']
+    text0 = data['text_0']
+    text1 = data['text_1']
     val_image_transforms = transforms.Compose([
         transforms.Resize(224),
         transforms.CenterCrop(224),
@@ -61,10 +75,14 @@ def val_transforms(data):
         transforms.Normalize([0.48145466, 0.4578275, 0.40821073], [0.26862954, 0.26130258, 0.27577711])
     ])
 
-    image = val_image_transforms(image)
-    text = tokenize(text)
-    data['image'] = image
-    data['text'] = text
+    image0 = val_image_transforms(image0)
+    image1 = val_image_transforms(image1)
+    text0 = tokenize(text0)
+    text1 = tokenize(text1)
+    data['image_0'] = image0
+    data['image_1'] = image1
+    data['text_0'] = text0
+    data['text_1'] = text1
 
     return data
 
