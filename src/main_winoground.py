@@ -138,6 +138,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
             train_correct_text = 0
             train_image_score = 0
             train_text_score = 0
+            train_group_score = 0
 
 def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False, device=torch.device("cuda"), closs=None):
     model.eval()
