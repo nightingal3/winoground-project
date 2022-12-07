@@ -31,7 +31,7 @@ class ContrastiveLoss(nn.Module):
         pair1_sim = self.sim(c1, i1)
         text_distractor_sim = self.sim(c1, i0)
         image_distractor_sim = self.sim(c0, i1)
-        score = self.lamb1 * caption_sim - self.lamb2 * pair0_sim + self.lamb5 * text_distractor_sim + self.lamb4 * image_distractor_sim - self.lamb3 * pair0_sim + self.c
+        score = self.lamb1 * caption_sim - self.lamb2 * pair0_sim + self.lamb5 * text_distractor_sim + self.lamb4 * image_distractor_sim - self.lamb3 * pair1_sim + self.c
         zero = torch.tensor(0)
 
         return torch.mean(torch.maximum(zero, score))

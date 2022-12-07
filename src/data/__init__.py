@@ -20,7 +20,7 @@ def get_dataset(args):
     if args.test_dataset == 'coco':
         test_dataset = COCODataset(transform=test_transforms, split='test')
     elif args.test_dataset == 'winoground':
-        test_dataset = WinogroundDataset(transform=test_transforms)
+        test_dataset = WinogroundDataset(transform=test_transforms, ratio=args.ratio)
     else:
         raise ValueError('Unknown dataset: {}'.format(args.dataset))
 

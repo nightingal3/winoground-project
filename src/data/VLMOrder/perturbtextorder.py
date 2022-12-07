@@ -1,11 +1,16 @@
 import spacy
 import numpy as np
 import re
+import random
 nlp = spacy.load("en_core_web_sm")
 # text = nlp("remarkable scene with a blue ball behind a green chair")
 # newtext = "remarkable scene with a blue ball behind a green chair".split()
 # print("Original Text: "+" ".join(newtext))
 
+def randomshuf(doc):
+    new = doc.split(" ")
+    random.shuffle(new)
+    return " ".join(new)
 
 # Evaluation Perturbations
 def nounadjshuf(doc):
@@ -161,11 +166,10 @@ def nounshuf(doc):
             nounswap = nounswap.replace("----REPLACE @ word @ ONE----",word2)
             nounswap = nounswap.replace("----REPLACE @ word @ TWO----",word1)
             return nounswap
-
-
-        
     else:
-        return doc
+        temp = doc.split(" ")
+        random.shuffle(temp)
+        return " ".join(temp)
 
 def advshuf(doc):
     text = nlp(doc)
@@ -196,7 +200,9 @@ def advshuf(doc):
             advswap = advswap.replace("----REPLACE @ word @ TWO----",word1)
             return advswap
     else:
-        return doc
+        temp = doc.split(" ")
+        random.shuffle(temp)
+        return " ".join(temp)
 
 def adjshuf(doc):
     text = nlp(doc)
@@ -226,7 +232,9 @@ def adjshuf(doc):
             adjswap = adjswap.replace("----REPLACE @ word @ TWO----",word1)
             return adjswap
     else:
-        return doc
+        temp = doc.split(" ")
+        random.shuffle(temp)
+        return " ".join(temp)
 
 def nounchunkshuf(doc):
     text = nlp(doc)
@@ -243,7 +251,9 @@ def nounchunkshuf(doc):
         ncswap = ncswap.replace("----REPLACE @ PHRASE @ TWO----",phrase1)
         return ncswap
     else: 
-        return doc
+        temp = doc.split(" ")
+        random.shuffle(temp)
+        return " ".join(temp)
 
 def verbshuf(doc):
     text = nlp(doc)
@@ -276,7 +286,9 @@ def verbshuf(doc):
             verbswap = verbswap.replace("----REPLACE @ word @ TWO----",word1)
             return verbswap
     else:
-        return doc
+        temp = doc.split(" ")
+        random.shuffle(temp)
+        return " ".join(temp)
 
 
 # text1 = "remarkable scene with a blue ball behind a green chair"

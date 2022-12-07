@@ -71,6 +71,7 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
     train_image_score = 0
     train_text_score = 0
     train_total = 0
+    train_group_score = 0
 
     model.train()
     logging.info("Training for epoch {}".format(epoch))
@@ -123,13 +124,14 @@ def train_epoch(dataloader, model, optimizer, loss_image, loss_text, args, epoch
         train_correct_image += temp2.sum().item()
         train_text_score += (temp1[::2] & temp1[1::2]).sum().item()
         train_image_score += (temp2[::2] & temp2[1::2]).sum().item()
+        train_group_score += (temp1[::2] & temp1[1::2] & temp2[::2] & temp2[1::2]).sum().item()
 
         optimizer.step()
 
         train_total += num*2
         if i % 100 == 99 or i == len(dataloader) - 1:
-            logging.info(f"Epoch {epoch} Batch {i}, train loss: {train_loss / train_total}, train acc image: {train_correct_image / train_total}, train acc text: {train_correct_text / train_total}, train_image_score: {train_image_score / train_total*2}, train_text_score: {train_text_score / train_total*2}")
-            wandb.log({"train_step": i, "train_loss": train_loss / train_total, "train_acc_image": train_correct_image / train_total, "train_acc_text": train_correct_text / train_total, "train_image_score": train_image_score / train_total*2, "train_text_score": train_text_score / train_total*2})
+            logging.info(f"Epoch {epoch} Batch {i}, train loss: {train_loss / train_total}, train acc image: {train_correct_image / train_total}, train acc text: {train_correct_text / train_total}, train_image_score: {train_image_score / train_total*2}, train_text_score: {train_text_score / train_total*2}, train_group_score: {train_group_score / train_total*2}")
+            wandb.log({"train_step": i, "train_loss": train_loss / train_total, "train_acc_image": train_correct_image / train_total, "train_acc_text": train_correct_text / train_total, "train_image_score": train_image_score / train_total*2, "train_text_score": train_text_score / train_total*2, "train_group_score": train_group_score / train_total*2})
             train_total = 0
             train_loss = 0
             train_correct_image = 0
@@ -143,6 +145,7 @@ def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False, de
     val_correct_image = 0
     val_correct_text = 0
     val_total = 0
+    val_group_score = 0
     with torch.no_grad():
         for i, batch in enumerate(dataloader):
             img0 = batch['image_0'].to(device)
@@ -168,12 +171,15 @@ def eval(dataloader, model, loss_image, loss_text, args, epoch=0, test=False, de
                 total_loss += (1-args.r1-args.r2)*closs(t0, i0, t1, i1)
             val_loss += total_loss.item()
             val_total += 1
-            val_correct_text += ((logits_per_image.argmax(dim=1) == torch.arange(num*2).to(device)).sum().item() == num*2)
-            val_correct_image += ((logits_per_text.argmax(dim=1) == torch.arange(num*2).to(device)).sum().item() == num*2)
+            temp1 = (logits_per_image.argmax(dim=1) == torch.arange(num*2).to(device))
+            temp2 = (logits_per_text.argmax(dim=1) == torch.arange(num*2).to(device))
+            val_correct_text += (temp1[::2] & temp1[1::2]).sum().item()
+            val_correct_image += (temp2[::2] & temp2[1::2]).sum().item()
+            val_group_score += (temp1[::2] & temp1[1::2] & temp2[::2] & temp2[1::2]).sum().item()
             
     name = "test" if test else "val"
-    logging.info(f"Epoch {epoch}, {name} loss: {val_loss / val_total}, {name} acc image: {val_correct_image / val_total}, {name} acc text: {val_correct_text / val_total}")
-    return val_loss, val_correct_image, val_correct_text, val_total
+    logging.info(f"Epoch {epoch}, {name} loss: {val_loss / val_total}, {name} acc image: {val_correct_image / val_total}, {name} acc text: {val_correct_text / val_total}, {name} group score: {val_group_score / val_total}")
+    return val_loss, val_correct_image, val_correct_text, val_total, val_group_score
 
 def main(args):
     train_dataset, val_dataset, test_dataset = get_dataset(args)
@@ -199,8 +205,8 @@ def main(args):
     epoch = 0
     # val_loss, val_correct_img, val_correct_text, val_total = eval(val_dataloader, model, loss_image, loss_text, args, closs=closs)
     # wandb.log({"epoch": -1, "val_loss": val_loss / val_total, "val_acc_img": val_correct_img / val_total, "val_acc_text": val_correct_text / val_total})
-    test_loss, test_correct_img, test_correct_text, test_total = eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True, closs=closs)
-    wandb.log({"epoch": -1, "test_loss": test_loss / test_total, "test_acc_img": test_correct_img / test_total, "test_acc_text": test_correct_text / test_total})
+    test_loss, test_correct_img, test_correct_text, test_total, test_group_score = eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True, closs=closs)
+    wandb.log({"epoch": -1, "test_loss": test_loss / test_total, "test_acc_img": test_correct_img / test_total, "test_acc_text": test_correct_text / test_total, "test_group_score": test_group_score / test_total})
     logging.info("Starting training")
     for epoch in range(args.epochs):
         print("LR: ", optimizer.param_groups[0]['lr'])
@@ -211,8 +217,8 @@ def main(args):
         
         # os.makedirs("../save", exist_ok=True)
         # torch.save(model.state_dict(), f"../save/{epoch}.pt")
-        test_loss, test_correct_img, test_correct_text, test_total = eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True, device=device, closs=closs)
-        wandb.log({"epoch": epoch, "test_loss": test_loss / test_total, "test_acc_img": test_correct_img / test_total, "test_acc_text": test_correct_text / test_total})
+        test_loss, test_correct_img, test_correct_text, test_total, test_group_score = eval(test_dataloader, model, loss_image, loss_text, args, epoch, test=True, device=device, closs=closs)
+        wandb.log({"epoch": epoch, "test_loss": test_loss / test_total, "test_acc_img": test_correct_img / test_total, "test_acc_text": test_correct_text / test_total, "test_group_score": test_group_score / test_total})
 
 if __name__ == "__main__":
     args = get_args()
