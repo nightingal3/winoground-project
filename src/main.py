@@ -15,7 +15,7 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', type=str, default='ViT-B/32')
     parser.add_argument('--batch_size', type=int, default=32)
-    parser.add_argument('--distractor_text', choices=["nounadjshuf", "nonnounadjshuf", "trigramshuf", "nounshuf", "advshuf", "adjshuf", "verbshuf"])
+    parser.add_argument('--distractor_text', choices=["nounadjshuf", "nonnounadjshuf", "trigramshuf", "nounshuf", "advshuf", "adjshuf", "verbshuf","randomshuf"])
     parser.add_argument('--unfreeze', nargs="*", type=str, default=['11', 'ln_post', 'ln_final'])
     parser.add_argument('--distractor_image', choices=["random_patch"])
     parser.add_argument('--coco_path', type=str, default="../data/mscoco/")
