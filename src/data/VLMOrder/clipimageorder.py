@@ -9,7 +9,7 @@ from PIL import Image
 # slightly modified version of CLIP_Implementation.ipynb that writes out the relevant information to a file
 # that we can use for later analysis
 
-auth_token = "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" # use your own
+auth_token = "" # use your own
 winoground = load_dataset("facebook/winoground", use_auth_token=auth_token)["test"]
 
 clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
